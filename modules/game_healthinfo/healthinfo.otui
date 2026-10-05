@@ -1,0 +1,63 @@
+HealthManaEnergyBar < UIWidget
+  height: 11
+  phantom: true
+
+  UIWidget
+    id: icon
+    anchors.left: parent.left
+    anchors.top: parent.top
+    size: 12 11
+    phantom: true
+
+  UIWidget
+    id: total
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 14
+    size: 94 11
+    image-source: /images/healthmana/hitpoints_manapoints_bar_border
+    phantom: true
+
+  UIWidget
+    id: current
+    anchors.left: total.left
+    anchors.top: total.top
+    size: 94 11
+    phantom: true
+
+  Label
+    id: text
+    anchors.right: parent.right
+    anchors.top: parent.top
+    size: 42 11
+    font: verdana-bold-11px-native
+    text-align: left
+    color: #c0c0c0
+    text: 0
+    phantom: true
+
+PhantomMiniWindow
+  id: mainhealthmanapanel
+  draggable: true
+  phantom: false
+  &panelHeight: 28
+  height: 28
+
+  HealthManaEnergyBar
+    id: health
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-left: 8
+    margin-right: 8
+    margin-top: 2
+
+
+  HealthManaEnergyBar
+    id: mana
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: health.bottom
+    margin-left: 8
+    margin-right: 8
+    margin-top: 3

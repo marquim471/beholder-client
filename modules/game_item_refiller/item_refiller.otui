@@ -1,0 +1,277 @@
+CyclopediaGoldBox < UIWidget
+  image-source: /images/ui/item
+  image-border: 10
+  size: 130 20
+
+  UIWidget
+    id: icon
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 4
+    image-source: /game_cyclopedia/images/icon-goldcoin
+    phantom: true
+
+  Label
+    id: value
+    anchors.right: icon.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 4
+    font: verdana-bold-11px-native
+    color: #BDBDBD
+    text-auto-resize: true
+    !text: tr('0')
+
+RefillerItemSlot < UIButton
+  size: 42 42
+  image-source: /images/ui/item
+  change-cursor-image: true
+  cursor: pointer
+  border-width: 0
+  tooltip-delayed: true
+  focusable: false
+
+  $hover !disabled !checked:
+    border-width: 1
+    border-color: #60a5fa
+
+  $checked:
+    border-width: 2
+    border-color: #ffcc00
+
+  $disabled:
+    opacity: 0.35
+
+  UIItem
+    id: item
+    size: 32 32
+    anchors.centerIn: parent
+    virtual: true
+    phantom: true
+
+QuantityButton < Button
+  size: 74 22
+  font: verdana-bold-11px-native
+  color: #dfdfdf
+  change-cursor-image: true
+  cursor: pointer
+
+  $hover !checked:
+    color: #ffffff
+
+  $checked:
+    color: #ffcc00
+    border-width: 1
+    border-color: #ffcc00
+
+MainWindow
+  id: itemRefillerWindow
+  !text: tr('Refiller')
+  size: 470 380
+  @onEscape: modules.game_item_refiller.destroy()
+  @onEnter: modules.game_item_refiller.sendBuy()
+
+  Panel
+    id: upperPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 76
+    image-source: /images/ui/window
+    image-border: 4
+
+    UIWidget
+      id: currentItemBox
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 10
+      size: 46 46
+      image-source: /images/ui/item
+      phantom: true
+
+      UIItem
+        id: currentItem
+        anchors.centerIn: parent
+        size: 32 32
+        virtual: true
+        phantom: true
+
+    Label
+      id: currentNameLabel
+      anchors.left: currentItemBox.right
+      anchors.top: currentItemBox.top
+      margin-left: 10
+      margin-top: 2
+      font: verdana-bold-11px-native
+      color: #ffcc00
+      text: Item Name
+
+    Label
+      id: currentCategoryLabel
+      anchors.left: currentItemBox.right
+      anchors.top: currentNameLabel.bottom
+      margin-left: 10
+      margin-top: 4
+      font: verdana-11px-monochrome
+      color: #a0a0a0
+      text: Category: -
+
+    Label
+      id: currentWeightLabel
+      anchors.left: currentItemBox.right
+      anchors.top: currentCategoryLabel.bottom
+      margin-left: 10
+      margin-top: 3
+      font: verdana-11px-monochrome
+      color: #00e676
+      text: Weight: 0.00 oz
+
+    CyclopediaGoldBox
+      id: costGoldBox
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-right: 10
+      margin-top: 8
+
+    Label
+      id: costTitleLabel
+      anchors.right: costGoldBox.left
+      anchors.verticalCenter: costGoldBox.verticalCenter
+      margin-right: 6
+      font: verdana-11px-monochrome
+      color: #b0b0b0
+      !text: tr('Total Cost:')
+
+    CyclopediaGoldBox
+      id: playerGoldBox
+      anchors.right: parent.right
+      anchors.top: costGoldBox.bottom
+      margin-right: 10
+      margin-top: 4
+
+    Label
+      id: playerGoldTitleLabel
+      anchors.right: playerGoldBox.left
+      anchors.verticalCenter: playerGoldBox.verticalCenter
+      margin-right: 6
+      font: verdana-11px-monochrome
+      color: #b0b0b0
+      !text: tr('Your Gold:')
+
+    Label
+      id: playerCapLabel
+      anchors.right: parent.right
+      anchors.top: playerGoldBox.bottom
+      margin-right: 14
+      margin-top: 4
+      font: verdana-11px-monochrome
+      color: #a0a0a0
+      text: Free Cap: 0.00 oz
+
+  Panel
+    id: itemsPanel
+    anchors.top: upperPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    height: 125
+    image-source: /images/ui/window
+    image-border: 4
+
+    Label
+      id: itemsHeaderLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 10
+      font: verdana-bold-11px-native
+      color: #909090
+      !text: tr('Select Item:')
+
+    ScrollablePanel
+      id: slotsContainer
+      anchors.top: itemsHeaderLabel.bottom
+      anchors.left: parent.left
+      anchors.right: itemsScrollBar.left
+      anchors.bottom: parent.bottom
+      margin-top: 4
+      margin-left: 10
+      margin-right: 4
+      margin-bottom: 6
+      vertical-scrollbar: itemsScrollBar
+      layout:
+        type: grid
+        cell-size: 42 42
+        cell-spacing: 6
+        flow: true
+
+    VerticalScrollBar
+      id: itemsScrollBar
+      anchors.top: slotsContainer.top
+      anchors.bottom: slotsContainer.bottom
+      anchors.right: parent.right
+      margin-right: 6
+      step: 48
+      pixels-scroll: true
+
+  Panel
+    id: quantityPanel
+    anchors.top: itemsPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    height: 56
+    image-source: /images/ui/window
+    image-border: 4
+
+    Label
+      id: quantityHeaderLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 10
+      font: verdana-bold-11px-native
+      color: #909090
+      !text: tr('Select Quantity:')
+
+    Panel
+      id: quantityContainer
+      anchors.top: quantityHeaderLabel.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 4
+      margin-left: 10
+      margin-right: 10
+      height: 24
+      layout:
+        type: horizontalBox
+        spacing: 8
+
+  Label
+    id: statusLabel
+    anchors.top: quantityPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    text-align: center
+    font: verdana-11px-monochrome
+    color: #ffcc00
+    !text: tr('Select an item to purchase.')
+
+  Button
+    id: buyButton
+    !text: tr('Buy')
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 80
+    height: 20
+    enabled: false
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.right: buyButton.left
+    anchors.bottom: parent.bottom
+    margin-right: 6
+    width: 80
+    height: 20
+    @onClick: modules.game_item_refiller.destroy()

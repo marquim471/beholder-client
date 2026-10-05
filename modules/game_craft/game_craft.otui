@@ -1,0 +1,239 @@
+CraftListItem < UIWidget
+  height: 48
+  margin-top: 1
+  margin-bottom: 1
+  padding: 5
+  focusable: true
+  background-color: alpha
+
+  $focus:
+    background-color: #ffffff22
+
+  $hover !focus:
+    background-color: #ffffff11
+
+  Item
+    id: item
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    size: 32 32
+    virtual: true
+    phantom: true
+
+  Label
+    id: name
+    anchors.left: item.right
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 10
+    font: verdana-11px-rounded
+    color: #dfdfdf
+    phantom: true
+
+  Label
+    id: status
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 5
+    text: X
+    color: #ff3333
+    font: verdana-11px-monochrome
+    phantom: true
+
+IngredientItem < Panel
+  height: 32
+  margin-top: 1
+  margin-bottom: 1
+  background-color: #00000044
+
+  Item
+    id: item
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 2
+    size: 24 24
+    virtual: true
+    phantom: true
+
+  Label
+    id: name
+    anchors.left: item.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 10
+    font: verdana-11px-monochrome
+    color: #dfdfdf
+    text-auto-resize: true
+
+  Label
+    id: count
+    anchors.left: name.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 10
+    font: verdana-11px-monochrome
+    color: #ffcc00
+    text-auto-resize: true
+
+MainWindow
+  id: craftWindow
+  size: 650 500
+  text: Craft System
+  visible: false
+  @onEscape: modules.game_craft.toggle()
+
+  Label
+    id: balanceLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 5
+    font: verdana-11px-rounded
+    color: #ffcc00
+    text: Balance: 0 gp
+    text-auto-resize: true
+
+  Label
+    id: searchLabel
+    anchors.top: parent.top
+    anchors.right: searchInput.left
+    margin-top: 8
+    margin-right: 5
+    text: Search:
+    font: verdana-11px-monochrome
+
+  TextEdit
+    id: searchInput
+    anchors.top: parent.top
+    anchors.right: parent.right
+    width: 150
+    margin-top: 5
+
+  Panel
+    id: mainPanel
+    anchors.top: searchInput.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: closeButton.top
+    margin-top: 10
+    margin-bottom: 10
+    background-color: #00000055
+    border: 1 #333333
+
+    TextList
+      id: recipeList
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      width: 250
+      margin: 1
+      background-color: #111111
+      vertical-scrollbar: recipeListScrollBar
+
+    VerticalScrollBar
+      id: recipeListScrollBar
+      anchors.top: recipeList.top
+      anchors.bottom: recipeList.bottom
+      anchors.left: recipeList.right
+      step: 14
+
+    Panel
+      id: detailsPanel
+      anchors.top: parent.top
+      anchors.left: recipeListScrollBar.right
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      padding: 15
+
+      Item
+        id: resultItem
+        anchors.top: parent.top
+        anchors.left: parent.left
+        size: 48 48
+        virtual: true
+
+      Label
+        id: resultName
+        anchors.top: parent.top
+        anchors.left: resultItem.right
+        anchors.right: parent.right
+        margin-left: 15
+        font: verdana-11px-rounded
+        color: #ffcc00
+        text: Select a recipe
+
+      Label
+        id: resultDescription
+        anchors.top: resultName.bottom
+        anchors.left: resultName.left
+        anchors.right: parent.right
+        margin-top: 5
+        font: verdana-11px-monochrome
+        color: #dfdfdf
+
+      Label
+        id: ingredientsLabel
+        anchors.top: resultItem.bottom
+        anchors.left: parent.left
+        margin-top: 20
+        text: Ingredients:
+        font: verdana-11px-rounded
+        color: #888888
+
+      ScrollablePanel
+        id: ingredientsList
+        anchors.top: ingredientsLabel.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: quantityLabel.top
+        margin-top: 5
+        margin-bottom: 5
+        vertical-scrollbar: ingredientsScrollBar
+        layout: verticalBox
+
+      VerticalScrollBar
+        id: ingredientsScrollBar
+        anchors.top: ingredientsList.top
+        anchors.bottom: ingredientsList.bottom
+        anchors.right: ingredientsList.right
+        step: 14
+
+      Label
+        id: quantityLabel
+        anchors.bottom: statusLabel.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-bottom: 4
+        text: Quantity: 1 / 1
+        font: verdana-11px-rounded
+        color: #dfdfdf
+
+      Label
+        id: statusLabel
+        anchors.bottom: craftButton.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-bottom: 8
+        text: 
+        font: verdana-11px-rounded
+        color: #ffffff
+        text-auto-resize: true
+
+      Button
+        id: craftButton
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: 120
+        height: 25
+        text: Craft
+        enabled: false
+
+  Button
+    id: closeButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    width: 80
+    text: Close
+
+  Button
+    id: refreshButton
+    anchors.bottom: parent.bottom
+    anchors.right: closeButton.left
+    margin-right: 10
+    width: 80
+    text: Refresh

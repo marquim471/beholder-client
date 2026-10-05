@@ -1,0 +1,46 @@
+StoreConfigurationWindow
+  id: changeNameWindow
+  size: 370 120
+  !text: tr('Enter New Character Name')
+
+  Label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 5
+    margin-left: 5
+    !text: tr('Please enter the new name for your character:')
+    text-auto-resize: true
+  TextEdit
+    id: transferPointsText
+    max-length: 29
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    margin-top: 5
+    margin-left: 5
+    width: 330
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 8
+
+  Button
+    id: closeButton
+    font: cipsoftFont
+    size: 40 20
+    !text: tr('Cancel')
+    anchors.right: parent.right
+    anchors.top: separator.bottom
+    margin-top: 5
+
+  Button
+    id: buttonOk
+    font: cipsoftFont
+    size: 40 20
+    !text: tr('Ok')
+    anchors.right: prev.left
+    anchors.top: separator.bottom
+    margin-top: 5
+    margin-right: 5
+    enabled: false

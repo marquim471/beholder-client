@@ -1,0 +1,463 @@
+BattleMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 166
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 80
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 63
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: toggleFilterButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-expand-12x12-up
+    $pressed:
+      image-source: /images/ui/miniwindow/button-expand-12x12-down
+    $on:
+      image-source: /images/ui/miniwindow/button-expand-12x12-down
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: toggleFilterButton.top
+    anchors.right: toggleFilterButton.left
+    margin-right: 1
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  ClassicButton
+    id: newWindowButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    size: 12 12
+    icon: /images/ui/miniwindow/icon-additionalwidget
+
+  UIButton
+    id: lockButton
+    anchors.top: newWindowButton.top
+    anchors.right: newWindowButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+
+BattleIcon < ClassicButton
+  shader: UI - Premultiplied Alpha
+  size: 20 20
+  checkable: true
+
+BattlePlayers < BattleIcon
+  icon: /images/game/battle/icon-battlelist-players
+
+BattleNPCs < BattleIcon
+  icon: /images/game/battle/icon-battlelist-npc
+
+BattleMonsters < BattleIcon
+  icon: /images/game/battle/icon-battlelist-monster
+
+BattleSkulls < BattleIcon
+  icon: /images/game/battle/icon-battlelist-skull
+
+BattleParty < BattleIcon
+  icon: /images/game/battle/icon-battlelist-party
+
+BattleKnights < BattleIcon
+  icon: /images/game/battle/icon-battlelist-knight
+
+BattlePaladins < BattleIcon
+  icon: /images/game/battle/icon-battlelist-paladin
+
+BattleDruids < BattleIcon
+  icon: /images/game/battle/icon-battlelist-druid
+
+BattleSorcerers < BattleIcon
+  icon: /images/game/battle/icon-battlelist-sorcerer
+
+BattleMonks < BattleIcon
+  @onVisibilityChange: |
+    local panel = self:getParent()
+    if panel then
+      panel:setWidth(self:isExplicitlyVisible() and 152 or 130)
+    end
+  @onSetup: |
+    if g_game.getFeature(GameVocationMonk) then
+      self:setVisible(true)
+    else
+      self:setVisible(false)
+    end
+  
+  icon: /images/game/battle/icon-battlelist-monk
+
+BattleSummons < BattleIcon
+  icon: /images/game/battle/icon-battlelist-summon
+
+BattleMembersOwnGuild < BattleIcon
+  icon: /images/game/battle/icon-battlelist-own-guild
+
+BattleMiniWindow
+  id: battleWindow
+  height: 166
+  image-smooth: false
+  @onOpen: onOpen()
+  @onClose: onClose()
+  &save: true
+   
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    image-source: /images/game/battle/icon-battlelist
+    size: 12 12
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 5
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+    !text: tr('Battle List')
+
+  Panel
+    id: filterPanel
+    margin-top: 17
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 12
+    height: 42
+    width: 152
+    layout:
+      type: grid
+      flow: true
+      cell-spacing: 2
+      num-columns: 7
+      cell-size: 20 20
+      fit-children: false
+
+    BattlePlayers
+      id: hidePlayers
+      !tooltip: tr('Hide players')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleKnights
+      id: hideKnights
+      !tooltip: tr('Hide knights')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattlePaladins
+      id: hidePaladins
+      !tooltip: tr('Hide paladins')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleDruids
+      id: hideDruids
+      !tooltip: tr('Hide druids')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleSorcerers
+      id: hideSorcerers
+      !tooltip: tr('Hide sorcerers')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleMonks
+      id: hideMonks
+      !tooltip: tr('Hide monks')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleSummons
+      id: hideSummons
+      !tooltip: tr('Hide summons')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleNPCs
+      id: hideNPCs
+      !tooltip: tr('Hide Npcs')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleMonsters
+      id: hideMonsters
+      !tooltip: tr('Hide monsters')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleSkulls
+      id: hideSkulls
+      !tooltip: tr('Hide non-skull players')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleParty
+      id: hideParty
+      !tooltip: tr('Hide party members')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+    BattleMembersOwnGuild
+      id: hideMembersOwnGuild
+      !tooltip: tr('Hide own guild members')
+      @onClick: modules.game_battle.onFilterButtonClick(self)
+
+  UIWidget
+    id: HorizontalSeparator
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin: 61 4 0 4
+    height: 2
+    phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-dark
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-bright
+      image-repeated: true
+      phantom: true
+
+  MiniWindowContents
+    id: contentsPanel
+    anchors.top: parent.top
+    margin-top: 63
+    margin-left: 4
+    margin-bottom: 4
+
+    Panel
+      id: battlePanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      padding-right: 2
+      padding-bottom: 5
+      layout:
+        type: verticalBox
+        fit-children: true
+
+BattleListMenuOption < ThickCheckBox
+  text-offset: 18 1
+  text-align: left
+  color: white
+  background-color: alpha
+  font: verdana-11px-rounded
+  padding: 3 6
+
+  $hover:
+    background-color: #ffffff1a
+
+  $disabled:
+    color: #c0c0c0ff
+
+BattleListMenuButton < UIButton
+  text-align: left
+  color: white
+  background-color: alpha
+  font: verdana-11px-rounded
+  padding: 3 6
+  margin-left: 5
+
+  $hover:
+    background-color: #ffffff1a
+
+  $disabled:
+    color: #c0c0c0ff
+
+BattleListSubMenu < PopupMenu
+  id: battleListSubMenu
+  width: 285
+
+  BattleListMenuButton
+    id: editBattleListName
+    !text: tr('Edit Name')
+
+  BattleListMenuButton
+    id: openNewBattleList
+    !text: tr('Open secondary battle list')
+
+  HorizontalSeparator
+    margin-top: 2
+    margin-bottom: 3
+
+  BattleListMenuOption
+    id: sortAscByDisplayTime
+    !text: tr('Sort Ascending by Display Time')
+
+  BattleListMenuOption
+    id: sortDescByDisplayTime
+    !text: tr('Sort Descending by Display Time')
+
+  BattleListMenuOption
+    id: sortAscByDistance
+    !text: tr('Sort Ascending by Distance')
+
+  BattleListMenuOption
+    id: sortDescByDistance
+    !text: tr('Sort Descending by Distance')
+
+  BattleListMenuOption
+    id: sortAscByHitPoints
+    !text: tr('Sort Ascending by %% Hit Points')
+
+  BattleListMenuOption
+    id: sortDescByHitPoints
+    !text: tr('Sort Descending by %% Hit Points')
+
+  BattleListMenuOption
+    id: sortAscByName
+    !text: tr('Sort Ascending by Name')
+
+  BattleListMenuOption
+    id: sortDescByName
+    !text: tr('Sort Descending by Name')

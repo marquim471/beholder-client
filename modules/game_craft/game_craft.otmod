@@ -1,0 +1,12 @@
+Module
+  name: game_craft
+  description: Sistema de Crafting In-Game para OTClient
+  author: Antigravity / Beholder
+  website: https://github.com/mehah/otclient
+  sandboxed: true
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ game_craft ]
+  dependencies: [ game_interface ]
+  @onLoad: init()
+  @onUnload: terminate()

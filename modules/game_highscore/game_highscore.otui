@@ -1,0 +1,683 @@
+HighscoreNavigationButton < ClassicButton
+  size: 20 20
+  font: verdana-bold-8px-native
+  image-clip: 0 0 98 40
+  image-repeated: true
+
+HighscoreFilterLabel < Label
+  height: 13
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  text-align: left
+  text-offset: 0 0
+  $disabled:
+    color: #c0c0c0
+
+HighscoreFilterComboPopupMenuButton < ComboBoxPopupMenuButton
+  font: verdana-bold-11px-native
+  text-offset: 5 0
+  margin: 0
+  $hover !disabled:
+    color: #f4f4f4
+    background-color: #80808055
+  $checked:
+    color: #f4f4f4
+    background-color: #80808055
+
+HighscoreFilterComboPopupMenu < ComboBoxPopupMenu
+  image-source: /images/ui/button-9grid-pressed
+  image-clip: 0 0 98 40
+  image-border: 1
+  image-repeated: true
+
+HighscoreFilterCombo < UIComboBox
+  size: 235 20
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  text-align: center
+  text-offset: -10 1
+  image-source: /images/ui/button-9grid-idle
+  image-border: 1
+  image-repeated: true
+  $on:
+    image-source: /images/ui/button-9grid-pressed
+  $disabled:
+    color: #707070
+  UIWidget
+    id: Arrow
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    width: 20
+    image-source: /images/game/cyclopedia/charm-dropdown-idle
+    phantom: true
+
+WorldType < UIWidget
+  size: 157 17
+  anchors.left: parent.left
+  anchors.top: parent.top
+  CheckBox
+    id: enabled
+    anchors.left: parent.left
+    anchors.top: parent.top
+    size: 12 12
+    image-source: /images/ui/checkbox-unchecked
+    $!checked:
+      image-clip: 0 0 12 12
+    $checked:
+      image-source: /images/ui/checkbox-checked
+      image-clip: 0 0 12 12
+    $checked disabled:
+      image-source: /images/ui/checkbox-checked-disabled
+  HighscoreFilterLabel
+    id: text
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 16
+    width: 145
+    phantom: true
+    $disabled:
+      color: #707070
+
+HighscoreVerticalSeparator < UIWidget
+  width: 2
+  phantom: true
+  UIWidget
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    width: 1
+    image-source: /images/ui/vertical_line_dark
+    image-repeated: true
+    phantom: true
+  UIWidget
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    width: 1
+    image-source: /images/ui/vertical_line_bright
+    image-repeated: true
+    phantom: true
+
+HighscoreHorizontalSeparator < UIWidget
+  height: 2
+  phantom: true
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/horizontal_line_dark
+    image-repeated: true
+    phantom: true
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/horizontal_line_bright
+    image-repeated: true
+    phantom: true
+
+HighScoreData < UIWidget
+  height: 16
+  Label
+    id: rank
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 2
+    width: 35
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: left
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    id: separatorRank
+    margin-left: 40
+  Label
+    id: name
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 44
+    width: 220
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: left
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    id: separatorName
+    margin-left: 267
+  Label
+    id: voc
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 271
+    width: 111
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    id: separatorVocation
+    margin-left: 385
+  Label
+    id: world
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 389
+    width: 79
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    id: separatorWorld
+    margin-left: 471
+  Label
+    id: level
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 475
+    width: 35
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    id: separatorLevel
+    margin-left: 513
+  Label
+    id: title
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 442
+    width: 133
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    visible: false
+    phantom: true
+  HighscoreVerticalSeparator
+    id: separatorTitle
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 578
+    visible: false
+  Label
+    id: points
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 517
+    anchors.right: parent.right
+    margin-right: 5
+    text-offset: 0 -1
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: right
+    phantom: true
+  HighscoreVerticalSeparator
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+
+MainWindow
+  id: highscoresWindow
+  !text: tr('Highscores')
+  size: 700 566
+  font: verdana-bold-11px-native
+  color: #909090
+  text-offset: 0 2
+  padding-top: 29
+  image-source: /images/ui/classic-dialog
+  image-border: 4
+  image-border-top: 17
+  image-repeated: true
+  @onEscape: modules.game_highscore.hide()
+
+  Panel
+    id: filters
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 118
+    image-source: /images/ui/2pixel-up-frame-borderimage
+    image-border: 2
+    image-repeated: true
+
+    UIWidget
+      id: caption
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 17
+      image-source: /images/ui/2pixel-up-header-smoother
+      image-border-top: 2
+      image-border-left: 2
+      image-border-right: 2
+      image-border-bottom: 1
+      image-repeated: true
+      font: verdana-bold-11px-native
+      color: #909090
+      !text: tr('Highscores Filter')
+      text-offset: 0 0
+      phantom: true
+
+    HighscoreFilterLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 8
+      margin-top: 26
+      width: 83
+      !text: tr('Game World:')
+    HighscoreFilterCombo
+      id: gameWorldBox
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 101
+      margin-top: 22
+
+    HighscoreFilterLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 349
+      margin-top: 26
+      width: 63
+      !text: tr('BattlEye:')
+    HighscoreFilterCombo
+      id: BattlEyeBox
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 422
+      margin-top: 22
+
+    HighscoreFilterLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 8
+      margin-top: 51
+      width: 83
+      !text: tr('Vocation:')
+    HighscoreFilterCombo
+      id: vocationBox
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 101
+      margin-top: 47
+
+    HighscoreFilterLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 349
+      margin-top: 51
+      width: 63
+      !text: tr('Category:')
+    HighscoreFilterCombo
+      id: categoryBox
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 422
+      margin-top: 47
+
+    HighscoreFilterLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 8
+      margin-top: 77
+      width: 83
+      !text: tr('World Type:')
+
+    Panel
+      id: PanelWorld
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 101
+      margin-top: 77
+      size: 556 34
+
+    HighscoreNavigationButton
+      id: submitButton
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 614
+      margin-top: 91
+      size: 43 20
+      !text: tr('Submit')
+      @onClick: modules.game_highscore.submit()
+
+  UIWidget
+    id: TableSlot
+    anchors.top: filters.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 342
+    margin-top: 4
+    phantom: true
+
+  Panel
+    id: data
+    clipping: true
+    anchors.fill: TableSlot
+    margin-top: 2
+    margin-bottom: 2
+    padding: 1
+    padding-top: 17
+    background-color: #404040
+    border-width: 1
+    border-color: black
+    layout:
+      type: verticalBox
+
+  UIWidget
+    id: TableHeader
+    anchors.left: data.left
+    anchors.right: data.right
+    anchors.top: data.top
+    margin-left: 1
+    margin-right: 1
+    margin-top: 1
+    height: 16
+    UIWidget
+      id: header0
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 0
+      size: 42 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: left
+        !text: tr('Rank')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 42
+      size: 227 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: left
+        !text: tr('Character')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header2
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 269
+      size: 118 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: center
+        !text: tr('Vocation')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header3
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 387
+      size: 86 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: center
+        !text: tr('Game World')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header4
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 473
+      size: 42 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: center
+        !text: tr('Level')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header5
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 440
+      size: 142 16
+      background-color: #363636
+      visible: false
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: center
+        !text: tr('Loyalty Title')
+      HighscoreVerticalSeparator
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    UIWidget
+      id: header6
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 515
+      anchors.right: parent.right
+      height: 16
+      background-color: #363636
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 2
+        margin-right: 5
+        margin-bottom: 2
+        font: verdana-bold-11px-native
+        color: #c0c0c0
+        text-align: right
+        !text: tr('Points')
+      HighscoreHorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+  Label
+    id: stateLabel
+    anchors.horizontalCenter: TableSlot.horizontalCenter
+    anchors.verticalCenter: TableSlot.verticalCenter
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    visible: false
+    phantom: true
+  UIWidget
+    id: NavigationRow
+    size: 490 20
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: TableSlot.bottom
+    margin-top: 4
+    phantom: true
+
+  HighscoreNavigationButton
+    id: ownRankButton
+    width: 100
+    anchors.left: NavigationRow.left
+    anchors.top: NavigationRow.top
+    !text: tr('Show Own Rank')
+    @onClick: modules.game_highscore.showOwnRank()
+
+  HighscoreNavigationButton
+    id: prevLast
+    anchors.left: ownRankButton.right
+    anchors.top: NavigationRow.top
+    margin-left: 6
+    icon-source: /images/game/actionbar/icon-arrowskip
+    @onClick: modules.game_highscore.prevEndPage()
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrowskip-disabled
+
+  HighscoreNavigationButton
+    id: prev
+    anchors.left: prevLast.right
+    anchors.top: NavigationRow.top
+    margin-left: 6
+    icon-source: /images/game/actionbar/icon-arrow
+    @onClick: modules.game_highscore.prevPage()
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrow-disabled
+
+  Label
+    id: page
+    size: 80 13
+    anchors.left: prev.right
+    anchors.top: NavigationRow.top
+    margin-left: 6
+    margin-top: 4
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    text: 0 / 0
+
+  HighscoreNavigationButton
+    id: next
+    anchors.left: page.right
+    anchors.top: NavigationRow.top
+    margin-left: 6
+    icon-source: /images/game/highscores/page-next
+    @onClick: modules.game_highscore.nextPage()
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrow-right-disabled
+
+  HighscoreNavigationButton
+    id: nextLast
+    anchors.left: NavigationRow.left
+    anchors.top: NavigationRow.top
+    margin-left: 265
+    icon-source: /images/game/highscores/page-last
+    @onClick: modules.game_highscore.nextEndPage()
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrowskip-right-disabled
+
+  Label
+    id: last_update
+    size: 200 13
+    anchors.left: nextLast.right
+    anchors.top: NavigationRow.top
+    margin-left: 6
+    margin-top: 4
+    font: verdana-bold-11px-native
+    color: #909090
+    text-align: left
+
+  HighscoreHorizontalSeparator
+    id: separator
+    anchors.left: data.left
+    anchors.right: data.right
+    anchors.top: NavigationRow.bottom
+    margin-top: 4
+
+  HighscoreNavigationButton
+    id: closeButton
+    width: 43
+    anchors.right: separator.right
+    anchors.top: separator.top
+    !text: tr('Close')
+    @onClick: modules.game_highscore.hide()
+    margin-top: 12

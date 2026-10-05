@@ -1,0 +1,9 @@
+Module
+  name: game_ranktaskstracker
+  description: Tracker of the active ranked tasks (separate from the official kill tracker)
+  author: Tibia Global
+  sandboxed: true
+  dependencies: [ game_ranktasks ]
+  scripts: [ ranktaskstracker ]
+  @onLoad: init()
+  @onUnload: terminate()

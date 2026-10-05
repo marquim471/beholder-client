@@ -1,0 +1,249 @@
+historyData < UIWidget
+  height: 16
+  Label
+    font: verdana-bold-11px-native
+    text-offset: 0 0
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom : parent.bottom
+    id: rank
+    width: 143
+    !text: tr('1')
+    text-align: top-left
+    color: #dfdfdfcf
+    phantom: false
+    margin-left: 2
+
+  UIWidget
+    id: separator
+    width: 2
+    image-source: /game_blessing/images/historySeparator
+    phantom: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 148
+    
+  Label
+    font: verdana-bold-11px-native
+    text-offset: 0 0
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom : parent.bottom
+    id: name
+    width: 391
+    !text: tr('-')
+    text-align: top-left
+    color: #ff0000cf
+    phantom: true
+    margin-left: 152
+
+blessingTEST < UIWidget
+  background-color: alpha
+  height: 88
+  width: 66
+  focusable: true
+  text-align: left
+  UIWidget
+    id: enabled
+    anchors.left: parent.left
+    anchors.top: parent.top
+  Label
+    id: text
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: center
+    text-offset: 0 1
+    margin-top: 3
+    width: 66
+    height: 20
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+
+    image-source: /game_blessing/images/blessingContainer
+    focusable: false
+
+  UIButton
+    id: storeButton
+    size: 66 20
+    anchors.left: parent.left
+    anchors.top: enabled.bottom
+    margin-top: 3
+    focusable: false
+    enabled: false
+    visible: false
+    image-source: /game_blessing/images/store-up
+
+    $pressed:
+      image-source: /game_blessing/images/store-down
+
+BlessingPremiumButton < UIButton
+  image-source: /images/ui/getpremium
+  image-clip: 0 0 128 37
+
+  $pressed:
+    image-clip: 0 37 128 37
+
+  $disabled:
+    image-clip: 0 74 128 37
+
+BlessingDialogButton < UIButton
+  font: verdana-bold-8px-native
+  color: #c0c0c0
+  text-align: center
+  text-offset: 0 0
+  padding: 0
+  image-source: /game_blessing/images/dialogButton
+  image-clip: 0 0 43 20
+
+  $pressed:
+    image-clip: 0 20 43 20
+    text-offset: 1 1
+
+BlessingHistoryHeader < historyData
+  UIWidget
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    size: 150 2
+    image-source: /game_blessing/images/historyDateLine
+    phantom: true
+
+  UIWidget
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 150
+    size: 395 2
+    image-source: /game_blessing/images/historyEventLine
+    phantom: true
+
+BlessingHistoryScrollTrack < UIWidget
+  anchors.fill: parent
+  margin-top: 12
+  margin-bottom: 12
+  image-source: /images/ui/modal/scrollbar-texture-vertical
+  image-repeated: true
+  phantom: true
+
+BlessingHistoryScrollHandle < UIButton
+  image-source: /images/ui/modal/scrollbar-handle-vertical
+  image-clip: 0 0 12 44
+  image-border: 0
+  image-border-top: 6
+  image-border-bottom: 6
+
+BlessingDeathBullet < Label
+  size: 7 13
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  text-align: topLeft
+  text-offset: 0 0
+  anchors.left: parent.left
+  anchors.top: parent.top
+  margin-left: -12
+  phantom: true
+
+BlessingFrame < MiniPanel
+  image-source: /images/ui/2pixel-up-frame-borderimage
+  image-border: 2
+  image-border-top: 2
+
+BlessingFrameCaption < Label
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.top: parent.top
+  margin-left: -6
+  margin-right: -6
+  margin-top: -25
+  height: 17
+  font: verdana-bold-11px-native
+  color: #909090
+  text-align: center
+  text-offset: 0 0
+  image-source: /images/ui/2pixel-up-header-smoother
+  image-border: 2
+  image-border-bottom: 1
+  phantom: true
+
+BlessingWindow < UIWindow
+  font: verdana-bold-11px-native
+  color: #909090
+  text-align: top
+  text-offset: 0 2
+  image-source: /images/ui/classic-dialog
+  image-border: 4
+  image-border-top: 17
+  padding-top: 29
+  padding-left: 16
+  padding-right: 16
+  padding-bottom: 16
+
+BlessingSeparator < UIWidget
+  anchors.fill: parent
+  phantom: true
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/automap/horizontal-line-dark
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/automap/horizontal-line-bright
+    image-repeated: true
+    phantom: true
+
+BlessingHistoryFrame < UIWidget
+  id: historyFrame
+  anchors.top: historyHeader.top
+  anchors.left: historyHeader.left
+  anchors.right: historyHeader.right
+  anchors.bottom: historyScrollArea.bottom
+  margin: -1
+  phantom: true
+  focusable: false
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/modal/1pixel-down-frame-top
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-top: 1
+    width: 1
+    image-source: /images/ui/modal/1pixel-down-frame-left
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 1
+    width: 1
+    image-source: /images/ui/modal/1pixel-down-frame-right
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 1
+    margin-right: 1
+    height: 1
+    image-source: /images/ui/modal/1pixel-down-frame-bottom
+    image-repeated: true
+    phantom: true

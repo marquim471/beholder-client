@@ -1,0 +1,464 @@
+PartyHuntMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 219
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 80
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  UIButton
+    id: lockButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+
+PartyHuntMemberName < Label
+  id: name
+  @onTextChange: modules.game_analyser.fitPartyMemberName(self)
+  @onGeometryChange: modules.game_analyser.fitPartyMemberName(self)
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  height: 13
+  color: #c0c0c0
+  font: verdana-bold-11px-native
+
+PartyHuntMember < UIWidget
+  height: 67
+
+  PartyHuntMemberName
+
+  UIWidget
+    id: balanceIcon
+    size: 11 11
+    image-source: /images/icons/icon-balance
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 19
+    margin-left: 5
+    !tooltip: tr('Balance')
+
+  UIWidget
+    id: damageIcon
+    size: 11 11
+    image-source: /images/icons/icon-damage
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 37
+    margin-left: 5
+    !tooltip: tr('Damage')
+
+  UIWidget
+    id: healingIcon
+    size: 11 11
+    image-source: /images/icons/icon-healing
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 55
+    margin-left: 5
+    !tooltip: tr('Healing')
+
+  UIWidget
+    id: gold
+    size: 9 9
+    image-source: /game_cyclopedia/images/icon_gold
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 20
+
+  UIWidget
+    id: balance
+    anchors.top: parent.top
+    anchors.left: balanceIcon.right
+    anchors.right: gold.left
+    margin-top: 18
+    margin-left: 3
+    margin-right: 3
+    height: 13
+    text-align: right
+    color: #44ad25
+    font: verdana-bold-11px-native
+    tooltip-font: Verdana Bold-11px-wheel
+    tooltip-delayed: true
+
+  Label
+    id: damage
+    anchors.top: parent.top
+    anchors.left: damageIcon.right
+    anchors.right: parent.right
+    margin-top: 36
+    margin-left: 3
+    height: 13
+    text-align: right
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+
+  Label
+    id: healing
+    anchors.top: parent.top
+    anchors.left: healingIcon.right
+    anchors.right: parent.right
+    margin-top: 54
+    margin-left: 3
+    height: 13
+    text-align: right
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+
+Info < PartyHuntMember
+
+LeaderInfo < PartyHuntMember
+  UIWidget
+    id: leaderPt
+    size: 11 11
+    image-source: /images/game/shields/shields
+    image-clip: 0 0 11 11
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 1
+
+  PartyHuntMemberName
+    anchors.left: leaderPt.right
+    margin-left: 3
+    color: #f8db38
+
+PartyHuntMiniWindow
+  id: phAnalyserMiniWindow
+  &type: 'partyHuntAnalyser'
+  height: 225
+  &save: true
+  &autoOpen: true
+  @onExtra: modules.game_analyser.onPartyHuntExtra(g_window.getMousePosition())
+
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-source: /images/icons/icon-partyhunt-widget
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 2
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+    !text: tr('Party Hunt')
+
+  ScrollablePanel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 16 4 4
+    padding: 2
+    vertical-scrollbar: miniwindowScrollBar
+
+    Label
+      id: sessionLabel
+      !text: tr('Session:')
+      anchors.top: parent.top
+      anchors.left: parent.left
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: session
+      !text: tr('00:00h')
+      anchors.top: parent.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: lootTypeLabel
+      !text: tr('Loot Type:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+      visible: true
+
+    Label
+      id: lootType
+      !text: tr('Leader')
+      anchors.top: session.bottom
+      anchors.right: parent.right
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+      visible: true
+
+    Label
+      id: lootLabel
+      !text: tr('Loot:')
+      anchors.top: lootType.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: lootType.bottom
+      anchors.right: parent.right
+      margin-top: 9
+
+    Label
+      id: loot
+      !text: tr('0')
+      anchors.top: lootType.bottom
+      anchors.right: prev.left
+      margin-top: 6
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: suppliesLabel
+      !text: tr('Supplies:')
+      anchors.top: lootLabel.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: lootLabel.bottom
+      anchors.right: parent.right
+      margin-top: 9
+
+    Label
+      id: supplies
+      !text: tr('0')
+      anchors.top: lootLabel.bottom
+      anchors.right: prev.left
+      margin-top: 6
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: balanceLabel
+      !text: tr('Balance:')
+      anchors.top: suppliesLabel.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: suppliesLabel.bottom
+      anchors.right: parent.right
+      margin-top: 9
+
+    Label
+      id: balance
+      !text: tr('0')
+      anchors.top: suppliesLabel.bottom
+      anchors.right: prev.left
+      margin-top: 6
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #44ad25
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separator
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+    Panel
+      id: party
+      height: 0
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+      layout:
+        type: verticalBox

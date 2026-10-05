@@ -1,0 +1,183 @@
+<style>
+  /* Main window styling */
+  .blessings-window {
+    position: relative;
+    width: 583px;
+    height: 356px;
+    padding-top: 29px;
+    display: block;
+  }
+
+  /* Layout containers */
+  .record-panel {
+    width: 100%;
+    height: 125px;
+    margin-top: 0;
+    display: block;
+  }
+
+  .promo-panel {
+    width: 100%;
+    height: 74px;
+    margin-top: 10px;
+  }
+
+  .death-panel {
+    width: 100%;
+    height: 64px;
+    margin-top: 10px;
+  }
+
+
+  /* Record container */
+  .record-container {
+    width: 580px;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  .blessings-list {
+    height: 88px;
+    margin-top: 2px;
+  }
+
+  /* Promotion status layout */
+  .promo-container {
+    width: 100%;
+    height: 50px;
+    align-items: center;
+  }
+
+  #promotionStatusLabel {
+    --text-offset: 0 1;
+    font: verdana-bold-11px-native;
+    color: #c0c0c0;
+    --text-wrap: true;
+    text-align: left;
+    width: 425px;
+    height: 37px;
+    margin-left: 4px;
+    margin-top: 2px;
+  }
+
+  #premium_only {
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+
+  .full-separator {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 2px;
+  }
+
+
+  .buttons .dialog-button {
+    float: right;
+    margin-right: 6px;
+    width: 43px;
+    height: 20px;
+    padding: 0;
+    text-align: center;
+    font: verdana-bold-8px-native;
+    color: #c0c0c0;
+  }
+
+  #closeButton {
+    margin-right: 0;
+  }
+
+  .history-panel {
+    height: 283px;
+    margin-top: 0;
+  }
+
+  .history-header {
+    margin-top: 3px;
+    height: 16px;
+    width: 561px;
+    margin-left: 5px;
+  }
+
+  /* History scroll area */
+  .history-scroll {
+    background-color: #404040;
+    height: 259px;
+    width: 561px;
+    margin-left: 5px;
+    overflow: scroll;
+  }
+
+  /* Text styling */
+  .death-text {
+    display: block;
+    width: 551px;
+    margin-left: 16px;
+    font: verdana-bold-11px-native;
+    color: #c0c0c0;
+    text-align: top-left;
+    --text-offset: 0 0;
+    --text-wrap: true;
+    --trim-line-end-spaces: true;
+    margin-bottom: 2px;
+  }
+
+  #fightRulesLabel {
+    margin-top: 2px;
+  }
+
+  .big-premium-button {
+    width: 128px;
+    height: 37px;
+    display: block;
+    background-repeat: no-repeat;
+  }
+
+</style>
+
+<html>
+<Window id="main" placement="center" class="blessings-window" *height="261 + self.deathBaseHeight + self.deathExtraHeight" title="Blessings" onescape="self:close()">
+
+  <!-- History Panel (initially hidden) -->
+  <div id="historyPanel" placement="top-left" class="history-panel minipanel" *height="188 + self.deathBaseHeight + self.deathExtraHeight" title="History"
+    *if="self.historyButtonText == 'Back'">
+    <div id="historyHeader" class="history-header" layout="type: verticalBox"></div>
+    <div id="historyScrollArea" class="history-scroll" *height="164 + self.deathBaseHeight + self.deathExtraHeight" layout="type: verticalBox">
+    </div>
+  </div>
+
+  <!-- Blessing Records Panel -->
+  <div id="blessingsRecordPanel" placement="top-left" class="record-panel minipanel" title="Record of Blessings">
+    <div id="blessingsList" class="blessings-list" placement="top-center"
+      *width="self.blessingListWidth" layout="type: horizontalBox; spacing: 5"></div>
+  </div>
+
+  <!-- Promotion Status Panel -->
+  <div id="promotionPanel" class="promo-panel minipanel" title="Promotion and Premium Status">
+    <label id="promotionStatusLabel" placement="top-left"></label>
+    <BlessingPremiumButton placement="top-right" id="premium_only" class="big-premium-button" onclick="self:onClickSendStore()"
+      *enabled="(g_game:getLocalPlayer() and not g_game:getLocalPlayer():isPremium()) or false">
+    </BlessingPremiumButton>
+  </div>
+
+  <!-- Death Penalty Panel -->
+  <div id="deathPenaltyPanel" class="death-panel minipanel" *height="self.deathBaseHeight + self.deathExtraHeight - 31" title="Effect on Death Penalty">
+    <label id="fightRulesLabel" class="death-text" *height="self.fightRulesLabelHeight"></label>
+    <label id="expLossLabel" class="death-text" *height="self.expLossLabelHeight"></label>
+    <label id="containerLossLabel" class="death-text" *height="self.containerLossLabelHeight"></label>
+    <label id="equipmentLossLabel" class="death-text" *height="self.equipmentLossLabelHeight"></label>
+    <label id="adventurerWarning" class="death-text" *height="self.adventurerWarningHeight" *if="self.adventurerWarningHeight > 0"></label>
+    <label id="amuletWarning" class="death-text" *height="self.amuletWarningHeight" *if="self.amuletWarningHeight > 0"></label>
+    <label id="skullWarning" class="death-text" *height="self.skullWarningHeight" *if="self.skullWarningHeight > 0"></label>
+  </div>
+  <!-- Separator -->
+  <hr id="footerSeparator" class="full-separator" />
+  <!-- Action Buttons -->
+  <div id="buttonsPanel" class="buttons" focusable="false">
+    <BlessingDialogButton id="closeButton" class="dialog-button" onclick="self:close()" text="Close" />
+    <BlessingDialogButton id="historyButton" class="dialog-button" onclick="self:showHistory()" *text="self.historyButtonText" />
+  </div>
+</Window>
+
+</html>

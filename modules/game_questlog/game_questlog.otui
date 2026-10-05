@@ -1,0 +1,157 @@
+QuestLogWindow
+  id: main
+  text: Quest Log
+  anchors.centerIn: parent
+  @onEscape: questLogController:close()
+
+  QuestLogFrame
+    id: panelQuestLog
+    text: Quest Log
+    size: 371 550
+    anchors.left: parent.left
+    anchors.top: parent.top
+
+    TextListQuestLog
+      id: areaPanelQuestList
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 435
+
+    QtComboBox
+      id: comboBoxFilter
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+      height: 18
+      @onOptionChange: questLogController:onFilterQuestLog({text = self:getCurrentOption().text})
+
+    TextEditQuestLog
+      id: textEditSearchQuest
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+      height: 20
+
+    CheckBox
+      id: checkboxShowComplete
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      width: 155
+      height: 13
+      text: Show completed
+      font: verdana-bold-11px-native
+      text-offset: 14 0
+      @onCheckChange: questLogController:filterQuestListShowComplete()
+
+    Label
+      id: completedCaption
+      anchors.top: checkboxShowComplete.top
+      anchors.right: lblCompleteNumber.left
+      font: verdana-bold-11px-native
+      text: Quests completed:
+      text-align: right
+      text-auto-resize: true
+
+    Label
+      id: lblCompleteNumber
+      anchors.top: checkboxShowComplete.top
+      anchors.right: parent.right
+      size: 40 13
+      font: verdana-bold-11px-native
+      text-align: right
+      text: 0
+
+    CheckBox
+      id: checkboxShowHidden
+      anchors.top: checkboxShowComplete.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      width: 155
+      height: 13
+      text: Show hidden
+      font: verdana-bold-11px-native
+      text-offset: 14 0
+      @onCheckChange: questLogController:filterQuestListShowHidden()
+
+    Label
+      anchors.top: checkboxShowHidden.top
+      anchors.right: lblHiddenNumber.left
+      font: verdana-bold-11px-native
+      text: Quests hidden:
+      text-align: right
+      text-auto-resize: true
+
+    Label
+      id: lblHiddenNumber
+      anchors.top: checkboxShowHidden.top
+      anchors.right: parent.right
+      size: 40 13
+      font: verdana-bold-11px-native
+      text-align: right
+      text: 0
+
+  QuestLogFrame
+    id: panelQuestLineSelected
+    text: No quest line selected
+    size: 372 550
+    anchors.top: parent.top
+    anchors.right: parent.right
+
+    TextListQuestLog
+      id: ScrollAreaQuestList
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      height: 200
+
+    MultiLineQuestLog
+      id: panelQuestInfo
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      margin-top: 6
+      height: 298
+
+    CheckBox
+      id: checkboxShowInQuestTracker
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      margin-top: 6
+      height: 13
+      text: Show in quest tracker
+      font: verdana-bold-11px-native
+      text-offset: 14 0
+      @onCheckChange: questLogController:onCheckChangeQuestTracker({checked = self:isChecked()})
+
+  HorizontalSeparator
+    anchors.top: panelQuestLog.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 11
+
+  Panel
+    id: buttonsPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    height: 20
+
+    ClassicButton
+      id: trackerButton
+      anchors.left: parent.left
+      anchors.top: parent.top
+      width: 86
+      text: Quest Tracker
+      @onClick: questLogController:toggleMiniWindowsTracker()
+
+    ClassicButton
+      id: closeButton
+      anchors.right: parent.right
+      anchors.top: parent.top
+      text: Close
+      @onClick: questLogController:close()

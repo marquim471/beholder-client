@@ -1,0 +1,35 @@
+ContextMenu < UIPopupMenu
+  width: 0
+  image-source: /images/ui/context-menu
+  image-border: 3
+  padding: 4
+
+ContextMenuButton < UIButton
+  height: 16
+  background-color: alpha
+  $hover !disabled:
+    background-color: #808080
+
+ContextMenuSeparator < UIWidget
+  height: 2
+  margin-bottom: 3
+  phantom: true
+  focusable: false
+
+  UIWidget
+    height: 1
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    image-repeated: true
+    image-source: /images/ui/horizontal_line_dark
+    phantom: true
+
+  UIWidget
+    height: 1
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    image-repeated: true
+    image-source: /images/ui/horizontal_line_bright
+    phantom: true

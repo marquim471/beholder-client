@@ -1,0 +1,600 @@
+ActionButtonGrey < Button
+  size: 74 20
+  image-source: /images/ui/button-grey-qt
+  image-clip: 0 0 98 41
+  image-border: 1
+  text-offset: 0 0
+  padding: 0
+  color: #dfdfdf
+
+  $pressed:
+    image-clip: 0 40 98 40
+    text-offset: 1 1
+
+  $on:
+    image-clip: 0 40 98 40
+    text-offset: 1 1
+
+ValueFrame < Panel
+  size: 58 20
+  image-source: /images/ui/1pixel_down_frame
+  image-border: 1
+  background-color: #2f2f2f
+
+PercentGreyButton < UIButton
+  size: 50 41
+  image-source: /images/ui/button-grey-qt
+  image-clip: 0 0 98 41
+  image-border: 1
+  padding: 0
+  text-offset: 0 0
+
+  $pressed:
+    image-clip: 0 41 98 39
+
+  $on:
+    image-clip: 0 41 98 39
+
+ReshapeOfferPanel < Panel
+  size: 200 280
+  image-source: /images/ui/popupwindow
+  image-border: 4
+  image-border-top: 17
+
+  UIWidget
+    id: offerPerkBorder
+    size: 76 76
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 20
+    image-source: /images/game/proficiency/border-weaponmasterytreeicons-active
+    visible: false
+
+    UIWidget
+      id: offerPerkIcon
+      size: 64 64
+      anchors.centerIn: parent
+      visible: false
+
+    UIWidget
+      id: offerPerkAugmentIcon
+      size: 32 32
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: -16
+      margin-right: -16
+      image-source: /images/game/proficiency/augment-icons
+      image-clip: 0 0 32 32
+      visible: false
+
+    UIWidget
+      id: offerPerkLevelBadge
+      size: 32 32
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      margin-left: -18
+      margin-bottom: -14
+      image-source: /images/game/proficiency/perk_level
+      visible: false
+
+      Label
+        id: offerPerkLevelLabel
+        anchors.fill: parent
+        margin-top: -1
+        color: #ffffff
+        font: verdana-11px-rounded
+        text-align: center
+        text-auto-resize: false
+        text: 0
+
+ReshapeOfferInnerFrame < Panel
+  size: 186 157
+  image-source: /images/ui/1pixel-down-frame.png
+  image-border: 1
+  background-color: #2f2f2f
+
+  Label
+    id: offerPerkDescription
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 15
+    margin-left: 8
+    margin-right: 8
+    margin-bottom: 8
+    color: #dfdfdf
+    text-align: topLeft
+    text-wrap: true
+    text-auto-resize: false
+
+ReshapeOfferButton < UIButton
+  size: 200 25
+  image-source: /images/ui/button-grey-qt
+  image-clip: 0 0 98 41
+  image-border: 1
+  color: #dfdfdf
+  text-offset: 0 0
+  padding: 0
+
+  $pressed:
+    image-clip: 0 40 98 40
+    text-offset: 1 1
+
+  $on:
+    image-clip: 0 40 98 40
+    text-offset: 1 1
+
+ReshapeWindow < MainWindow
+  id: reshapeWindow
+  !text: tr('Reshape')
+  color: #909090
+  size: 652 470
+  image-source: /images/ui/miniwindow
+  image-border: 4
+  @onEscape: modules.game_proficiency.hideReshapeWindow()
+
+  Label
+    id: reshapeDescriptionLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: -5
+    margin-left: 4
+    margin-right: 4
+    height: 16
+    color: #c0c0c0
+    text-wrap: false
+    text-align: left
+    !text: tr('Choose one of the three new perks to replace your current perk.')
+
+  Label
+    id: reshapeDescriptionSubLabel
+    anchors.top: reshapeDescriptionLabel.bottom
+    anchors.left: reshapeDescriptionLabel.left
+    anchors.right: reshapeDescriptionLabel.right
+    margin-top: 1
+    height: 16
+    color: #c0c0c0
+    text-wrap: false
+    text-align: left
+    !text: tr('To keep your current perk, close this dialog without selecting any of the options.')
+
+  HorizontalSeparator
+    id: reshapeTopDivider
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 35
+
+  ReshapeOfferPanel
+    id: reshapeOfferPanel1
+    anchors.top: reshapeTopDivider.bottom
+    anchors.left: parent.left
+    margin-top: 15
+    margin-left: 4
+
+    Label
+      id: reshapeOfferTitle1
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 0
+      margin-left: 8
+      margin-right: 8
+      height: 18
+      color: #dfdfdf
+      text-align: center
+      text-auto-resize: false
+      !text: tr('Offer')
+
+    ReshapeOfferInnerFrame
+      id: reshapeOfferInnerFrame1
+      anchors.top: reshapeOfferTitle1.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 98
+
+  ReshapeOfferPanel
+    id: reshapeOfferPanel2
+    anchors.top: reshapeOfferPanel1.top
+    anchors.left: reshapeOfferPanel1.right
+    margin-left: 8
+
+    Label
+      id: reshapeOfferTitle2
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 0
+      margin-left: 8
+      margin-right: 8
+      height: 18
+      color: #dfdfdf
+      text-align: center
+      text-auto-resize: false
+      !text: tr('Offer')
+
+    ReshapeOfferInnerFrame
+      id: reshapeOfferInnerFrame2
+      anchors.top: reshapeOfferTitle2.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 98
+
+  ReshapeOfferPanel
+    id: reshapeOfferPanel3
+    anchors.top: reshapeOfferPanel1.top
+    anchors.left: reshapeOfferPanel2.right
+    margin-left: 8
+
+    Label
+      id: reshapeOfferTitle3
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 0
+      margin-left: 8
+      margin-right: 8
+      height: 18
+      color: #dfdfdf
+      text-align: center
+      text-auto-resize: false
+      !text: tr('Offer')
+
+    ReshapeOfferInnerFrame
+      id: reshapeOfferInnerFrame3
+      anchors.top: reshapeOfferTitle3.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 98
+
+  ReshapeOfferButton
+    id: reshapeOfferButton1
+    anchors.top: reshapeOfferPanel1.bottom
+    anchors.left: reshapeOfferPanel1.left
+    margin-top: 14
+    !text: tr('Replace')
+
+  ReshapeOfferButton
+    id: reshapeOfferButton2
+    anchors.top: reshapeOfferPanel2.bottom
+    anchors.left: reshapeOfferPanel2.left
+    margin-top: 14
+    !text: tr('Replace')
+
+  ReshapeOfferButton
+    id: reshapeOfferButton3
+    anchors.top: reshapeOfferPanel3.bottom
+    anchors.left: reshapeOfferPanel3.left
+    margin-top: 14
+    !text: tr('Replace')
+
+  HorizontalSeparator
+    id: reshapeBottomDivider
+    anchors.top: reshapeOfferButton1.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 25
+    margin-left: 16
+    margin-right: 16
+
+  Button
+    id: reshapeCancelButton
+    anchors.top: reshapeBottomDivider.bottom
+    anchors.right: reshapeOfferPanel3.right
+    margin-top: 10
+    size: 60 20
+    !text: tr('Cancel')
+    @onClick: modules.game_proficiency.hideReshapeWindow()
+
+MainWindow
+  id: shapeWindow
+  !text: tr('Shape')
+  color: #909090
+  size: 500 365
+  @onEscape: modules.game_proficiency.hideShapeWindow()
+
+  HorizontalSeparator
+    id: percentButtonTopLine
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 285
+    margin-right: -1
+
+  Panel
+    id: innerFrame
+    size: 278 272
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: -2
+    margin-left: -2
+    image-source: /images/ui/window_new.png
+
+    Label
+      id: innerFrameTitle
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 2
+      !text: tr('Spell Augment')
+      color: #909090
+      text-auto-resize: true
+
+    UIWidget
+      id: shapePerkBorder
+      size: 76 76
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 35
+      image-source: /images/game/proficiency/border-weaponmasterytreeicons-active
+      visible: false
+
+    UIWidget
+      id: shapePerkIcon
+      size: 64 64
+      anchors.centerIn: shapePerkBorder
+      image-source: /images/game/proficiency/icons-0
+      image-clip: 0 0 64 64
+      visible: false
+      phantom: true
+
+    UIWidget
+      id: shapePerkLevelBadge
+      size: 32 32
+      anchors.left: shapePerkIcon.left
+      anchors.bottom: shapePerkIcon.bottom
+      margin-left: -18
+      margin-bottom: -14
+      visible: false
+      phantom: true
+      image-source: /images/game/proficiency/perk_level
+
+      Label
+        id: shapePerkLevelLabel
+        anchors.fill: parent
+        margin-top: -1
+        color: #ffffff
+        font: verdana-11px-rounded
+        text-align: center
+        text-auto-resize: false
+        text: 0
+        phantom: true
+
+    UIWidget
+      id: shapePerkIconAugment
+      size: 32 32
+      anchors.top: shapePerkIcon.top
+      anchors.right: shapePerkIcon.right
+      margin-top: -16
+      margin-right: -16
+      image-source: /images/game/proficiency/augment-icons
+      image-clip: 0 0 32 32
+      visible: false
+      phantom: true
+
+    Panel
+      id: spellAugmentFrame
+      size: 263 135
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 130
+      image-source: /images/ui/1pixel-down-frame
+      image-border: 1
+      background-color: #2f2f2f
+
+      Label
+        id: shapePerkDescription
+        anchors.fill: parent
+        margin: 8
+        color: #c0c0c0
+        text-wrap: true
+        text-align: topLeft
+        !text: ''
+
+  Panel
+    id: rightFrame
+    size: 188 272
+    anchors.top: innerFrame.top
+    anchors.left: innerFrame.right
+    margin-left: 8
+    image-source: /images/ui/2pixel-up-frame-borderimage
+    image-border: 2
+
+
+
+    PercentGreyButton
+      id: percentButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 6
+      margin-right: 6
+      !text: ''
+
+      UIWidget
+        id: scrollIcon
+        size: 24 26
+        anchors.centerIn: parent
+        phantom: true
+        image-source: /images/game/proficiency/pergaminho
+
+    UIWidget
+      id: rightFrameShapeIcon
+      size: 40 42
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 45
+      image-source: /images/game/proficiency/shape-02
+
+    ActionButtonGrey
+      id: refineButton
+      size: 89 24
+      anchors.top: rightFrameShapeIcon.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 58
+      margin-left: -38
+      !text: tr('Refine')
+      image-border: 1
+
+    ValueFrame
+      id: refineValueFrame
+      size: 70 24
+      anchors.left: refineButton.right
+      anchors.verticalCenter: refineButton.verticalCenter
+      margin-left: 6
+
+      UIWidget
+        id: refineDustIcon
+        size: 12 12
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        margin-right: 8
+        image-source: /images/game/proficiency/4
+        phantom: true
+
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: refineDustIcon.left
+        margin-right: 4
+        !text: '200'
+        color: #dfdfdf
+        text-auto-resize: true
+
+    ActionButtonGrey
+      id: maximiseButton
+      size: 89 24
+      anchors.top: refineButton.bottom
+      anchors.horizontalCenter: refineButton.horizontalCenter
+      margin-top: 6
+      !text: tr('Maximise')
+      image-border: 1
+
+    ValueFrame
+      id: maximiseValueFrame
+      size: 70 24
+      anchors.left: maximiseButton.right
+      anchors.verticalCenter: maximiseButton.verticalCenter
+      margin-left: 6
+
+      UIWidget
+        id: maximiseLunarIcon
+        size: 12 12
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        margin-right: 8
+        image-source: /images/game/proficiency/icon-lunar
+        phantom: true
+
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: maximiseLunarIcon.left
+        margin-right: 4
+        !text: '1'
+        color: #dfdfdf
+        text-auto-resize: true
+
+    ActionButtonGrey
+      id: reshapeButton
+      size: 89 24
+      anchors.top: maximiseButton.bottom
+      anchors.horizontalCenter: maximiseButton.horizontalCenter
+      margin-top: 6
+      !text: tr('Reshape')
+      image-border: 1
+
+    ValueFrame
+      id: reshapeValueFrame
+      size: 70 24
+      anchors.left: reshapeButton.right
+      anchors.verticalCenter: reshapeButton.verticalCenter
+      margin-left: 6
+
+      UIWidget
+        id: reshapeDustIcon
+        size: 12 12
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        margin-right: 8
+        image-source: /images/game/proficiency/4
+        phantom: true
+
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: reshapeDustIcon.left
+        margin-right: 4
+        !text: '250'
+        color: #dfdfdf
+        text-auto-resize: true
+
+    ActionButtonGrey
+      id: clearButton
+      size: 166 27
+      anchors.top: reshapeButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 6
+      margin-left: 0
+      !text: tr('Clear')
+
+  Button
+    id: close
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    size: 60 22
+    margin-right: -4
+    margin-bottom: -3
+    !text: tr('Close')
+    @onClick: modules.game_proficiency.hideShapeWindow()
+
+  ValueFrame
+    id: bottomLeftValueFrame1
+    size: 116  22
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 8
+    margin-bottom: -6
+
+    Label
+      id: shapeDustBalanceLabel
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      anchors.right: shapeDustBalanceIcon.left
+      margin-left: 6
+      margin-right: 4
+      !text: '0 / 0'
+      color: #dfdfdf
+      text-auto-resize: true
+      text-align: right
+
+    UIWidget
+      id: shapeDustBalanceIcon
+      size: 12 12
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      image-source: /images/game/proficiency/4
+      phantom: true
+
+  ValueFrame
+    id: bottomLeftValueFrame2
+    size: 58 22
+    anchors.left: bottomLeftValueFrame1.right
+    anchors.verticalCenter: bottomLeftValueFrame1.verticalCenter
+    margin-left: 6
+
+    Label
+      id: shapeLunarOrbCountLabel
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      anchors.right: shapeLunarOrbIcon.left
+      margin-left: 5
+      margin-right: 4
+      !text: '0'
+      color: #dfdfdf
+      text-auto-resize: true
+      text-align: right
+
+    UIWidget
+      id: shapeLunarOrbIcon
+      size: 12 12
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      image-source: /images/game/proficiency/icon-Lunar
+      phantom: true

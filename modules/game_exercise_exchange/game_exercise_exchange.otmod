@@ -1,0 +1,12 @@
+Module
+  name: game_exercise_exchange
+  description: Visual Modal Window for Exercise Weapons Exchange
+  author: Antigravity / Beholder
+  website: https://github.com/mehah/otclient
+  sandboxed: true
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ game_exercise_exchange ]
+  dependencies: [ game_interface ]
+  @onLoad: init()
+  @onUnload: terminate()

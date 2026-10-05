@@ -1,0 +1,160 @@
+UIWidget
+  id: Cat8
+  anchors.fill: parent
+  visible: false
+  UIWidget
+    id: TopBase
+    anchors.left: parent.left
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 10
+    height: 48
+    image-source: /images/ui/2pixel_up_frame_borderimage
+    image-border: 2
+    image-repeated: true
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 17
+      image-source: /images/ui/2pixel-up-header-smoother
+      image-border-left: 2
+      image-border-right: 2
+      image-border-top: 2
+      image-border-bottom: 1
+      image-repeated: true
+      phantom: true
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-left: 4
+      margin-right: 4
+      height: 17
+      font: verdana-bold-11px-native
+      color: #909090
+      text-align: center
+      !text: tr('Progress')
+    Label
+      id: PointsLabel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 10
+      margin-top: 26
+      height: 13
+      font: verdana-bold-11px-native
+      !text: tr('Boss Points')
+      color: #C0C0C0
+      text-auto-resize: true
+    BestiaryDetailProgress
+      id: PointsBar
+      height: 20
+      anchors.left: PointsLabel.right
+      anchors.right: InfoLabel.left
+      anchors.top: parent.top
+      margin-left: 11
+      margin-right: 11
+      margin-top: 22
+      UIWidget
+        id: fill
+        anchors.left: parent.left
+        anchors.top: parent.top
+        height: 18
+        image-source: /game_cyclopedia/images/bestiary/progressbar-orange-large
+        image-repeated: true
+      Label
+        id: Value
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        margin-top: 2
+        height: 13
+        font: verdana-bold-11px-native
+        color: #ffffff
+        text-auto-resize: true
+        text: 0/0
+    UIWidget
+      id: InfoIcon
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-right: 10
+      margin-top: 26
+      image-source: /images/icons/show_gui_help_grey
+      !tooltip: tr('Whenever you defeat a creature, it drops a set of loot with a certain chance. The equipment loot bonus shows your chance to get a second set of loot, but limited to equipment.')
+    Label
+      id: InfoLabel
+      anchors.right: InfoIcon.left
+      anchors.top: parent.top
+      margin-right: 11
+      margin-top: 26
+      height: 13
+      font: verdana-bold-11px-native
+      color: #c0c0c0
+      text-auto-resize: true
+      !text: tr('')
+  SlotBossSlots
+    id: LeftBase
+    anchors.left: parent.left
+    anchors.top: TopBase.bottom
+    margin-top: 10
+    margin-bottom: 10
+  SlotBossSlots
+    id: RightBase
+    anchors.right: parent.right
+    anchors.top: TopBase.bottom
+    margin-top: 10
+    margin-bottom: 10
+  Label
+    id: MidTitle
+    anchors.left: LeftBase.right
+    anchors.right: RightBase.left
+    anchors.top: LeftBase.top
+    margin-left: 4
+    margin-right: 4
+    margin-top: 2
+    height: 13
+    font: verdana-bold-11px-native
+    text-align: center
+    color: #c0c0c0
+  UIWidget
+    id: PedestalBase
+    anchors.top: LeftBase.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 35
+    image-source: /game_cyclopedia/images/boss/boss_base
+  UICreature
+    id: Sprite
+    size: 64 64
+    anchors.right: PedestalBase.right
+    anchors.bottom: PedestalBase.bottom
+    margin-bottom: 19
+    margin-right: 15
+  UIWidget
+    id: TypeIcon
+    anchors.top: PedestalBase.top
+    anchors.left: PedestalBase.left
+    margin-left: -40
+    image-source: /game_cyclopedia/images/boss/icon_archfoe
+  BossSlotProgress
+    id: BoostedProgress
+    anchors.top: PedestalBase.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 28
+  Label
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: PedestalBase.bottom
+    margin-top: 11
+    height: 13
+    font: verdana-bold-11px-native
+    text-auto-resize: true
+    !text: tr('Total Kills')
+    color: #c0c0c0
+  Label
+    id: MainLabel
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: BoostedProgress.bottom
+    margin-top: 22
+    font: verdana-bold-11px-native
+    text-auto-resize: true
+    text-align: center
+    !text: tr('')
+    color: #c0c0c0

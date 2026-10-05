@@ -1,0 +1,181 @@
+ServerModalShield < UIWidget
+  id: modalMouseShield
+  anchors.fill: parent
+  focusable: false
+  @onMousePress: return true
+  @onMouseRelease: return true
+  @onMouseWheel: return true
+
+ServerModalButton < ClassicButton
+  font: verdana-bold-8px-native
+
+ServerModalChoice < UIWidget
+  height: 16
+  focusable: false
+
+  Label
+    id: label
+    anchors.fill: parent
+    margin-left: 2
+    margin-right: 5
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: top-left
+    phantom: true
+
+ServerModalScroll < UIScrollBar
+  orientation: vertical
+  width: 12
+  height: 39
+  pixels-scroll: true
+
+  UIWidget
+    id: track
+    anchors.fill: parent
+    margin-top: 12
+    margin-bottom: 12
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-repeated: true
+    phantom: true
+
+  UIButton
+    id: decrementButton
+    anchors.top: parent.top
+    anchors.left: parent.left
+    size: 12 12
+    image-source: /images/ui/modal/scrollbar-buttonup-up
+    $on:
+      image-source: /images/ui/modal/scrollbar-buttonup-down
+
+  UIButton
+    id: incrementButton
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    size: 12 12
+    image-source: /images/ui/modal/scrollbar-buttondown-up
+    $on:
+      image-source: /images/ui/modal/scrollbar-buttondown-down
+
+  UIButton
+    id: sliderButton
+    anchors.centerIn: parent
+    size: 12 14
+    image-source: /images/ui/modal/scrollbar-handle-vertical
+    image-border-top: 6
+    image-border-bottom: 6
+
+ServerModalWindow < MainWindow
+  id: modalDialog
+  width: 245
+  image-source: /images/ui/classic-dialog
+  image-border: 4
+  image-border-top: 17
+  font: verdana-bold-11px-native
+  color: #909090
+  text-offset: 0 2
+  padding: 0
+  clipping: true
+
+  Label
+    id: messageLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 29
+    margin-left: 16
+    width: 213
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: top-left
+    trim-line-end-spaces: true
+    phantom: true
+
+  UIWidget
+    id: choiceFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 16
+    width: 213
+    background-color: #404040
+    phantom: true
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/ui/modal/1pixel-down-frame-top
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      margin-top: 1
+      width: 1
+      image-source: /images/ui/modal/1pixel-down-frame-left
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 1
+      width: 1
+      image-source: /images/ui/modal/1pixel-down-frame-right
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-left: 1
+      margin-right: 1
+      height: 1
+      image-source: /images/ui/modal/1pixel-down-frame-bottom
+      image-repeated: true
+      phantom: true
+
+  UIScrollArea
+    id: choiceList
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 17
+    width: 199
+    focusable: false
+    layout: verticalBox
+
+  ServerModalScroll
+    id: choiceScroll
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-right: 17
+
+  UIWidget
+    id: separator
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 16
+    margin-right: 16
+    height: 2
+    phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-dark
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-bright
+      image-repeated: true
+      phantom: true

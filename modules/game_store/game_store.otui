@@ -1,0 +1,734 @@
+Box < StoreInset
+  image-smooth: false
+
+RowStore < UIWidget
+  size: 240 82
+  margin-bottom: 2
+  image-source: images/store-offer-box
+  image-clip: 0 0 240 82
+  image-border: 4
+  border: 0 white
+  focusable: true
+  phantom: false
+  auto-focus: none
+
+  $focus:
+    border: 2 white
+
+  Panel
+    id: image
+    size: 64 64
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 10
+
+  StoreLabel
+    id: lblName
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 80
+    margin-right: 4
+    margin-top: 8
+    height: 30
+    text-wrap: true
+    text-align: topLeft
+
+  Panel
+    id: StackOffers
+    anchors.bottom: parent.bottom
+    anchors.left: image.right
+    anchors.right: parent.right
+    margin: 0 4 4 5
+    height: 20
+    layout:
+      type: verticalBox
+      spacing: 2
+      fit-children: true
+
+  UIWidget
+    id: highlight
+    size: 28 28
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 2
+    margin-bottom: 2
+    phantom: true
+    visible: false
+
+HomeStoreOffer < UIWidget
+  size: 254 82
+  image-source: images/store-offer-box-home
+  image-clip: 0 0 254 82
+  border: 0 white
+  focusable: false
+
+  $hover:
+    border: 2 white
+
+  Panel
+    id: image
+    size: 64 64
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 10
+
+  StoreLabel
+    id: lblName
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    margin-left: 80
+    margin-right: 4
+    height: 45
+    text-wrap: true
+    text-align: topLeft
+
+  Panel
+    id: StackOffers
+    anchors.bottom: parent.bottom
+    anchors.left: image.right
+    anchors.right: parent.right
+    margin: 0 4 4 5
+    height: 20
+    layout: verticalBox
+
+  UIWidget
+    id: highlight
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 2
+    margin-bottom: 2
+    phantom: true
+    visible: false
+
+StoreWindow
+  size: 780 630
+  padding: 29 16 14 16
+  text: BEHOLDER Store
+  visible: false
+  @onEscape: modules.game_store.hide()
+
+  StoreButton
+    id: btnClose
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    text: Close
+    @onClick: modules.game_store.hide()
+
+  StoreButton
+    id: btnHistory
+    anchors.bottom: parent.bottom
+    anchors.right: btnClose.left
+    margin-right: 5
+    text: History
+    @onClick: modules.game_store.toggleTransferHistory()
+
+  UIWidget
+    id: lblCoins
+    size: 265 20
+    phantom: false
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+
+    UIWidget
+      id: coinsBox
+      size: 130 20
+      anchors.top: parent.top
+      anchors.left: parent.left
+      image-source: images/coins-panel
+      image-border: 2
+      phantom: true
+
+    UIWidget
+      id: transferBox
+      size: 130 20
+      anchors.top: parent.top
+      anchors.right: parent.right
+      image-source: images/coins-panel
+      image-border: 2
+      phantom: true
+
+    StoreLabel
+      id: lblTibiaCoins
+      anchors.top: coinsBox.top
+      anchors.right: totalCoin.left
+      margin-top: 3
+      margin-right: 3
+      text-auto-resize: true
+
+    UIWidget
+      id: totalCoin
+      size: 12 12
+      anchors.top: coinsBox.top
+      anchors.right: coinsBox.right
+      margin-top: 4
+      margin-right: 5
+      image-source: images/icon-tibiacoin
+      phantom: true
+
+    StoreLabel
+      id: lblTibiaTransfer
+      anchors.top: transferBox.top
+      anchors.right: transferableCoin.left
+      margin-top: 3
+      margin-right: 3
+      text-auto-resize: true
+
+    UIWidget
+      id: transferableCoin
+      size: 12 12
+      anchors.top: transferBox.top
+      anchors.right: transferBox.right
+      margin-top: 4
+      margin-right: 5
+      image-source: images/icon-tibiacointransferable
+      phantom: true
+
+  UIButton
+    id: btnCoins
+    size: 64 20
+    anchors.bottom: parent.bottom
+    anchors.left: lblCoins.right
+    margin-left: 5
+    tooltip: Get BEHOLDER Coins
+    image-source: images/button-get
+    image-clip: 0 0 64 20
+    @onClick: modules.game_store.getCoinsWebsite()
+    $pressed:
+      image-clip: 0 20 64 20
+
+  UIButton
+    id: transferPoints
+    size: 64 20
+    anchors.bottom: parent.bottom
+    anchors.left: btnCoins.right
+    margin-left: 5
+    tooltip: Transfer Coins
+    image-source: images/button-transfer
+    image-clip: 0 0 64 20
+    $pressed:
+      image-clip: 0 20 64 20
+
+  HorizontalSeparator
+    id: footerSeparator
+    anchors.bottom: btnClose.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 13
+
+  StoreFrame
+    id: navigation
+    width: 180
+    image-source: images/navigation-frame
+    image-border: 4
+    image-border-top: 17
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: footerSeparator.top
+    margin-bottom: 7
+
+  UIScrollArea
+    id: listCategory
+    anchors.top: navigation.top
+    anchors.left: navigation.left
+    anchors.right: navigation.right
+    anchors.bottom: SearchEdit.top
+    margin: 5 5 10 5
+    auto-focus: none
+    layout: verticalBox
+
+  TextEdit
+    id: SearchEdit
+    anchors.bottom: navigation.bottom
+    anchors.left: navigation.left
+    anchors.right: navigation.right
+    margin: 0 7 9 7
+    height: 22
+    font: Verdana Bold-11px
+    color: #c0c0c0
+    placeholder: Type to search
+    placeholder-color: #707070
+    padding-right: 22
+    @onEnter: modules.game_store.search()
+    @onTextChange: modules.game_store.updateSearch()
+
+  UIButton
+    id: SearchClearButton
+    anchors.right: SearchEdit.right
+    anchors.top: SearchEdit.top
+    size: 20 20
+    margin: 1
+    image-source: images/button-search
+    image-clip: 0 0 20 20
+    enabled: false
+    @onClick: modules.game_store.search()
+    $pressed:
+      image-clip: 0 20 20 20
+    $disabled:
+      image-clip: 0 40 20 20
+
+  Panel
+    id: panelItem
+    anchors.top: navigation.top
+    anchors.left: navigation.right
+    anchors.right: parent.right
+    height: 540
+    margin-left: 6
+    border-width: 2
+    border-color-top: #646464
+    border-color-left: #646464
+    border-color-right: #363636
+    border-color-bottom: #363636
+    visible: false
+
+    Panel
+      id: comboBoxContainer
+      height: 25
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin: 6
+      image-source: images/options-panel
+      image-border: 3
+
+      StoreComboBox
+        id: showAll
+        size: 260 20
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin: 2
+        mouse-scroll: false
+
+      StoreComboBox
+        id: MostPopularFirst
+        size: 245 20
+        anchors.right: parent.right
+        anchors.top: parent.top
+        margin: 2
+        mouse-scroll: false
+
+    UIScrollArea
+      id: listProduct
+      size: 262 497
+      anchors.top: comboBoxContainer.bottom
+      anchors.left: parent.left
+      vertical-scrollbar: scrollList
+      image-source: /images/ui/1pixel-down-frame
+      image-border: 1
+      layout: verticalBox
+      padding: 4
+      padding-bottom: 2
+      padding-left: 5
+      padding-right: 17
+      margin-top: 6
+      margin-left: 6
+      auto-focus: none
+
+    StoreScrollBar
+      id: scrollList
+      anchors.top: listProduct.top
+      anchors.bottom: listProduct.bottom
+      anchors.right: listProduct.right
+      margin: 1
+      step: 80
+
+    StoreLabel
+      id: lblName
+      clipping: true
+      phantom: false
+      anchors.top: scrollList.top
+      anchors.left: scrollList.right
+      anchors.right: parent.right
+      margin-top: 5
+      height: 15
+      text-wrap: false
+      text-align: center
+
+    Box
+      id: image
+      size: 130 130
+      anchors.top: lblName.bottom
+      anchors.left: scrollList.right
+      margin-top: 5
+      margin-left: 11
+
+    UIScrollArea
+      id: StackOffers
+      size: 144 130
+      vertical-scrollbar: offerScrollbar
+      anchors.top: image.top
+      anchors.right: parent.right
+      margin-right: 7
+      layout:
+        type: verticalBox
+        spacing: 4
+
+    StoreScrollBar
+      id: offerScrollbar
+      anchors.top: StackOffers.top
+      anchors.bottom: StackOffers.bottom
+      anchors.right: StackOffers.right
+      step: 48
+      visible: false
+
+    StoreInset
+      id: descriptionPanel
+      image-source: /game_store/images/scrollarea
+      height: 332
+      anchors.top: image.bottom
+      anchors.left: image.left
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 7
+      clipping: true
+
+      StoreScrollBar
+        id: descriptionScrollbar
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin: 1
+        step: 14
+
+      UIScrollArea
+        id: descriptionScrollArea
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: descriptionScrollbar.left
+        vertical-scrollbar: descriptionScrollbar
+        padding: 5
+        layout: verticalBox
+
+  Panel
+    id: transferHistory
+    anchors.top: navigation.top
+    anchors.left: navigation.right
+    anchors.right: parent.right
+    anchors.bottom: navigation.bottom
+    margin-left: 6
+    visible: false
+
+    UIWidget
+      id: historyFrame
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin: 5 9 30 5
+      image-source: /game_store/images/scrollarea
+      image-border: 1
+
+    UIScrollArea
+      id: historyPanel
+      anchors.top: historyFrame.top
+      anchors.left: historyFrame.left
+      anchors.right: historyFrame.right
+      anchors.bottom: historyFrame.bottom
+      margin: 17 1 1 1
+      layout: verticalBox
+      vertical-scrollbar: historyScrollBar
+      auto-focus: none
+
+    StoreScrollBar
+      id: historyScrollBar
+      anchors.top: historyFrame.top
+      anchors.right: historyFrame.right
+      anchors.bottom: historyFrame.bottom
+      margin: 1
+      step: 15
+      visible: false
+
+    UIWidget
+      size: 547 17
+      anchors.top: historyFrame.top
+      anchors.left: historyFrame.left
+      margin-left: 1
+      border-width-bottom: 1
+      border-color-bottom: #757575
+    UIWidget
+      id: dateButton
+      size: 148 15
+      !text: tr('Date')
+      color: #c0c0c0
+      font: Verdana Bold-11px
+      text-offset: 1 -1
+      text-align: leftCenter
+      anchors.top: historyFrame.top
+      anchors.left: historyFrame.left
+      margin-top: 1
+      margin-left: 1
+      border-width-bottom: 1
+      border-color-bottom: #292a29
+      background-color: #363636
+      opacity: 1.0
+      $pressed:
+        color: #dfdfdf88
+        opacity: 0.8
+    UIWidget
+      height: 14
+      anchors.left: prev.right
+      anchors.top: historyFrame.top
+      image-source: /images/ui/separator_vertical
+      margin-top: 1
+    UIWidget
+      id: balanceButton
+      size: 88 15
+      !text: tr('Balance')
+      color: #c0c0c0
+      font: Verdana Bold-11px
+      text-align: right
+      text-offset: -3 -1
+      anchors.top: historyFrame.top
+      anchors.left: prev.right
+      margin-top: 1
+      margin-left: 2
+      border-width-bottom: 1
+      border-color-bottom: #292a29
+      background-color: #363636
+      opacity: 1.0
+      $pressed:
+        color: #dfdfdf88
+        opacity: 0.8
+    UIWidget
+      height: 14
+      anchors.left: prev.right
+      anchors.top: historyFrame.top
+      image-source: /images/ui/separator_vertical
+      margin-top: 1
+    UIWidget
+      id: descButton
+      size: 255 15
+      !text: tr('Description')
+      font: Verdana Bold-11px
+      color: #c0c0c0
+      text-offset: 3 -1
+      text-align: leftCenter
+      anchors.top: historyFrame.top
+      anchors.left: balanceButton.right
+      margin-top: 1
+      margin-left: 2
+      border-width-bottom: 1
+      border-color-bottom: #292a29
+      background-color: #363636
+      opacity: 1.0
+      $pressed:
+        color: #dfdfdf88
+        opacity: 0.8
+    UIWidget
+      height: 14
+      anchors.left: prev.right
+      anchors.top: historyFrame.top
+      image-source: /images/ui/separator_vertical
+      margin-top: 1
+    UIWidget
+      size: 50 15
+      anchors.top: historyFrame.top
+      anchors.left: prev.right
+      margin-top: 1
+      margin-left: 2
+      border-width-bottom: 1
+      border-color-bottom: #292a29
+      background-color: #363636
+      opacity: 1.0
+      $pressed:
+        color: #dfdfdf88
+        opacity: 0.8
+
+    Button
+      id: btnPrevPage
+      size: 88 20
+      anchors.top: historyFrame.bottom
+      anchors.left: parent.left
+      margin-top: 5
+      margin-left: 6
+      text: Previous Page
+      @onClick: modules.game_store.requestTransactionHistory(self)
+
+    StoreLabel
+      id: lblPage
+      anchors.top: historyFrame.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 7
+      text-auto-resize: true
+
+    Button
+      id: btnNextPage
+      size: 88 20
+      anchors.top: historyFrame.bottom
+      anchors.right: parent.right
+      margin-top: 5
+      margin-right: 6
+      text: Next Page
+      @onClick: modules.game_store.requestTransactionHistory(self)
+
+  Panel
+    id: HomePanel
+    anchors.top: navigation.top
+    anchors.left: navigation.right
+    anchors.right: parent.right
+    anchors.bottom: navigation.bottom
+    margin-left: 6
+    border-width: 2
+    border-color-top: #646464
+    border-color-left: #646464
+    border-color-right: #363636
+    border-color-bottom: #363636
+
+    UIWidget
+      id: bannerFrame
+      height: 200
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin: 8 8 0 8
+
+    UIWidget
+      id: HomeImagen
+      anchors.fill: bannerFrame
+      image-smooth: false
+      @onClick: modules.game_store.openBanner()
+      @onHoverChange: modules.game_store.setBannerHover(hovered)
+
+    StoreLabel
+      id: brand
+      anchors.fill: bannerFrame
+      text: BEHOLDER
+      text-align: center
+      color: #c4f4fa
+
+    UIWidget
+      anchors.fill: bannerFrame
+      image-source: images/banner-panel
+      phantom: true
+
+    UIButton
+      id: prevImagen
+      anchors.verticalCenter: HomeImagen.verticalCenter
+      anchors.left: HomeImagen.left
+      size: 16 29
+      image-source: images/button-featured-offers-left
+      margin-left: 15
+      @onClick: modules.game_store.changeImagenHome('prevImagen')
+      $hover:
+        image-source: images/button-featured-offers-left-highlight
+
+    UIButton
+      id: nextImagen
+      anchors.verticalCenter: HomeImagen.verticalCenter
+      anchors.right: HomeImagen.right
+      size: 16 29
+      margin-right: 15
+      image-source: images/button-featured-offers-right
+      @onClick: modules.game_store.changeImagenHome('nextImagen')
+      $hover:
+        image-source: images/button-featured-offers-right-highlight
+
+    Panel
+      id: HomeRecentlyAdded
+      height: 205
+      anchors.top: bannerFrame.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin: 5 8 0 8
+      font: Verdana Bold-11px
+      color: #909090
+      text: Recently Added
+      text-offset: 0 2
+      text-align: top
+      image-source: /images/ui/t2pixel-up-frame-borderimage
+      image-border: 25
+
+      UIScrollArea
+        id: HomeProductos
+        anchors.fill: parent
+        margin: 21 5 5 5
+        padding: 4
+        padding-left: 6
+        image-source: images/scrollarea
+        image-border: 1
+        vertical-scrollbar: scrollList2
+        auto-focus: none
+        layout:
+          type: grid
+          cell-size: 254 82
+          cell-spacing: 5
+          flow: true
+
+      StoreScrollBar
+        id: scrollList2
+        anchors.top: HomeProductos.top
+        anchors.bottom: HomeProductos.bottom
+        anchors.right: HomeProductos.right
+        margin: 1
+        step: 10
+
+    Panel
+      id: DailyOffers
+      anchors.top: HomeRecentlyAdded.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 118
+      margin: 5 8 0 8
+      image-source: /images/ui/t2pixel-up-frame-borderimage
+      image-border: 25
+
+      StoreLabel
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 1
+        text: Daily Offers
+        text-auto-resize: true
+        color: #f2dc62
+
+      StoreLabel
+        id: timer
+        anchors.top: parent.top
+        anchors.right: parent.right
+        margin-top: 1
+        margin-right: 5
+        text: Ends in: 24:00:00
+        text-auto-resize: true
+        color: #909090
+        visible: false
+
+      UIScrollArea
+        id: offers
+        anchors.fill: parent
+        margin: 23 5 5 5
+        padding: 4
+        padding-left: 6
+        image-source: images/scrollarea
+        image-border: 1
+        vertical-scrollbar: scrollbar
+        auto-focus: none
+        layout:
+          type: grid
+          cell-size: 254 82
+          cell-spacing: 5
+          flow: true
+
+      StoreScrollBar
+        id: scrollbar
+        anchors.top: offers.top
+        anchors.bottom: offers.bottom
+        anchors.right: offers.right
+        margin: 1
+        step: 10
+
+      StoreLabel
+        id: empty
+        anchors.fill: offers
+        text: No daily offers available.
+        text-align: center
+        color: #a4b2b6
+
+    // Flat gold line, like the RTC; the highlight image's gradient repeats along the edges.
+    UIWidget
+      anchors.fill: DailyOffers
+      margin: -1
+      border-width: 1
+      border-color: #f4c73e
+      phantom: true

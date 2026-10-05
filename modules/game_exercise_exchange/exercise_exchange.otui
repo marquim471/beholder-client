@@ -1,0 +1,208 @@
+CyclopediaGoldBox < UIWidget
+  image-source: /images/ui/item
+  image-border: 10
+  size: 130 20
+
+  UIWidget
+    id: icon
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 4
+    image-source: /game_cyclopedia/images/icon-goldcoin
+    phantom: true
+
+  Label
+    id: value
+    anchors.right: icon.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 4
+    font: verdana-bold-11px-native
+    color: #BDBDBD
+    text-auto-resize: true
+    !text: tr('0')
+
+WeaponSlot < UIButton
+  size: 50 50
+  image-source: /images/ui/item
+  change-cursor-image: true
+  cursor: pointer
+  border-width: 0
+  tooltip-delayed: true
+  focusable: false
+
+  $hover !disabled !checked:
+    border-width: 1
+    border-color: #60a5fa
+
+  $checked:
+    border-width: 2
+    border-color: #ffcc00
+
+  $disabled:
+    opacity: 0.35
+
+  UIItem
+    id: item
+    size: 32 32
+    anchors.centerIn: parent
+    virtual: true
+    phantom: true
+
+MainWindow
+  id: exerciseExchangeWindow
+  !text: tr('Change Weapon Type')
+  size: 560 274
+  @onEscape: modules.game_exercise_exchange.destroy()
+
+  Panel
+    id: upperPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 76
+    image-source: /images/ui/1pixel-down-frame
+    image-border: 1
+
+    UIWidget
+      id: currentItemBox
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 10
+      size: 46 46
+      image-source: /images/ui/item
+      phantom: true
+
+      UIItem
+        id: currentItem
+        anchors.centerIn: parent
+        size: 32 32
+        virtual: true
+        phantom: true
+
+    Label
+      id: currentNameLabel
+      text-auto-resize: true
+      anchors.left: currentItemBox.right
+      anchors.top: currentItemBox.top
+      margin-left: 10
+      margin-top: 2
+      font: verdana-bold-11px-native
+      color: #ffcc00
+      text: Exercise Weapon
+
+    Label
+      id: currentChargesLabel
+      text-auto-resize: true
+      anchors.left: currentItemBox.right
+      anchors.top: currentNameLabel.bottom
+      margin-left: 10
+      margin-top: 4
+      font: verdana-11px-monochrome
+      color: #00e676
+      text: Charges: 0
+
+    Label
+      id: currentTierLabel
+      text-auto-resize: true
+      anchors.left: currentItemBox.right
+      anchors.top: currentChargesLabel.bottom
+      margin-left: 10
+      margin-top: 3
+      font: verdana-11px-monochrome
+      color: #a0a0a0
+      text: Tier: Lasting (100 GP / charge)
+
+    CyclopediaGoldBox
+      id: costGoldBox
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-right: 10
+      margin-top: 12
+
+    Label
+      id: costTitleLabel
+      text-auto-resize: true
+      anchors.right: costGoldBox.left
+      anchors.verticalCenter: costGoldBox.verticalCenter
+      margin-right: 6
+      font: verdana-11px-monochrome
+      color: #b0b0b0
+      !text: tr('Exchange Cost:')
+
+    CyclopediaGoldBox
+      id: playerGoldBox
+      anchors.right: parent.right
+      anchors.top: costGoldBox.bottom
+      margin-right: 10
+      margin-top: 6
+
+    Label
+      id: playerGoldTitleLabel
+      text-auto-resize: true
+      anchors.right: playerGoldBox.left
+      anchors.verticalCenter: playerGoldBox.verticalCenter
+      margin-right: 6
+      font: verdana-11px-monochrome
+      color: #b0b0b0
+      !text: tr('Your Gold:')
+
+  Panel
+    id: weaponsPanel
+    anchors.top: upperPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    height: 106
+    image-source: /images/ui/1pixel-down-frame
+    image-border: 1
+
+    Label
+      id: weaponsHeaderLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 8
+      margin-left: 10
+      font: verdana-bold-11px-native
+      color: #909090
+      !text: tr('Select Target Weapon:')
+
+    Panel
+      id: slotsContainer
+      anchors.top: weaponsHeaderLabel.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 8
+      height: 50
+      width: 456
+      layout:
+        type: horizontalBox
+        spacing: 8
+
+    Label
+      id: targetInfoLabel
+      anchors.top: slotsContainer.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 8
+      text-align: center
+      font: verdana-11px-monochrome
+      color: #a0a0a0
+      !text: tr('Click on a weapon slot above to select it.')
+
+  Button
+    id: exchangeButton
+    !text: tr('Exchange')
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 80
+    height: 20
+    enabled: false
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.right: exchangeButton.left
+    anchors.bottom: parent.bottom
+    margin-right: 6
+    width: 80
+    height: 20
+    @onClick: modules.game_exercise_exchange.destroy()

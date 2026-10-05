@@ -1,0 +1,435 @@
+InputMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 219
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 69
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  UIButton
+    id: lockButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+
+InputDamagePanel < UIWidget
+  id: damagePanel
+  height: 13
+  margin-top: 0
+  UIWidget
+    id: icon
+    size: 9 9
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-left: 2
+  Label
+    id: desc
+    text-align: right
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: parent.right
+    text-auto-resize: true
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+    margin-right: 2
+
+InputNoDataLabel < Label
+  id: type
+  height: 13
+  !text: tr('No Data')
+  text-auto-resize: true
+  color: #c0c0c0
+  font: verdana-bold-11px-native
+
+InputDamageSourcePanel < UIWidget
+  id: damagePanel
+  height: 13
+  cursor: pointer
+  Label
+    id: name
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: desc.left
+    margin-right: 2
+    height: 13
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+  Label
+    id: desc
+    anchors.top: parent.top
+    anchors.right: parent.right
+    text-auto-resize: true
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+
+InputMiniWindow
+  id: inputAnalyserMiniWindow
+  &type: 'damageInputAnalyser'
+  height: 239
+  &save: true
+  &autoOpen: false
+  @onExtra: modules.game_analyser.onInputExtra(g_window.getMousePosition())
+
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-source: /images/icons/icon-defensiveanalyser-widget
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 2
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+    !text: tr('Input Analyser')
+
+  ScrollablePanel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 16 4 4
+    padding: 0 2 0 2
+    vertical-scrollbar: miniwindowScrollBar
+    Label
+      id: dmgTakenLabel
+      !text: tr('Received Damage')
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 0
+      height: 13
+      text-auto-resize: true
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+    Label
+      id: rcvDmgLabel
+      !text: tr('Total:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      height: 13
+      text-auto-resize: true
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: rcvDmg
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      height: 13
+      text-auto-resize: true
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxDpsLabel
+      !text: tr('Max-DPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      height: 13
+      text-auto-resize: true
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxDps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      height: 13
+      text-auto-resize: true
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separatorMaxDps
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+
+    UIWidget
+      id: dpsGraphBG
+      size: 133 82
+      image-auto-resize: true
+      image-source: /images/game/analyzer/dpsGraphBG
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 15
+      margin-top: 5
+
+    UIGraph
+      id: graphPanel
+      capacity: 400
+      background-color: #383636
+      color: red
+      size: 129 83
+      show-labels: false
+      anchors.top: prev.top
+      anchors.left: prev.left
+      image-source: /images/game/analyzer/dpsGraphBG
+
+
+    UIWidget
+      id: horizontalGraph
+      size: 141 9
+      image-auto-resize: true
+      image-source: /images/game/analyzer/graphDpsHorizontal
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 8
+      margin-top: 5
+
+    HorizontalSeparator
+      id: separatorGraph
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+
+    Label
+      id: damageTypeLabel
+      !text: tr('Damage Types')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 11
+      height: 13
+      text-auto-resize: true
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+
+    Panel
+      id: dmgTypes
+      height: 13
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      layout:
+        type: verticalBox
+
+    HorizontalSeparator
+      id: separatorDmgType
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+
+    Label
+      id: damageSource
+      !text: tr('Damage Sources')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 11
+      height: 13
+      text-auto-resize: true
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+
+    Panel
+      id: dmgSrc
+      height: 13
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      layout:
+        type: verticalBox
+
+    HorizontalSeparator
+      id: separatorDmgSrc
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+      visible: true
+    Label
+      id: damageSourceName
+      cursor: pointer
+      !text: tr('Damage Types')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 11
+      height: 13
+      text-auto-resize: true
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+      visible: true
+
+    Panel
+      id: dmgSourceTypes
+      height: 13
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      visible: true
+      layout:
+        type: verticalBox
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 69
+    margin-left: 3
+    margin-right: 3

@@ -1,0 +1,219 @@
+UnjustifiedSkull < UIWidget
+  size: 15 15
+  image-source: /images/ui/unjustified-points-skull-dent
+
+UIMiniWindow
+  id: unjustifiedPointsWindow
+  &save: true
+  @onOpen: modules.game_unjustifiedpoints.onMiniWindowOpen()
+  @onClose: modules.game_unjustifiedpoints.onMiniWindowClose()
+  @onMaximize: modules.game_unjustifiedpoints.fitWindow()
+  width: 192
+  height: 74
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 2 0 0 4
+    size: 12 12
+    id: miniwindowIcon
+    image-source: /images/icons/icon-unjustified-points-widget
+    phantom: true
+
+  Label
+    id: miniwindowTitle
+    text: Unjustified Points
+    font: Verdana Bold-11px
+    color: #909090
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 1 0 0 20
+    height: 13
+    width: 124
+
+  UIButton
+    id: closeButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    size: 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $pressed:
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    size: 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $pressed:
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 3
+    margin-right: 3
+    height: 4
+    minimum: 74
+    maximum: 74
+    visible: false
+
+  UIWidget
+    id: miniwindowScrollBar
+    visible: false
+    phantom: true
+
+  UIButton
+    id: lockButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 7
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+    $on:
+      image-clip: 85 1 12 12
+
+  Panel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 4 4 4
+
+    Panel
+      id: statusArea
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: dayProgressBarBackground.left
+      margin-left: 3
+      margin-top: 5
+      height: 45
+      phantom: true
+
+    Label
+      id: openPvpSituationsLabel
+      anchors.top: statusArea.top
+      anchors.left: statusArea.left
+      anchors.right: statusArea.right
+      font: verdana-bold-11px-native
+      color: #c0c0c0
+      height: 13
+      tooltip: Open PvP situations.
+
+    UnjustifiedSkull
+      id: currentSkullWidget
+      anchors.top: openPvpSituationsLabel.bottom
+      anchors.horizontalCenter: statusArea.horizontalCenter
+      margin-top: 3
+
+    Label
+      id: skullTimeLabel
+      anchors.top: currentSkullWidget.bottom
+      anchors.left: statusArea.left
+      anchors.right: statusArea.right
+      margin-top: 3
+      font: verdana-bold-11px-native
+      color: #c0c0c0
+      height: 13
+
+    UnjustifiedSkull
+      id: daySkullWidget
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 3
+      margin-right: 3
+
+    UIWidget
+      id: dayProgressBarBackground
+      anchors.verticalCenter: daySkullWidget.verticalCenter
+      anchors.right: daySkullWidget.left
+      margin-right: 3
+      size: 71 5
+      image-source: /images/ui/unjustified-points-bar-background
+      image-border: 1
+      image-repeated: true
+
+    ProgressBar
+      id: dayProgressBar
+      anchors.top: dayProgressBarBackground.top
+      anchors.left: dayProgressBarBackground.left
+      margin-top: 1
+      margin-left: 1
+      height: 3
+      image-repeated: true
+
+    UnjustifiedSkull
+      id: weekSkullWidget
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 20
+      margin-right: 3
+
+    UIWidget
+      id: weekProgressBarBackground
+      anchors.verticalCenter: weekSkullWidget.verticalCenter
+      anchors.right: weekSkullWidget.left
+      margin-right: 3
+      size: 71 5
+      image-source: /images/ui/unjustified-points-bar-background
+      image-border: 1
+      image-repeated: true
+
+    ProgressBar
+      id: weekProgressBar
+      anchors.top: weekProgressBarBackground.top
+      anchors.left: weekProgressBarBackground.left
+      margin-top: 1
+      margin-left: 1
+      height: 3
+      image-repeated: true
+
+    UnjustifiedSkull
+      id: monthSkullWidget
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 37
+      margin-right: 3
+
+    UIWidget
+      id: monthProgressBarBackground
+      anchors.verticalCenter: monthSkullWidget.verticalCenter
+      anchors.right: monthSkullWidget.left
+      margin-right: 3
+      size: 71 5
+      image-source: /images/ui/unjustified-points-bar-background
+      image-border: 1
+      image-repeated: true
+
+    ProgressBar
+      id: monthProgressBar
+      anchors.top: monthProgressBarBackground.top
+      anchors.left: monthProgressBarBackground.left
+      margin-top: 1
+      margin-left: 1
+      height: 3
+      image-repeated: true

@@ -1,0 +1,297 @@
+Item < UIItem
+  size: 34 34
+  padding: 1
+  image-source: /images/ui/item
+  font: verdana-11px-rounded
+  border-color: white
+  color: white
+
+  $disabled:
+    color: #646464
+
+  UIWidget
+    id: tier
+    size: 10 9
+    image-source: /images/inventory/tiers-strip
+    image-clip: 0 0 10 9
+    image-size: 10 9
+    anchors.top: parent.top
+    anchors.right: parent.right
+    phantom: true
+    focusable: false
+    visible: false
+    image-smooth: true
+    
+ManagedContainerIcon < UIWidget
+  size: 7 9
+  margin: 1
+  image-source: /images/game/container/icon-loot-container
+  image-smooth: false
+  focusable: false
+  phantom: true
+
+InventoryBlessingBorder < UIWidget
+  image-source: /images/inventory/containerslot-goldenborder
+  phantom: true
+
+MainInventoryItem < UIWidget
+  image-source: /images/inventory/containerslot
+  image-border: 1
+  phantom: false
+  size: 34 34
+
+  UIWidget
+    id: backpack
+    image-source: /images/inventory/inventory_back
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: boots
+    image-source: /images/inventory/inventory_feet
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: ring
+    image-source: /images/inventory/inventory_finger
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: helmet
+    image-source: /images/inventory/inventory_head
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: tools
+    image-source: /images/inventory/inventory_hip
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: sword
+    image-source: /images/inventory/inventory_left_hand
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: legs
+    image-source: /images/inventory/inventory_legs
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: amulet
+    image-source: /images/inventory/inventory_neck
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: shield
+    image-source: /images/inventory/inventory_right_hand
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: armor
+    image-source: /images/inventory/inventory_torso
+    anchors.centerIn: parent
+    phantom: true
+    enabled: false
+    size: 32 32
+
+    $disabled:
+      opacity: 0
+
+    $!disabled:
+      opacity: 1
+
+  UIWidget
+    id: golden
+    anchors.fill: parent
+    phantom: true
+    visible: false
+
+    InventoryBlessingBorder
+      size: 1 1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      image-clip: 0 0 1 1
+
+    InventoryBlessingBorder
+      size: 1 1
+      anchors.right: parent.right
+      anchors.top: parent.top
+      image-clip: 31 0 1 1
+
+    InventoryBlessingBorder
+      size: 1 1
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      image-clip: 0 31 1 1
+
+    InventoryBlessingBorder
+      size: 1 1
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      image-clip: 31 31 1 1
+
+    InventoryBlessingBorder
+      height: 1
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-left: 1
+      margin-right: 1
+      image-clip: 1 0 30 1
+
+    InventoryBlessingBorder
+      height: 1
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-left: 1
+      margin-right: 1
+      image-clip: 1 31 30 1
+
+    InventoryBlessingBorder
+      width: 1
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      margin-top: 1
+      margin-bottom: 1
+      image-clip: 0 1 1 30
+
+    InventoryBlessingBorder
+      width: 1
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 1
+      margin-bottom: 1
+      image-clip: 31 1 1 30
+
+  UIItem
+    id: item
+    anchors.centerIn: parent
+    size: 34 34
+    padding: 1
+    font: verdana-11px-rounded
+    count-font: verdana-bold-11px-native
+    count-tight-font: verdana-bold-11px-native-tight
+    count-outline: true
+    unified-text: true
+    @onSetup: |
+      UIHoverTooltip.configure(self, function(widget) return widget:getOverlayTooltip(g_window.getMousePosition()) end)
+      local function refresh(widget) widget.refreshHoverTooltip() end
+      connect(self, {onItemChange = refresh, onOverlayChange = refresh}, true)
+    border-color: white
+    color: white
+	
+    Label
+      id: duration
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      phantom: true
+    Label
+      id: charges
+      anchors.top: parent.top
+      anchors.left: parent.left
+      phantom: true
+      text-auto-resize: true
+      font: "verdana-11px-rounded"
+
+    UIWidget
+      id: tier
+      size: 9 8
+      image-source: /images/inventory/tiers-strip
+      image-clip: 0 0 9 8
+      image-size: 9 8
+      anchors.top: parent.top
+      anchors.right: parent.right
+      phantom: true
+      focusable: false
+      visible: false
+      image-smooth: false
+
+UIDragIcon < UIItem
+  size: 34 34
+  border-color: alpha
+  virtual: true
+  focusable: false
+  phantom: true

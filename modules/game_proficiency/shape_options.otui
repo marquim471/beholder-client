@@ -1,0 +1,236 @@
+ShapeOptionsHeaderCell < Panel
+  height: 18
+  image-source: /images/ui/1pixel_down_frame
+  image-border: 1
+  background-color: #3a3a3a
+
+ShapeOptionsCell < Panel
+  image-source: /images/ui/1pixel_down_frame
+  image-border: 1
+  background-color: #363636
+
+ShapeOptionsRankCell < Panel
+  image-source: /images/ui/1pixel_down_frame
+  image-border: 1
+  background-color: #363636
+
+ShapeOptionsPerkCell < Panel
+  background-color: #484848
+
+ShapeOptionsRow < Panel
+  width: 544
+  height: 105
+
+  ShapeOptionsPerkCell
+    id: perkCell
+    width: 110
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+
+    Label
+      id: perkName
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 4
+      margin-left: 4
+      margin-right: 4
+      height: 14
+      color: #cfcfcf
+      text-auto-resize: false
+      text-wrap: false
+
+    UIWidget
+      id: perkBorder
+      size: 62 62
+      anchors.top: perkName.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 12
+      image-source: /images/game/proficiency/border-weaponmasterytreeicons-active
+
+    UIWidget
+      id: perkIcon
+      size: 54 54
+      anchors.centerIn: perkBorder
+      image-source: /images/game/proficiency/icons-0
+      image-clip: 0 0 64 64
+
+    UIWidget
+      id: perkAugmentIcon
+      size: 28 28
+      anchors.top: perkIcon.top
+      anchors.right: perkIcon.right
+      margin-top: -12
+      margin-right: -12
+      image-source: /images/game/proficiency/augment-icons
+      image-clip: 0 0 32 32
+      visible: false
+
+  ShapeOptionsRankCell
+    id: rank0Cell
+    width: 220
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: perkCell.right
+
+    Label
+      id: rank0Text
+      anchors.fill: parent
+      margin: 6
+      color: #dfdfdf
+      text-wrap: true
+      text-align: topLeft
+
+  ShapeOptionsCell
+    id: rank10Cell
+    width: 220
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: rank0Cell.right
+
+    Label
+      id: rank10Text
+      anchors.fill: parent
+      margin: 6
+      color: #dfdfdf
+      text-wrap: true
+      text-align: topLeft
+
+MainWindow
+  id: shapeOptionsWindow
+  !text: tr('Perk Shaping Options')
+  color: #909090
+  size: 580 500
+  @onEscape: modules.game_proficiency.hideShapeOptionsWindow()
+
+  Panel
+    id: searchFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 5
+    margin-left: 5
+    margin-right: 5
+    height: 23
+    image-source: /images/ui/1pixel_down_frame
+    image-border: 1
+    background-color: #2f2f2f
+
+    TextEdit
+      id: searchText
+      anchors.left: parent.left
+      anchors.right: clearSearchButton.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: -1
+      margin-right: -1
+      height: 22
+      padding-top: 2
+      padding-left: 2
+      padding-right: 2
+      border-width: 0
+      background-color: #00000000
+      color: #dfdfdf
+      text-offset: 0 -2
+      !placeholder: tr('Type to search')
+
+    UIButton
+      id: clearSearchButton
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 2
+      size: 20 20
+      image-source: /images/ui/button-clear-18x18-up
+      image-clip: 0 0 20 20
+
+      $pressed:
+        image-source: /images/ui/button-clear-18x18-down
+      @onClick: self:getParent():recursiveGetChildById('searchText'):clearText()
+
+  Panel
+    id: shapeOptionsMainFrame
+    anchors.top: searchFrame.bottom
+    anchors.left: searchFrame.left
+    anchors.right: searchFrame.right
+    anchors.bottom: closeButton.top
+    margin-top: 4
+    margin-bottom: 6
+    image-source: /images/ui/1pixel_down_frame
+    image-border: 1
+    background-color: #363636
+
+    ShapeOptionsHeaderCell
+      id: perkHeader
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 1
+      margin-left: 1
+      width: 110
+
+      Label
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        color: #dfdfdf
+        !text: tr('Perk')
+
+    ShapeOptionsHeaderCell
+      id: rank0Header
+      anchors.top: perkHeader.top
+      anchors.left: perkHeader.right
+      width: 220
+
+      Label
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        color: #dfdfdf
+        !text: tr('Effect at Rank 0')
+
+    ShapeOptionsHeaderCell
+      id: rank10Header
+      anchors.top: perkHeader.top
+      anchors.left: rank0Header.right
+      anchors.right: parent.right
+      margin-right: 1
+      margin-left: 0
+
+      Label
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        color: #dfdfdf
+        !text: tr('Effect at Rank 10')
+
+    ScrollablePanel
+      id: shapeOptionsList
+      anchors.top: perkHeader.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-top: 2
+      margin-left: 1
+      margin-right: 1
+      margin-bottom: 1
+      vertical-scrollbar: shapeOptionsScroll
+      layout:
+        type: verticalBox
+        spacing: 0
+
+    VerticalScrollBar
+      id: shapeOptionsScroll
+      anchors.top: shapeOptionsList.top
+      anchors.bottom: shapeOptionsList.bottom
+      anchors.right: shapeOptionsList.right
+      margin-right: 0
+      step: 105
+      pixels-scroll: true
+
+  Button
+    id: closeButton
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 12
+    margin-bottom: 10
+    !text: tr('Close')
+    @onClick: modules.game_proficiency.hideShapeOptionsWindow()

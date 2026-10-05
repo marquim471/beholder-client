@@ -1,0 +1,337 @@
+/* Daily tab */
+.bountySetup {
+    height: 58px;
+}
+
+.talismanBar {
+    height: 128px;
+}
+
+.setupRow {
+    display: block;
+    height: 22px;
+}
+
+.setupLabel {
+    display: inline-block;
+    vertical-align: middle;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+    margin-right: 6px;
+}
+
+.setupCombo {
+    width: 108px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    font: verdana-11px-antialised;
+}
+
+.setupBtn {
+    width: 108px;
+    height: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.setupBtnWithIcon {
+    --icon: /game_taskboard/assets/images/icon-currency-taskreroll;
+    --icon-offset: 40 1;
+    margin-left: 15px;
+}
+
+.rerollBox {
+    width: 44px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+    --image-source: /images/ui/infoPanel;
+    --image-border: 2;
+    position: relative;
+}
+
+.rerollBoxLabel {
+    position: absolute;
+    --text-auto-resize: false;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    right: 17px;
+    text-align: right;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+}
+
+.rerollBoxIcon {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 2px;
+    top: 4px;
+}
+
+.warningIcon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+}
+
+.taskCardsWrap {
+    height: 271px;
+    display: block;
+    margin-bottom: 8px;
+    --image-source: /images/ui/background_dark;
+    --image-repeated: true;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.taskCard {
+    width: 296px;
+    height: 251px;
+    display: inline-block;
+    margin: 0 5px;
+    --image-source: /images/ui/2pixel_up_frame_borderimage;
+    --image-border: 10;
+    position: relative;
+    vertical-align: top;
+}
+
+.taskBackdrop {
+    width: 279px;
+    height: 38px;
+    display: block;
+    margin-top: -6px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.taskBackdropLabel {
+    display: inline-block;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+    line-height: 10px;
+}
+
+.taskPreviewCenterWrap {
+    display: block;
+    text-align: center;
+    width: 276px;
+    margin-top: 6px;
+}
+
+.taskPreviewBox {
+    width: 66px;
+    height: 66px;
+    display: inline-block;
+    position: relative;
+    --image-source: /images/ui/item66;
+    --image-border: 2;
+}
+
+.taskCreature {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+.taskNoCreature {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    --image-source: /game_taskboard/assets/images/icon-arbitrarymonster;
+    margin: 0;
+}
+
+.taskKillsCenter {
+    display: block;
+    text-align: center;
+    width: 276px;
+    margin-top: 4px;
+}
+
+.taskKillsLabel {
+    display: inline-block;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+}
+
+.taskRewardTitle {
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+}
+
+.taskRewardRow {
+    display: block;
+    height: 15px;
+    margin: 2px 10px 0 14px;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+}
+
+.taskBullet {
+    display: inline-block;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.taskRewardIcon {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.taskActionBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    width: 276px;
+    height: 0px;
+    padding: 0;
+}
+
+/* Bounty talisman: four 212px sections (icon + texts, then Upgrade button + cost), like TaskRingPanelSection */
+.talismanRow {
+    display: block;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.talismanHelpIcon {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 32px;
+    margin-left: 4px;
+    margin-right: 6px;
+}
+
+.talismanItemWrap {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    height: 100%;
+}
+
+.talismanSep {
+    height: 76px;
+    vertical-align: top;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.talismanEntry {
+    width: 200px;
+    height: 76px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.talismanTop {
+    display: block;
+    width: 200px;
+    height: 46px;
+    white-space: nowrap;
+}
+
+.talismanIcon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.talismanMeta {
+    display: inline-block;
+    vertical-align: top;
+    width: 163px;
+    height: 46px;
+}
+
+.talismanTitle {
+    display: block;
+    width: 163px;
+    height: 26px;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+    text-wrap: true;
+    --text-auto-resize: false;
+    white-space: normal;
+}
+
+.talismanCurVal {
+    display: block;
+    width: 163px;
+    height: 14px;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+    margin-top: 4px;
+    white-space: nowrap;
+    --text-auto-resize: false;
+}
+
+.talismanActions {
+    display: block;
+    width: 200px;
+    height: 20px;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.talismanUpgradeBtn {
+    width: 108px;
+    min-width: 108px;
+    height: 0px;
+    min-height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+}
+
+.talismanCostBox {
+    display: inline-block;
+    vertical-align: top;
+    width: 87px;
+    height: 20px;
+    margin-left: 5px;
+    --image-source: /images/ui/infoPanel;
+    --image-border: 2;
+    position: relative;
+}
+
+.talismanCostLabel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    right: 17px;
+    font: verdana-11px-rounded;
+    color: #c0c0c0;
+    text-align: right;
+}
+
+.talismanCostIcon {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 3px;
+    top: 4px;
+}

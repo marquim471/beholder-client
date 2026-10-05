@@ -1,0 +1,329 @@
+BasicOptionsFrame < Panel
+  image-source: /images/ui/2pixel-up-frame-borderimage
+  image-border: 2
+  padding: 22 7 7 7
+  @onSetup: self.header:setText(tr(self.caption))
+
+  Label
+    id: header
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin: -22 -7 0 -7
+    height: 17
+    font: verdana-bold-11px-native
+    color: #909090
+    text-align: center
+    image-source: /images/ui/2pixel-up-header-smoother
+    image-border: 2
+    image-border-bottom: 1
+    phantom: true
+
+BasicOptionsCheckBox < QtCheckBox
+  font: verdana-bold-11px-native
+  @onCheckChange: modules.client_options.setOptionFromUI(self:getId(), self:isChecked())
+
+BasicOptionsLabel < Label
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  width: 150
+  height: 20
+  text-align: left
+
+UIWidget
+  anchors.fill: parent
+  visible: false
+
+  UIScrollArea
+    id: basicContent
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: resetBasic.top
+    margin-right: 14
+    margin-bottom: 5
+    vertical-scrollbar: basicScrollBar
+    @onGeometryChange: modules.client_options.updateBasicLayout()
+
+    BasicOptionsFrame
+      id: gameplay
+      &caption: 'Gameplay'
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 68
+
+      BasicOptionsLabel
+        id: mouseLabel
+        !text: tr('Mouse Preset:')
+        anchors.left: parent.left
+        anchors.top: parent.top
+
+      QtComboBox
+        id: mouseControlMode
+        anchors.left: mouseLabel.right
+        anchors.top: mouseLabel.top
+        margin-left: 5
+        width: 150
+        mouse-scroll: false
+
+      QtComboBox
+        id: lootControlMode
+        anchors.left: prev.right
+        anchors.top: prev.top
+        margin-left: 5
+        width: 150
+        mouse-scroll: false
+
+      BasicOptionsCheckBox
+        id: autoChaseOverride
+        !text: tr('Auto Chase Off')
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: mouseLabel.bottom
+        margin-top: 5
+        !tooltip: tr('Stop chasing the attacked creature when you walk manually.')
+
+      BasicOptionsCheckBox
+        id: quickLootAllCorpsesInArea
+        !text: tr('Quick Loot All Corpses In Area')
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: autoChaseOverride.bottom
+        !tooltip: tr('Loot all corpses in the surrounding area when using quick loot on a corpse.')
+
+    BasicOptionsFrame
+      id: interface
+      &caption: 'Interface'
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 5
+      height: 124
+
+      Panel
+        id: actionBars
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: 67
+        image-source: /images/ui/1pixel_down_frame
+        image-border: 1
+        padding: 5
+
+        BasicOptionsLabel
+          id: bottomLabel
+          !text: tr('Show Bottom Action Bars:')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-top: 0
+          width: 170
+          height: 14
+
+        BasicOptionsCheckBox
+          id: allActionBar13
+          !text: tr('All')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 175
+          margin-top: 0
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowBottom1
+          !text: tr('Bar 1')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 240
+          margin-top: 0
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowBottom2
+          !text: tr('Bar 2')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 305
+          margin-top: 0
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowBottom3
+          !text: tr('Bar 3')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 370
+          margin-top: 0
+          width: 60
+
+        BasicOptionsLabel
+          id: leftLabel
+          !text: tr('Show Left Action Bars:')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-top: 19
+          width: 170
+          height: 14
+
+        BasicOptionsCheckBox
+          id: allActionBar46
+          !text: tr('All')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 175
+          margin-top: 19
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowLeft1
+          !text: tr('Bar 1')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 240
+          margin-top: 19
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowLeft2
+          !text: tr('Bar 2')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 305
+          margin-top: 19
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowLeft3
+          !text: tr('Bar 3')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 370
+          margin-top: 19
+          width: 60
+
+        BasicOptionsLabel
+          id: rightLabel
+          !text: tr('Show Right Action Bars:')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-top: 38
+          width: 170
+          height: 14
+
+        BasicOptionsCheckBox
+          id: allActionBar79
+          !text: tr('All')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 175
+          margin-top: 38
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowRight1
+          !text: tr('Bar 1')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 240
+          margin-top: 38
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowRight2
+          !text: tr('Bar 2')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 305
+          margin-top: 38
+          width: 60
+
+        BasicOptionsCheckBox
+          id: actionBarShowRight3
+          !text: tr('Bar 3')
+          anchors.left: parent.left
+          anchors.top: parent.top
+          margin-left: 370
+          margin-top: 38
+          width: 60
+
+      BasicOptionsLabel
+        id: lootLabel
+        !text: tr('Colourise Loot Value:')
+        anchors.left: parent.left
+        anchors.top: actionBars.bottom
+        margin-top: 5
+
+      QtComboBox
+        id: framesRarity
+        anchors.left: lootLabel.right
+        anchors.top: lootLabel.top
+        margin-left: 5
+        width: 150
+        mouse-scroll: false
+
+    BasicOptionsFrame
+      id: graphics
+      &caption: 'Graphics'
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 5
+      height: 68
+
+      BasicOptionsLabel
+        id: antialiasingLabel
+        !text: tr('Antialiasing Mode:')
+        anchors.left: parent.left
+        anchors.top: parent.top
+
+      QtComboBox
+        id: antialiasingMode
+        anchors.left: antialiasingLabel.right
+        anchors.top: antialiasingLabel.top
+        margin-left: 5
+        width: 150
+        mouse-scroll: false
+
+      BasicOptionsCheckBox
+        id: fullscreen
+        !text: tr('Fullscreen')
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: antialiasingLabel.bottom
+        margin-top: 5
+
+    BasicOptionsFrame
+      id: sound
+      &caption: 'Sound'
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 5
+      height: 46
+
+      OptionScaleScroll
+        id: masterVolume
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        &minimumScrollValue: 0
+        &maximumScrollValue: 100
+        &scrollSize: 1
+
+  QtButton
+    id: resetBasic
+    !text: tr('Reset')
+    !tooltip: tr('Reset all options on this page to their default values.')
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    size: 64 20
+    @onClick: modules.client_options.resetBasicOptions()
+
+  VerticalScrollBar
+    id: basicScrollBar
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: resetBasic.top
+    margin-bottom: 5
+    step: 19
+    pixels-scroll: true

@@ -1,0 +1,8 @@
+Module
+  name: game_stonesystem
+  description: Stone system window
+  author: Tibia Global
+  sandboxed: true
+  scripts: [ stonesystem ]
+  @onLoad: init()
+  @onUnload: terminate()

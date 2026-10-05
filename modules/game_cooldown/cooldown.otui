@@ -1,0 +1,85 @@
+CooldownIcon < UIWidget
+  size: 22 24
+  image-source: /images/game/cooldown/icon-frame
+  image-border: 1
+  image-repeated: true
+  focusable: false
+
+  UIWidget
+    id: image
+    size: 20 20
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 1
+    margin-top: 1
+    phantom: true
+
+  UIWidget
+    id: shade
+    anchors.fill: image
+    background-color: black
+    opacity: 0.7
+    phantom: true
+
+  UIWidget
+    id: track
+    size: 20 2
+    anchors.left: image.left
+    anchors.top: image.bottom
+    margin-top: 1
+    background-color: black
+    phantom: true
+
+    UIWidget
+      id: fill
+      anchors.left: parent.left
+      anchors.top: parent.top
+      height: 2
+      background-color: white
+      phantom: true
+
+Panel
+  id: cooldownWindow
+  height: 28
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  focusable: false
+  phantom: true
+
+  Panel
+    id: contentsPanel2
+    anchors.fill: parent
+    margin-left: 3
+    margin-right: 3
+    margin-top: 2
+    margin-bottom: 2
+    phantom: true
+    layout:
+      type: horizontalBox
+      spacing: 3
+
+    Panel
+      id: groupPanel
+      height: 24
+      phantom: true
+      layout:
+        type: horizontalBox
+        spacing: 3
+        fit-children: true
+
+    UIWidget
+      id: separator
+      size: 2 24
+      image-source: /images/game/cooldown/separator
+      image-repeated: true
+      phantom: true
+
+    Panel
+      id: cooldownPanel
+      height: 24
+      phantom: true
+      layout:
+        type: horizontalBox
+        spacing: 3
+        fit-children: true

@@ -1,0 +1,580 @@
+DescriptionLine < UIWidget
+  height: 14
+
+  UIWidget
+    id: icon
+    size: 13 13
+    anchors.left: parent.left
+    anchors.top: parent.top
+    phantom: true
+    visible: false
+    image-smooth: true
+
+  Label
+    id: text
+    font: Verdana Bold-11px
+    color: #dfdfdf
+    text-wrap: true
+    text-auto-resize: true
+    anchors.left: parent.left
+    anchors.right: parent.right
+    phantom: true
+
+historyData2 < UIWidget
+  height: 15
+
+  StoreLabel
+    id: date
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    width: 148
+    text-align: left
+    text-offset: 3 0
+    phantom: false
+
+  StoreLabel
+    id: Balance
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 150
+    width: 88
+    text-align: right
+    text-offset: -16 0
+    icon-align: right
+    phantom: false
+
+  StoreLabel
+    id: Description
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 239
+    width: 255
+    text-align: left
+    phantom: false
+
+OfferPanel2 < Panel
+  height: 44
+
+  UIButton
+    id: btnBuy
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 20
+    font: cipsoftFont
+    color: #dfdfdf
+    text-offset: 0 2
+    text: Buy
+    image-source: /game_store/images/buybutton
+    image-clip: 0 0 144 20
+    $pressed:
+      image-clip: 0 20 144 20
+      text-offset: 1 1
+    $disabled:
+      image-clip: 0 40 144 20
+      color: #dfdfdf88
+
+  StoreBalance
+    id: lblPrice
+    anchors.top: btnBuy.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 5
+    text-offset: -64 0
+    icon-offset: -49 0
+
+stackOfferPanel < Panel
+  height: 20
+
+  StoreLabel
+    id: count
+    anchors.left: parent.left
+    anchors.right: lblPrice.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 5
+    height: 15
+    text-align: right
+
+  StoreBalance
+    id: lblPrice
+    width: 100
+    anchors.top: parent.top
+    anchors.right: parent.right
+
+StoreFlatPanel < UIWidget
+  phantom: true
+  auto-focus: first
+  image-source: /game_store/images/panel
+  image-border: 3
+
+StoreLightFlatPanel < UIWidget
+  phantom: true
+  auto-focus: first
+  image-source:  /game_store/images/panel_container
+  image-border: 3
+
+StoreButton < ClassicButton
+  size: 43 20
+
+StoreWindow < UIWindow
+  anchors.centerIn: parent
+  font: verdana-11px-antialised
+  color: #8f8f8f
+  text-offset: 0 2
+  text-align: top
+  image-source: /images/ui/popupwindow
+  image-border: 6
+  image-border-top: 27
+  padding: 28 17 16 16
+
+StoreFlatLabel < UILabel
+  font: Verdana Bold-11px
+  color: #dfdfdf
+  size: 86 20
+  text-offset: 3 3
+  image-source:  /game_store/images/panel_flat
+  image-border: 1
+  clipping: true
+
+  $disabled:
+    color: #dfdfdf88
+
+StoreLabel < UILabel
+  font: Verdana Bold-11px
+  color: #c0c0c0
+  phantom: true
+
+StoreFrame < Panel
+  image-source: /images/ui/2pixel-up-frame-borderimage
+  image-border: 2
+
+StoreInset < Panel
+  image-source: /images/ui/1pixel-down-frame
+  image-border: 1
+
+StoreBalance < UIWidget
+  font: Verdana Bold-11px
+  color: #c0c0c0
+  image-source: /images/ui/backdrop-dark-grey
+  image-repeated: true
+  height: 20
+  text-align: right
+  text-offset: -18 0
+  icon: /game_store/images/icon-tibiacoin
+  icon-align: right
+  icon-offset: -3 0
+  phantom: true
+
+  StoreInset
+    anchors.fill: parent
+
+  StoreLabel
+    id: basePrice
+    font: Verdana-Strikethrough-11px
+    color: #707070
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: parent.right
+    text-auto-resize: true
+    visible: false
+
+storeCategory < UIWidget
+  size: 170 20
+
+  UIButton
+    id: Button
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: -5
+    margin-left: 2
+    height: 24
+    image-source: /game_store/images/categorie-up
+    image-clip: 0 0 170 24
+    image-border: 1
+    focusable: false
+
+    $pressed:
+      image-source: /game_store/images/categorie-down
+
+    $disabled:
+      opacity: 0.8
+
+    UIWidget
+      id: Icon
+      size: 13 13
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 7
+      margin-top: 4
+      phantom: true
+      image-smooth: false
+
+    StoreLabel
+      id: Title
+      anchors.left: Icon.right
+      anchors.right: Arrow.left
+      anchors.top: parent.top
+      margin-left: 5
+      margin-right: 4
+      margin-top: 4
+      height: 14
+      text-align: left
+
+    UIWidget
+      id: Arrow
+      size: 7 7
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-right: 12
+      margin-top: 8
+      phantom: true
+      image-source: /images/ui/icon-arrow7x7-down
+      visible: false
+
+  Panel
+    id: subPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 17
+    margin-left: 3
+    margin-right: 2
+    image-source: /game_store/images/arrow-panel
+    image-border: 1
+    visible: false
+
+  UIWidget
+    id: SelectionArrow
+    size: 4 7
+    anchors.left: parent.left
+    anchors.top: subPanel.top
+    margin-left: 7
+    phantom: true
+    image-source: /game_store/images/arrow
+    visible: false
+
+storeSubCategory < UIWidget
+  size: 153 20
+
+  UIButton
+    id: Button
+    anchors.fill: parent
+    image-source: /game_store/images/subcategory
+    image-clip: 0 0 152 20
+    image-border: 1
+    focusable: false
+
+    $pressed:
+      image-clip: 0 20 152 20
+
+    $checked:
+      image-clip: 0 20 152 20
+
+    $disabled:
+      opacity: 0.8
+
+    UIWidget
+      id: Icon
+      size: 13 13
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 8
+      margin-top: 0
+      phantom: true
+      image-smooth: false
+
+    StoreLabel
+      id: Title
+      anchors.left: Icon.right
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-left: 5
+      margin-right: 3
+      margin-top: 4
+      height: 14
+      text-align: left
+
+
+confirmarSHOP < StoreWindow
+  id: storePurchaseSuccess
+  size: 350 153
+  text: Purchase completed successfully
+  font: Verdana Bold-11px
+  text-offset: -2 1
+  image-source: /images/ui/popupwindow
+  padding: 17 4 4 4
+
+  UIWidget
+    id: dragon
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: -85
+    size: 192 70
+    phantom: true
+    image-source: /game_store/images/dragon-animated
+
+  StoreLabel
+    id: Box
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 12
+    margin-left: 12
+    size: 200 108
+    padding: 4
+    text-wrap: true
+    text-align: topLeft
+    image-source: /images/ui/textedit
+    image-border: 1
+
+  Button
+    id: buttonAnimation
+    size: 108 108
+    anchors.top: Box.top
+    anchors.left: Box.right
+    margin-left: 10
+    image-source: /game_store/images/button-blue-big
+    image-clip: 0 0 108 108
+    $pressed:
+      image-clip: 0 108 108 108
+
+    UIWidget
+      id: animation
+      image-source: /game_store/images/purchasecomplete_idle
+      anchors.fill: parent
+      phantom: true
+
+BorderBox < UIWidget
+  border-width-top: 1
+  border-color-top: black
+  border-width-left: 1
+  border-color-left: black
+  border-width-bottom: 1
+  border-color-bottom: #747474
+  border-width-right: 1
+  border-color-right: #747474
+
+StoreConfigurationWindow < StoreWindow
+  font: verdana-11px-antialised
+  color: #8f8f8f
+  text-offset: 0 2
+  image-source: /images/ui/popupwindow
+  image-border: 6
+  image-border-top: 27
+  padding: 35 16 10 16
+
+StorePurchaseWindow < StoreWindow
+  id: storePurchaseWindow
+  size: 380 235
+  text: Confirmation of Purchase
+  font: Verdana Bold-11px
+  text-offset: -2 1
+  image-source: /images/ui/popupwindow
+  padding: 17 4 4 4
+
+  StoreLabel
+    id: content
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 11
+    margin-left: 11
+    margin-right: 12
+    text-wrap: true
+    text-auto-resize: true
+
+  StoreInset
+    id: Box
+    anchors.top: content.bottom
+    anchors.left: parent.left
+    margin-top: 8
+    margin-left: 12
+    size: 80 80
+    image-source: /game_store/images/scrollarea
+
+  StoreInset
+    id: detailsPanel
+    anchors.top: Box.top
+    anchors.left: Box.right
+    anchors.right: parent.right
+    margin-left: 10
+    margin-right: 13
+    height: 80
+    image-source: /game_store/images/scrollarea
+
+  StoreLabel
+    id: details
+    anchors.top: detailsPanel.top
+    anchors.left: detailsPanel.left
+    anchors.right: detailsPanel.right
+    margin-top: 23
+    margin-left: 10
+    margin-right: 13
+    text-wrap: true
+    text-auto-resize: true
+
+  StoreLabel
+    id: price
+    anchors.top: details.bottom
+    anchors.left: details.left
+    margin-top: 4
+    text-auto-resize: true
+
+  UIWidget
+    id: coin
+    anchors.top: price.top
+    anchors.left: price.right
+    margin-top: 2
+    margin-left: 5
+
+  Button
+    id: cancel
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 12
+    margin-right: 12
+    size: 43 20
+    text: Cancel
+
+  Button
+    id: buy
+    anchors.bottom: cancel.bottom
+    anchors.right: cancel.left
+    margin-right: 5
+    size: 43 20
+    image-source: /game_store/images/small-buybutton
+    image-clip: 0 0 43 20
+    $hover:
+      image-clip: 0 0 43 20
+    $pressed:
+      image-clip: 0 20 43 20
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: buy.top
+    margin-bottom: 10
+    margin-left: 12
+    margin-right: 12
+
+StoreScrollBarBase < UIButton
+  id: sliderButton
+  anchors.centerIn: parent
+  image-source: /game_store/images/scrollbar
+  image-border: 6
+  opacity: 1
+
+  $disabled:
+    opacity: 0
+
+StoreScrollBarValueLabel < Label
+  id: valueLabel
+  anchors.fill: parent
+  color: white
+  text-align: center
+
+StoreScrollBarSlider < StoreScrollBarBase
+  size: 12 12
+  minimum: 12
+  image-clip: 0 24 12 14
+
+StoreScrollBar < UIScrollBar
+  orientation: vertical
+  width: 12
+  height: 39
+  image-source: /game_store/images/scrollbar
+  image-clip: 24 0 12 74
+  image-border: 1
+  pixels-scroll: true
+
+  UIButton
+    id: decrementButton
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /game_store/images/scrollbar
+    size: 12 12
+    image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 12 0 12 12
+
+  UIButton
+    id: incrementButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    size: 12 12
+    image-source: /game_store/images/scrollbar
+    image-clip: 0 12 12 12
+    $pressed:
+      image-clip: 12 12 12 12
+
+  StoreScrollBarSlider
+
+  StoreScrollBarValueLabel
+
+StoreComboBoxPopupScrollMenuButton < UIButton
+  height: 17
+  font: Verdana Bold-11px
+  text-align: left
+  text-offset: 4 0
+  color: #c0c0c0
+  background-color: alpha
+  margin: 1
+
+  $hover !disabled:
+    color: #f4f4f4
+    background-color: #86868750
+
+  $disabled:
+    color: #dfdfdf88
+
+StoreComboBoxPopupScrollMenu < UIPopupScrollMenu
+  image-source: /game_store/images/combobox-square
+  image-clip: 0 60 98 20
+  image-border: 1
+
+StoreComboBoxPopupMenuButton < UIButton
+  height: 17
+  font: Verdana Bold-11px
+  text-align: left
+  text-offset: 4 0
+  color: #c0c0c0
+  background-color: alpha
+  margin: 1
+
+  $hover !disabled:
+    color: #f4f4f4
+    background-color: #86868750
+
+  $disabled:
+    color: #dfdfdf88
+
+StoreComboBoxPopupMenu < UIPopupMenu
+  image-source: /game_store/images/combobox-square
+  image-clip: 0 60 98 20
+  image-border: 1
+
+StoreComboBox < UIComboBox
+  font: Verdana Bold-11px
+  color: #c0c0c0
+  text-offset: -15 2
+  size: 91 20
+  image-source: /game_store/images/combobox-square
+  image-border: 3
+  image-border-right: 21
+  image-clip: 0 0 91 20
+
+  $hover !disabled:
+    image-clip: 0 0 91 20
+
+  $on:
+    image-clip: 0 40 91 20
+
+  $disabled:
+    color: #dfdfdf88
+    opacity: 0.8
+
+  $checked:
+    image-clip: 0 20 91 20

@@ -1,0 +1,111 @@
+StoreWindow
+  id: storeWindow
+  size: 279 238
+  text: Gift BEHOLDER Coins
+  font: Verdana Bold-11px
+  text-offset: -2 1
+  image-source: /images/ui/popupwindow
+  padding: 17 4 4 4
+  visible: false
+
+  UIWidget
+    id: information
+    size: 225 122
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 15
+    margin-left: 14
+    image-source: /game_store/images/transfer-label
+
+  TextEdit
+    id: transferPointsText
+    size: 150 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 76
+    margin-left: 111
+
+  StoreLabel
+    id: transferableAmount
+    !text: tr('Transferable Tibia Coins:')
+    anchors.top: transferPointsText.bottom
+    anchors.left: parent.left
+    text-auto-resize: true
+    margin-top: 10
+    margin-left: 14
+
+  StoreLabel
+    id: giftable
+    anchors.top: transferableAmount.top
+    anchors.left: transferableAmount.right
+    margin-left: 6
+    text-auto-resize: true
+
+  UIWidget
+    id: transferableIcon
+    anchors.top: giftable.top
+    anchors.left: giftable.right
+    image-source: /game_store/images/icon-tibiacointransferable
+    margin-top: 1
+    margin-left: 7
+
+  StoreLabel
+    id: amount
+    anchors.top: giftable.bottom
+    anchors.left: parent.left
+    margin-top: 8
+    margin-left: 115
+    text-auto-resize: true
+
+  UIWidget
+    id: amountIcon
+    anchors.top: amount.top
+    anchors.left: amount.right
+    image-source: /game_store/images/icon-tibiacointransferable
+    margin-top: 1
+    margin-left: 7
+
+  HorizontalScrollBar
+    id: amountBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 151
+    margin-left: 14
+    margin-right: 12
+    height: 12
+    step: 25
+    increment: 25
+    ctrl-increment: 2500
+    shift-increment: 250
+    auto-press-delay: 60
+    pixels-scroll: true
+    focusable: false
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: closeButton.top
+    margin-left: 14
+    margin-right: 12
+    margin-bottom: 10
+
+  Button
+    id: closeButton
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 12
+    margin-bottom: 12
+    !text: tr('Cancel')
+    size: 43 20
+    focusable: false
+
+  Button
+    id: buttonOk
+    anchors.right: closeButton.left
+    anchors.bottom: closeButton.bottom
+    margin-right: 10
+    !text: tr('Gift')
+    size: 43 20
+    focusable: false

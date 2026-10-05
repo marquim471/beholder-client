@@ -1,0 +1,229 @@
+TextWindowNotice < UIWidget
+  width: 281
+  focusable: false
+  phantom: true
+
+  UIWidget
+    id: icon
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    size: 32 32
+    phantom: true
+
+  Label
+    id: message
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 42
+    width: 239
+    font: verdana-bold-11px-native
+    text-align: top-left
+    text-wrap: true
+    text-auto-resize: true
+    trim-line-end-spaces: true
+    phantom: true
+
+TextWindowButton < ClassicButton
+  font: verdana-bold-8px-native
+
+TextWindowScroll < UIWidget
+  width: 12
+  height: 39
+
+  UIWidget
+    id: track
+    anchors.fill: parent
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-repeated: true
+    phantom: true
+
+  UIButton
+    id: decrementButton
+    anchors.top: parent.top
+    anchors.left: parent.left
+    size: 12 12
+    image-source: /images/ui/modal/scrollbar-buttonup-up
+    $pressed:
+      image-source: /images/ui/modal/scrollbar-buttonup-down
+
+  UIButton
+    id: incrementButton
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    size: 12 12
+    image-source: /images/ui/modal/scrollbar-buttondown-up
+    $pressed:
+      image-source: /images/ui/modal/scrollbar-buttondown-down
+
+  UIButton
+    id: sliderButton
+    anchors.centerIn: parent
+    size: 12 14
+    image-source: /images/ui/modal/scrollbar-handle-vertical
+    image-border-top: 6
+    image-border-bottom: 6
+
+TextWindow < MainWindow
+  id: textWindow
+  size: 313 445
+  image-source: /images/ui/classic-dialog
+  image-border: 4
+  image-border-top: 17
+  font: verdana-bold-11px-native
+  color: #909090
+  text-offset: 0 2
+  padding: 0
+  clipping: true
+
+  UIWidget
+    id: listLogo
+    size: 32 32
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 16
+    margin-top: 29
+    image-source: /images/ui/textwindow/edit-list-logo
+    phantom: true
+
+  UIItem
+    id: textItem
+    size: 32 32
+    anchors.left: listLogo.left
+    anchors.top: listLogo.top
+    virtual: true
+    phantom: true
+
+  Label
+    id: description
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 58
+    margin-top: 39
+    width: 239
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: top-left
+    text-wrap: true
+    text-auto-resize: true
+    trim-line-end-spaces: true
+    phantom: true
+
+  UIWidget
+    id: textFrame
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: separator.top
+    margin-left: 16
+    margin-right: 16
+    margin-bottom: 11
+    background-color: #363636
+    phantom: true
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/ui/modal/1pixel-down-frame-top
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      margin-top: 1
+      width: 1
+      image-source: /images/ui/modal/1pixel-down-frame-left
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 1
+      width: 1
+      image-source: /images/ui/modal/1pixel-down-frame-right
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-left: 1
+      margin-right: 1
+      height: 1
+      image-source: /images/ui/modal/1pixel-down-frame-bottom
+      image-repeated: true
+      phantom: true
+
+  UITextEdit
+    id: text
+    anchors.top: textFrame.top
+    anchors.bottom: textFrame.bottom
+    anchors.left: textFrame.left
+    anchors.right: textFrame.right
+    margin: 1
+    padding: 4 12 4 5
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    selection-color: #ffffff
+    selection-background-color: #808080
+    text-align: top-left
+    multiline: true
+    text-wrap: true
+    change-cursor-image: false
+    blink-speed: 500
+
+  TextWindowScroll
+    id: textScroll
+    anchors.top: textFrame.top
+    anchors.bottom: textFrame.bottom
+    anchors.right: textFrame.right
+    margin: 1
+
+  UIWidget
+    id: separator
+    anchors.bottom: parent.bottom
+    margin-bottom: 46
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 16
+    margin-right: 16
+    height: 2
+    phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-dark
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-bright
+      image-repeated: true
+      phantom: true
+
+  TextWindowButton
+    id: okButton
+    text: Ok
+    anchors.bottom: parent.bottom
+    anchors.right: cancelButton.left
+    margin-right: 6
+    margin-bottom: 16
+
+  TextWindowButton
+    id: cancelButton
+    text: Cancel
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 16
+    margin-right: 16

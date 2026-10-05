@@ -1,0 +1,132 @@
+MinimapMarkerChoice < UICheckBox
+  size: 16 16
+  focusable: false
+  image-source: /images/automap/marker-button-up
+  icon-source: /images/automap/markers
+  icon-size: 11 11
+  icon-align: center
+  icon-offset: 2 2
+  $checked:
+    image-source: /images/automap/marker-button-down
+  $pressed:
+    image-source: /images/automap/marker-button-down
+
+MinimapMarkerLabel < UILabel
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  height: 13
+  text-align: left
+  phantom: true
+
+MinimapMarkerDialog < MainWindow
+  !text: tr('Edit Mark')
+  size: 285 176
+  image-source: /images/automap/marker-dialog
+  image-border: 4
+  image-border-top: 17
+  font: verdana-bold-11px-native
+  color: #909090
+  text-offset: 0 2
+  padding: 29 16 16 16
+
+  MinimapMarkerLabel
+    id: descriptionLabel
+    !text: tr('Enter a short description:')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+
+  UITextEdit
+    id: description
+    anchors.top: descriptionLabel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    height: 16
+    max-length: 100
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    background-color: #363636
+    selection-background-color: #808080
+    blink-speed: 500
+    padding: 2 5 2 5
+
+    MinimapInset
+      anchors.fill: parent
+      margin: -2 -5 -2 -5
+      phantom: true
+
+  MinimapMarkerLabel
+    id: typeLabel
+    !text: tr('Select a type:')
+    anchors.top: description.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 11
+
+  UIWidget
+    id: symbols
+    anchors.top: typeLabel.bottom
+    anchors.left: parent.left
+    margin-top: 6
+    size: 205 37
+    layout:
+      type: grid
+      cell-size: 16 16
+      cell-spacing: 5
+      num-columns: 10
+
+  UIWidget
+    id: separator
+    anchors.top: symbols.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    height: 2
+    phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-dark
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-bright
+      image-repeated: true
+      phantom: true
+
+  ClassicButton
+    font: verdana-bold-8px-native
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.top: separator.bottom
+    anchors.right: parent.right
+    margin-top: 6
+
+  ClassicButton
+    font: verdana-bold-8px-native
+    id: okButton
+    !text: tr('Ok')
+    anchors.top: cancelButton.top
+    anchors.right: cancelButton.left
+    margin-right: 11
+
+MinimapMarkerMenu < UIPopupMenu
+  width: 0
+  image-source: /images/automap/menu
+  image-border: 3
+  padding: 4
+
+MinimapMarkerMenuButton < UIButton
+  height: 16
+  background-color: alpha
+  $hover !disabled:
+    background-color: #808080

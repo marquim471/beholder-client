@@ -1,0 +1,91 @@
+BattleButton < UICreatureButton
+  &isBattleButton: true
+  height: 22
+  margin-bottom: 0
+
+  UICreature
+    id: creature
+    size: 20 20
+    padding: 1
+    anchors.left: parent.left
+    anchors.top: parent.top
+    phantom: true
+
+  UIWidget
+    id: spacer
+    width: 4
+    anchors.left: creature.right
+    anchors.top: creature.top
+    phantom: true
+
+  UIWidget
+    id: skull
+    height: 11
+    anchors.left: spacer.right
+    anchors.top: spacer.top
+    phantom: true
+
+  UIWidget
+    id: emblem
+    height: 11
+    anchors.left: skull.right
+    anchors.top: creature.top
+    phantom: true
+
+  UIWidget
+    id: iconsMonsterSlot1
+    height: 11
+    width: 11
+    anchors.right: parent.right
+    anchors.top: label.top
+    margin-right: 0
+    margin-top: 1
+    phantom: true
+
+  UIWidget
+    id: iconsMonsterSlot2
+    height: 11
+    width: 11
+    anchors.right: prev.left
+    anchors.top: label.top
+    margin-right: 3
+    margin-top: 1
+    phantom: true
+
+  UIWidget
+    id: iconsMonsterSlot3
+    height: 11
+    width: 11
+    anchors.right: prev.left
+    anchors.top: label.top
+    margin-right: 3
+    margin-top: 1
+    phantom: true
+
+  Label
+    id: label
+    font: verdana-bold-11px-native
+    margin-top: 1
+    anchors.left: emblem.right
+    anchors.top: creature.top
+    color: #C0C0C0
+    margin-left: 2
+    phantom: true
+    anchors.right: parent.right
+    margin-right: 2
+    height: 13
+    text-auto-resize: false
+    @onTextChange: self:getParent():fitName()
+    @onGeometryChange: self:getParent():fitName()
+
+  LifeProgressBar
+    id: lifeBar
+    background-border: 1
+    height: 5
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin: 0
+    margin-left: 22
+    margin-top: 15
+    phantom: true

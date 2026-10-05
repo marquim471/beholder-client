@@ -1,0 +1,85 @@
+// Official 15.33 HuntingTaskRewardPurchaseConfirmationDialog: 380 wide, the offer preview in an
+// 80 px row, the sentence, a separator and Buy / Cancel centred.
+MainWindow
+  id: taskShopConfirmWindow
+  !text: tr('Confirm')
+  width: 380
+  height: 200
+
+  UIWidget
+    id: previewBox
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 7
+    size: 66 66
+    image-source: /images/ui/item66
+    image-border: 2
+
+    UICreature
+      id: creature
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 1
+      margin-left: 1
+      size: 64 64
+      creature-center: true
+      phantom: true
+      visible: false
+
+    UIItem
+      id: item
+      anchors.centerIn: parent
+      size: 32 32
+      virtual: true
+      phantom: true
+      visible: false
+
+    UIWidget
+      id: icon
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 64 64
+      phantom: true
+      visible: false
+
+  Label
+    id: message
+    anchors.top: previewBox.bottom
+    anchors.left: parent.left
+    margin-top: 7
+    text-wrap: true
+    text-auto-resize: true
+    color: #c0c0c0
+
+    UIWidget
+      id: pointsIcon
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 11 11
+      image-source: /game_taskboard/assets/images/task-tokens
+      phantom: true
+
+  HorizontalSeparator
+    id: separator
+    anchors.top: message.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+
+  Button
+    id: buyButton
+    !text: tr('Buy')
+    anchors.top: separator.bottom
+    anchors.right: parent.horizontalCenter
+    margin-top: 10
+    margin-right: 3
+    width: 64
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.top: separator.bottom
+    anchors.left: parent.horizontalCenter
+    margin-top: 10
+    margin-left: 3
+    width: 64

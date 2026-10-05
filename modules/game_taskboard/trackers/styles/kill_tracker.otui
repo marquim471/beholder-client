@@ -1,0 +1,413 @@
+TaskBoardCreatureTrack < Panel
+  size: 144 22
+  phantom: false
+  tooltip-font: verdana-bold-11px-native
+  @onSetup: modules.game_taskboard.TaskBoardController:configureTrackerRow(self)
+
+  UICreature
+    id: creature
+    size: 18 18
+    anchors.top: parent.top
+    anchors.left: parent.left
+    idle-animate: true
+    margin-top: 2
+    margin-left: 2
+    phantom: true
+
+  UIWidget
+    id: noCreature
+    size: 18 18
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /game_taskboard/assets/images/prey-noprey-small
+    image-smooth: false
+    phantom: true
+    margin-top: 2
+    margin-left: 2
+
+  UIWidget
+    id: creatureName
+    height: 13
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 1
+    margin-left: 41
+    text: Inactive
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    text-align: left
+    phantom: true
+
+  UIProgressBar
+    id: time
+    height: 5
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 16
+    margin-left: 41
+    margin-right: 11
+    background-color: #C28400
+    background-border: 1
+    border-width: 1
+    border-color: #000000
+    percent: 0
+    phantom: true
+
+TaskBoardPreyCreatureTrack < TaskBoardCreatureTrack
+  UIWidget
+    id: preyType
+    size: 15 15
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /images/game/prey/prey_no_bonus
+    image-smooth: false
+    margin-left: 24
+    margin-top: 4
+    phantom: true
+
+  UIWidget
+    id: preyAutoExtend
+    size: 6 5
+    anchors.top: parent.top
+    anchors.right: parent.right
+    image-source: /images/game/prey/prey-auto-extend-disabled
+    image-smooth: false
+    margin-top: 16
+    phantom: true
+
+TaskBoardBountyCreatureTrack < TaskBoardCreatureTrack
+  UIWidget
+    id: bountyIcon
+    size: 9 9
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /game_taskboard/assets/images/icon-currency-bountypoints
+    image-smooth: false
+    margin-left: 27
+    margin-top: 7
+    phantom: true
+
+TaskBoardWeeklyCreatureTrack < TaskBoardCreatureTrack
+  UIWidget
+    id: anyCreatureIcon
+    size: 18 14
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /game_taskboard/assets/images/icon-arbitrarymonster
+    image-smooth: false
+    margin-top: 4
+    margin-left: 2
+    phantom: true
+    visible: false
+
+  UIWidget
+    id: weeklyIcon
+    size: 11 11
+    anchors.top: parent.top
+    anchors.left: parent.left
+    image-source: /game_taskboard/assets/images/task-tokens
+    image-smooth: false
+    margin-left: 26
+    margin-top: 6
+    phantom: true
+
+TaskBoardTrackerSeparator < UIWidget
+  height: 2
+  margin-top: 2
+  phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/automap/horizontal-line-dark
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/automap/horizontal-line-bright
+    image-repeated: true
+    phantom: true
+
+TaskBoardTrackerCaption < Label
+  height: 13
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+
+TaskBoardKillTracker < UIMiniWindow
+  id: taskboardKillTracker
+  &save: true
+  &type: 'taskboardKillTracker'
+  width: 192
+  height: 175
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 71
+    margin-left: 3
+    margin-right: 3
+
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-source: /images/icons/icon-prey-widget
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: minimizeButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 5
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+
+    !text: tr('Kill Tracker')
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 17
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  MiniWindowContents
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 17 21 4 6
+    padding: 0
+    vertical-scrollbar: miniwindowScrollBar
+    layout: verticalBox
+
+    TaskBoardTrackerCaption
+      !text: tr('Prey Creatures')
+
+    TaskBoardTrackerSeparator
+
+    UIWidget
+      height: 2
+      phantom: true
+
+    TaskBoardPreyCreatureTrack
+      id: slot1
+      margin-top: 0
+      padding-right: 2
+      visible: true
+
+    TaskBoardPreyCreatureTrack
+      id: slot2
+      margin-top: 0
+      padding-right: 2
+      visible: true
+
+    TaskBoardPreyCreatureTrack
+      id: slot3
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardTrackerCaption
+      !text: tr('Bounty Task')
+      margin-top: 14
+
+    TaskBoardTrackerSeparator
+
+    TaskBoardBountyCreatureTrack
+      id: bslot1
+      margin-top: 2
+      padding-right: 2
+
+    TaskBoardTrackerCaption
+      id: weeklyTasksLabel
+      !text: tr('Weekly Tasks')
+      margin-top: 14
+
+    TaskBoardTrackerSeparator
+      id: weeklyTasksSeparator
+
+    UIWidget
+      height: 2
+      phantom: true
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot1
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot2
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot3
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot4
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot5
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot6
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot7
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot8
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+    TaskBoardWeeklyCreatureTrack
+      id: wslot9
+      margin-top: 0
+      padding-right: 2
+      visible: false
+
+  UIWidget
+    id: miniborder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    image-source: /images/ui/miniwindow/windowresizer
+    image-smooth: false
+    size: 13 13
+    margin-left: 3
+    margin-bottom: 3
+    phantom: true

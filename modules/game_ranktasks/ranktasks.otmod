@@ -1,0 +1,8 @@
+Module
+  name: game_ranktasks
+  description: Ranked task system window (separate from the official Task Board)
+  author: Tibia Global
+  sandboxed: true
+  scripts: [ ranktasks ]
+  @onLoad: init()
+  @onUnload: terminate()

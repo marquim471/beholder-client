@@ -1,0 +1,253 @@
+TradeItem < Item
+  image-source: /images/inventory/containerslot
+  image-border: 1
+
+TradeButton < UIButton
+  size: 43 20
+  font: verdana-bold-8px-native
+  color: #c0c0c0
+  image-source: /images/ui/button-grey-up
+  image-border: 1
+  $pressed:
+    image-source: /images/ui/button-grey-down
+    text-offset: 1 1
+
+TradeName < Label
+  font: verdana-bold-8px-native
+  height: 10
+  color: #c0c0c0
+  @onGeometryChange: modules.game_playertrade.fitTradeName(self)
+  @onTextChange: modules.game_playertrade.fitTradeName(self)
+
+TradeWindow < UIMiniWindow
+  width: 192
+  height: 100
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 2 0 0 4
+    size: 12 12
+    image-source: /game_playertrade/images/icon-trade
+    phantom: true
+
+  Label
+    text: Trade
+    font: verdana-bold-11px-native
+    color: #909090
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin: 1 0 0 20
+    height: 13
+    width: 120
+
+  UIButton
+    id: closeButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    size: 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $pressed:
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    size: 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $pressed:
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 3
+    margin-right: 3
+    height: 4
+    minimum: 100
+
+  Panel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 4 4 4
+
+    TradeName
+      id: ownTradeLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 2
+      width: 72
+
+    TradeName
+      id: counterTradeLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 80
+      width: 74
+
+    HorizontalSeparator
+      id: topSeparator
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 10
+      height: 2
+
+    ScrollablePanel
+      id: tradeViewport
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin: 12 12 26 0
+
+      Panel
+        id: tradeBody
+        anchors.top: parent.top
+        anchors.left: parent.left
+        width: 154
+        height: 37
+
+        Panel
+          id: ownTradeContainer
+          anchors.top: parent.top
+          anchors.left: parent.left
+          width: 74
+          padding: 2 0 1 2
+          layout:
+            type: grid
+            cell-size: 34 34
+            cell-spacing: 3
+            num-columns: 2
+
+        VerticalSeparator
+          anchors.top: parent.top
+          anchors.bottom: parent.bottom
+          anchors.left: parent.left
+          margin-left: 76
+          width: 2
+
+        Panel
+          id: counterTradeContainer
+          anchors.top: parent.top
+          anchors.left: parent.left
+          margin-left: 80
+          width: 74
+          padding: 2 0 1 2
+          layout:
+            type: grid
+            cell-size: 34 34
+            cell-spacing: 3
+            num-columns: 2
+
+    HorizontalSeparator
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-bottom: 24
+      height: 2
+
+    TradeButton
+      id: rejectButton
+      text: Cancel
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-right: 2
+      margin-bottom: 2
+      @onClick: g_game.rejectTrade()
+
+    TradeButton
+      id: acceptButton
+      text: Accept
+      anchors.right: rejectButton.left
+      anchors.bottom: rejectButton.bottom
+      margin-right: 6
+      visible: false
+      @onClick: modules.game_playertrade.acceptTrade()
+
+    Label
+      id: statusText
+      anchors.left: parent.left
+      anchors.right: rejectButton.left
+      anchors.bottom: rejectButton.bottom
+      margin-left: 2
+      margin-right: 6
+      height: 20
+      font: verdana-bold-8px-native
+      text-align: center
+      color: #c0c0c0
+      !text: tr("Please wait for a\ncounteroffer")
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: contentsPanel.top
+    anchors.bottom: contentsPanel.bottom
+    anchors.right: contentsPanel.right
+    margin-top: 12
+    margin-right: 0
+    margin-bottom: 26
+    step: 37
+    increment: 37
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+

@@ -1,0 +1,12 @@
+Module
+  name: game_item_refiller
+  description: Visual Modal Window for Rune and Ammunition Refillers
+  author: Antigravity / Beholder
+  website: https://github.com/mehah/otclient
+  sandboxed: true
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ game_item_refiller ]
+  dependencies: [ game_interface ]
+  @onLoad: init()
+  @onUnload: terminate()

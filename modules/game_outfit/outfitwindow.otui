@@ -1,0 +1,21 @@
+FloorTile < UIWidget
+  image-source: /images/ui/outfits/floor
+  size: 32 32
+  phantom: true
+
+// Configure options of the Podium of Renown mode.
+PodiumConfigureOption < FlatPanel
+  anchors.left: parent.left
+  anchors.right: parent.right
+  height: 22
+  padding: 5
+
+  CheckBox
+    id: check
+    font: verdana-bold-11px-native
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    anchors.right: parent.right
+
+OutfitWindow
+

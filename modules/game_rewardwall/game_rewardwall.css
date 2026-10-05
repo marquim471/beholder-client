@@ -1,0 +1,253 @@
+.reward-wall-window {
+  position: relative;
+  width: 506px;
+  height: 471px;
+  padding-top: 29px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  display: block;
+  color: #c0c0c0;
+  font: verdana-bold-11px-native;
+}
+
+.history-panel {
+  height: 410px;
+  padding: 22px 7px 7px 7px;
+}
+
+.history-list {
+  background-color: #363636;
+  display: block;
+  border-color: #00000077;
+  border-width: 1px;
+  width: 98%;
+}
+
+.content-panel {
+  height: 91px;
+  padding: 22px 7px 7px 7px;
+}
+
+.resting-area-info {
+  width: 66px;
+  height: 91px;
+}
+
+.resting-area-icon {
+  width: 66px;
+  height: 44px;
+  --fixed-size: true;
+  --image-size: 66 44;
+  --text-offset: 0 -3;
+  text-align: center;
+}
+
+.resting-area-time {
+  width: 66px;
+  height: 20px;
+  --fixed-size: true;
+  text-align: center;
+}
+
+#bonusIcon1 {
+  --icon-clip: 0 0 64 64;
+  width: 100%;
+}
+
+#bonusIcon2 {
+  --icon-clip: 64 0 64 64;
+  width: 100%;
+}
+
+#bonusIcon3 {
+  --icon-clip: 128 0 64 64;
+  width: 100%;
+}
+
+#bonusIcon4 {
+  --icon-clip: 192 0 64 64;
+  width: 100%;
+}
+
+#bonusIcon5 {
+  --icon-clip: 256 0 64 64;
+  width: 100%;
+}
+
+#bonusIcon6 {
+  --icon-clip: 320 0 64 64;
+  width: 100%;
+}
+
+.resting-area-gold {
+  width: 66px;
+  height: 20px;
+  margin-top: 3px;
+  --fixed-size: true;
+}
+
+.bonus-icons-container {
+  margin-left: 71px;
+  width: 421px;
+  height: 66px;
+  --phantom: true;
+}
+
+.premium-message {
+  width: 421px;
+  height: 20px;
+  text-align: center;
+  --text-auto-resize: false;
+}
+
+.daily-rewards-panel {
+  height: 104px;
+  padding: 22px 7px 7px 7px;
+  margin-top: 5px;
+}
+
+.reward-item {
+  width: 66px;
+  height: 91px;
+  --fixed-size: true;
+  --text-align: topLeft;
+}
+
+.reward-button {
+  width: 66px;
+  height: 66px;
+  --fixed-size: true;
+}
+
+.reward-label {
+  width: 66px;
+  height: 20px;
+  --fixed-size: true;
+}
+
+.reward-arrow {
+  width: 5px;
+  height: 7px;
+  margin-top: 29px;
+  --fixed-size: true;
+  --text-align: topLeft;
+  --image-clip: 0 0 5 7;
+  --image-size: 5 7;
+}
+
+.reward-arrow-loop {
+  width: 435px;
+  height: 13px;
+  --fixed-size: true;
+  --image-size: 435 13;
+  --phantom: true;
+  text-align: center;
+}
+
+.premium-panel {
+  height: 51px;
+  margin-top: 5px;
+  --image-source: /images/ui/2pixel_up_frame_borderimage;
+  --image-border: 2;
+  padding: 7px;
+  display: block;
+}
+
+.info-label {
+  white-space: pre-wrap;
+}
+
+.premium-info2 {
+  height: 37px;
+  width: 359px;
+  margin: 0;
+  text-wrap: true;
+  text-align: center;
+}
+
+.premium-button {
+  float: right;
+  width: 128px;
+  height: 37px;
+  margin-top: 0px;
+}
+
+.footer-panel {
+  height: 20px;
+}
+
+.footer-separator {
+  height: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.footer-gold-1 {
+  width: 26px;
+  height: 20px;
+}
+
+.footer-gold-2 {
+  width: 52px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.instant-reward-button {
+  width: 26px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+.action-button {
+  font: verdana-bold_8;
+  color: #c0c0c0;
+  width: 43px;
+  height: 20px;
+  padding: 0;
+  text-align: center;
+}
+.action-button:disabled {
+  color: #707070;
+}
+.close-button {
+  width: 43px;
+  margin-left: 5px;
+  float: right;
+  text-align: center;
+  vertical-align: center;
+}
+.history-button {
+  float: right;
+  margin-right: 6px;
+}
+
+.imgBonusesCss {
+  width: 66px;
+  height: 66px;
+  --fixed-size: true;
+  --icon-size: 64 64;
+}
+
+
+.bottom-panel {
+  text-wrap: true;
+  --image-source: /images/ui/2pixel_up_frame_borderimage;
+  --image-border: 2;
+  display: block;
+  margin-top: 5px;
+  height: 105px;
+  --text-offset: 7 7;
+}
+.daily-rewards-row {
+  width: 492px;
+  height: 91px;
+  --fixed-size: true;
+  --text-align: topLeft;
+}
+
+.daily-rewards-content {
+  width: 492px;
+  height: 104px;
+}

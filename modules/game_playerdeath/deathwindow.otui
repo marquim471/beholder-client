@@ -1,0 +1,72 @@
+MainWindow
+  id: deathWindow
+  !text: tr('You are Dead')
+  size: 369 217
+  image-source: /images/ui/classic-dialog
+  image-border: 4
+  image-border-top: 17
+  font: verdana-bold-11px-native
+  color: #909090
+  text-offset: 0 2
+  padding: 29 16 16 16
+
+  Label
+    id: labelText
+    font: verdana-bold-11px-native
+    color: #c0c0c0
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    text-align: top-left
+    phantom: true
+
+  UIWidget
+    id: separator
+    anchors.top: labelText.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 11
+    height: 2
+    phantom: true
+
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-dark
+      image-repeated: true
+      phantom: true
+
+    UIWidget
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 1
+      image-source: /images/automap/horizontal-line-bright
+      image-repeated: true
+      phantom: true
+
+  ClassicButton
+    id: buttonCancel
+    !text: tr('Cancel')
+    font: verdana-bold-8px-native
+    anchors.top: separator.bottom
+    anchors.right: parent.right
+    margin-top: 11
+
+  ClassicButton
+    id: buttonOk
+    !text: tr('Ok')
+    font: verdana-bold-8px-native
+    anchors.top: buttonCancel.top
+    anchors.right: buttonCancel.left
+    margin-right: 6
+
+  ClassicButton
+    id: buttonStore
+    !text: tr('Store')
+    font: verdana-bold-8px-native
+    anchors.top: buttonCancel.top
+    anchors.right: buttonOk.left
+    margin-right: 6

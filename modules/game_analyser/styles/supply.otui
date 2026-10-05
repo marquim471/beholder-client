@@ -1,0 +1,382 @@
+SupplyMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 219
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 80
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  UIButton
+    id: lockButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+
+SupplyAnalyserItem < UIItem
+  size: 32 32
+  margin-right: 6
+  margin-bottom: 2
+  virtual: true
+  show-count: false
+  virtual-count: true
+  font: verdana-11px-rounded
+  tooltip-delayed: true
+
+SupplyMiniWindow
+  id: supplyAnalyserMiniWindow
+  &type: 'wasteAnalyser'
+  height: 225
+  &save: true
+  &autoOpen: false
+  @onExtra: modules.game_analyser.onSupplyExtra(g_window.getMousePosition())
+
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-source: /images/icons/icon-wasteanalyser-widget
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 2
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+    !text: tr('Supply Analyser')
+
+  ScrollablePanel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 16 4 4
+    padding: 2
+    vertical-scrollbar: miniwindowScrollBar
+    Label
+      id: goldLabel
+      !text: tr('Gold Value:')
+      anchors.top: parent.top
+      anchors.left: parent.left
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 3
+
+    Label
+      id: gold
+      !text: tr('0')
+      anchors.top: parent.top
+      anchors.right: prev.left
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: perHourLabel
+      !text: tr('Per Hour:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: prev.top
+      anchors.right: parent.right
+      margin-top: 3
+
+    Label
+      id: goldHour
+      !text: tr('0')
+      anchors.top: perHourLabel.top
+      anchors.right: prev.left
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separator
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+    Panel
+      id: lootedItems
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+      layout:
+        type: grid
+        cell-size: 38 34
+        cell-spacing: 0
+        num-columns: 4
+
+    HorizontalSeparator
+      id: separatorLootedItems
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+    Label
+      id: targetLabel
+      !text: tr('Target:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      id: goldLabelIcon
+      size: 9 9
+      image-auto-resize: true
+      image-source: /game_cyclopedia/images/icon_gold
+      anchors.top: prev.top
+      anchors.right: parent.right
+      margin-top: 3
+
+    Label
+      id: goldTarget
+      !text: tr('0')
+      anchors.top: targetLabel.top
+      anchors.right: prev.left
+      margin-right: 4
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      id: supplyTargetBG
+      size: 152 11
+      image-auto-resize: true
+      image-source: /images/game/analyzer/targetBG
+      anchors.top: prev.bottom
+      anchors.right: parent.right
+      margin-top: 6
+
+      UIWidget
+        id: supplyArrow
+        size: 9 8
+        image-auto-resize: true
+        image-source: /images/game/analyzer/arrow
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        margin-bottom: -2
+        margin-left: 71
+
+    HorizontalSeparator
+      id: separatorGauge
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 7
+
+    UIWidget
+      id: supplyGraphBG
+      size: 129 83
+      image-auto-resize: true
+      image-source: /images/game/analyzer/graphBG
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 15
+      margin-top: 14
+
+    UIGraph
+      id: graphPanel
+      capacity: 3600
+      background-color: #383636
+      color: red
+      size: 129 83
+      show-labels: false
+      anchors.top: prev.top
+      anchors.left: prev.left
+      image-source: /images/game/analyzer/graphBG
+
+    UIWidget
+      id: graphHorizontal
+      size: 140 9
+      image-auto-resize: true
+      image-source: /images/game/analyzer/graphHorizontal
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 7
+      margin-top: 6

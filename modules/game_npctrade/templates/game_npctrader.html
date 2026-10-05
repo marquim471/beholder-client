@@ -1,0 +1,230 @@
+<!-- todo
+ not work always-show-count: false in html 
+ -->
+
+<style>
+    /* ==============================================================================================
+       UTILITIES & SHARED CLASSES
+       ============================================================================================== */
+    /* Layout Helpers */
+    .flex { display: flex; }
+    .block { display: block; }
+    .inlineBlock { display: inline-block; }
+    .fullWidth { width: 100%; }
+    
+    /* Typography */
+    .fontText { font: verdana-bold-11px-native; }
+    .fontTitle { font: verdana-bold-8px-native; }
+    
+    /* Color Palette */
+    .colorGrey { color: #cccccc; }
+    .colorWhite { color: #ffffff; }
+    .colorLightGrey { color: #aaaaaa; }
+    .colorItemGrey { color: #c0c0c0; }
+    .bgDark { background: #222222; }
+    
+    /* Borders & Box Models */
+    .iconBox { width: 40px; height: 40px; flex-shrink: 0; min-width: 40px; --virtual: true}
+    .borderGrey { border: 1 #444444; }
+    .sunkenBorder { --border-width-top: 1; --border-color-top: #141414; --border-width-left: 1; --border-color-left: #141414; --border-width-bottom: 1; --border-color-bottom: #747474; --border-width-right: 1; --border-color-right: #747474; }
+    .panelBase { width: 365px; display: block; margin: 0; }
+    .windowBtn { display: block; width: 12px; height: 12px; margin-top: 20px; }
+
+    /* ==============================================================================================
+       MAIN WINDOW & STRUCTURE
+       ============================================================================================== */
+    .modal-message { width: 408px; height: 412px; display: block; --image-source: none; }
+    .leftPanel { display: block; margin-left: 0; margin-top: 0; width: 398px; height: 412px; }
+    .rightPanel { display: block; margin-left: 404px; margin-top: 46px; width: 180px; height: 350px; }
+    .verticalSep { display: block; margin-left: 392px; margin-top: 46px; width: 2px; height: 350px; }
+    .dragHandle { display: block; margin-left: 1px; margin-top: 17px; height: 17px; background-color: alpha; }
+    .closeButton { --image-source: /images/ui/miniwindow/exit-button-small-up; margin-right: 4px; }
+    .closeButton:active { --image-source: /images/ui/miniwindow/exit-button-small-down; }
+    .bottonOptions { --image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle; margin-right: 20px; }
+    .bottonOptions:active { --image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed; }
+
+    /* ==============================================================================================
+       NPC INTERACTION (LEFT PANEL)
+       ============================================================================================== */
+    /* Header & Visuals */
+    .img { display: block; margin-left: 1px; margin-top: 10px; width: 169px; height: 27px; --image-border-left: 89; --image-border-right: 34; }
+    .title { display: block; margin-left: 88px; margin-top: 18px; width: 70px; height: 13px; font: verdana-bold-11px-native; color: #c0c0c0; }
+    .podium { display: block; margin-left: 13px; margin-top: 12px; width: 65px; height: 67px; }
+    .creature-display { display: block; margin-left: 0; margin-top: 0; width: 64px; height: 64px; }
+
+    /* Chat & Console */
+    .panelConsole { display: block; margin-left: 17px; margin-top: 46px; height: 289px; --image-border: 3; padding: 3; padding-right: 15; --image-source: /images/ui/3pixel_frame_borderimage; }
+    .inputConsole { display: block; margin-left: 17px; margin-top: 380px; width: 295px; height: 16px; font: verdana-bold-11px-native; --placeholder: "Type here to chat"; --placeholder-color: #707070; }
+    .bottonChat { display: block; margin-left: 318px; margin-top: 380px; width: 64px; height: 16px; font: verdana-bold-8px-native; }
+    
+    /* Buttons Panel */
+    .panelBotons { display: block; margin-left: 17px; margin-top: 340px; height: 35px; width: 365px; --focusable: false; }
+    .npc-button { width: 35px; height: 35px; --icon-source: /game_npctrade/assets/images/icons-npcdialog; margin-right: 5px; }
+
+    /* ==============================================================================================
+       TRADE INTERFACE (RIGHT PANEL)
+       ============================================================================================== */
+    /* Trade Header */
+    .tradeHeader { display: block; margin-left: 0; margin-top: 0; width: 180px; height: 34px; }
+    .currencySection { display: block; margin-left: 2px; margin-top: 0; width: 93px; height: 34px; }
+    .tradeCurrencyName { display: block; margin-left: 0; margin-top: 21px; height: 13px; }
+    .tradeCurrencyIcon { display: block; margin-left: 99px; margin-top: 0; width: 34px; min-width: 34px; height: 34px; }
+    .tradeTabs { display: block; margin-left: 135px; margin-top: 0; width: 43px; height: 34px; }
+    .tradeTab { display: block; margin-left: 0; margin-top: 0; width: 43px; height: 16px; }
+    .bottonTrade { --image-clip: 28 0 14 14; margin-right: 40px; }
+    .bottonTrade:hover { --image-clip: 28 14 14 14; }
+    .bottonTrade:active { --image-clip: 28 28 14 14; }
+
+    /* Item List */
+    .tradeListScroll { display: block; margin-left: 0; margin-top: 39px; width: 166px; height: 225px; padding: 1; padding-right: 13; background-color: #404040; overflow: scroll; }
+    .tradeScrollBar { width: 15px; height: 215px; margin-right: 2px; background-color: #222222; }
+    .itemListContainer { width: 175px; height: 215px; }
+    .tradeListItem { width: 166px; height: 35px; padding: 0; margin: 0; border: 0 transparent; }
+    .tradeListItem:focus { background-color: #585858; }
+    .tradeListItemSelected { background-color: #585858; }
+    .tradeOfferIcon { width: 34px; height: 34px; min-width: 34px; margin-left: 2px; margin-top: 1px; --image-source: /images/inventory/containerslot; --image-border: 1; }
+    .itemInfoBlock { display: block; width: 113px; height: 26px; margin-left: 6px; margin-top: 5px; flex-grow: 0; flex-shrink: 0; overflow: hidden; }
+    .tradeItemName { display: block; width: 113px; height: 13px; font: verdana-bold-11px-native; }
+    .tradeItemInfo { display: block; width: 113px; height: 13px; font: verdana-bold-11px-native; }
+
+    /* Search Bar */
+    .tradeSearchRow { display: block; margin-left: 2px; margin-top: 269px; width: 176px; height: 20px; }
+    .tradeSearchInput { display: block; margin-left: 0; margin-top: 0; width: 152px; height: 20px; --placeholder: "Type to search"; --placeholder-color: #707070; }
+    .tradeSearchClear { display: block; margin-left: 156px; margin-top: 0; width: 20px; height: 20px; --image-source: /images/ui/button-clear-18x18-up; --image-border: 1; }
+
+    /* Trade Footer & Controls */
+    .tradeFooter { display: block; margin-left: 0; margin-top: 291px; width: 180px; height: 59px; }
+    .tradeTopRow { display: block; margin-left: 2px; margin-top: 0; width: 128px; height: 12px; }
+    #amountScrollBar { width: 128px; height: 12px; }
+    .tradePreviewBox { display: block; margin-left: 144px; margin-top: 0; width: 34px; min-width: 34px; height: 34px; --image-source: /images/inventory/containerslot; --image-border: 1; }
+    .tradeBuyButton { display: block; margin-left: 135px; margin-top: 39px; width: 43px; height: 20px; }
+    .tradeRows { display: block; margin-left: 2px; margin-top: 14px; width: 128px; height: 45px; }
+    .tradeRow { display: block; width: 128px; height: 15px; }
+    .tradeFooterLabel { display: block; margin-left: 0; margin-top: 0; width: 54px; height: 13px; }
+    .tradeFooterValue { display: block; margin-left: 56px; margin-top: 0; width: 72px; height: 13px; text-align: right; }
+    .tradeFooterAmountInput { display: block; margin-left: 56px; margin-top: 0; width: 69px; height: 15px; text-align: right; padding-right: 1px; }
+    .dialogFrame { display: block; margin-left: 1px; margin-top: 17px; height: 395px; --image-source: /images/ui/classic-dialog; --image-border: 4; --image-border-top: 17; }
+    .nativeButton { --image-source: /images/ui/button-grey-up; --image-border: 1; color: #c0c0c0; }
+    .nativeButton:active { --image-source: /images/ui/button-grey-down; --text-offset: 1 1; }
+    .tradeTab:disabled { --image-source: /images/ui/button-grey-down; color: #c0c0c0; }
+    .tradeSearchClear:active { --image-source: /images/ui/button-clear-18x18-down; }
+</style>
+
+
+<script type="text">
+    self.isTradeOpen = false;
+    self.tradeItems = {};
+    self.selectedItem = nil;
+    self.amount = 1;
+    self.totalPrice = 0;
+    self.totalWeight = "0.00";
+</script>
+
+<html>
+<uiwindow id="windowTrader" placement="top-left" *margin-left="self.dialogX" *margin-top="self.dialogY" *width="self.widthConsole" class="modal-message"
+    onescape="self:onCloseNpcTrade()" onkeydown="self:onConsoleKeyPress(event)">
+
+    <div class="dialogFrame" *width="self.dialogWidth - 1" *height="self.dialogHeight - 17" phantom="true" placement="top-left"></div>
+
+    <!-- Left Panel -->
+    <div class="leftPanel" *width="self.dialogWidth" *height="self.dialogHeight"  placement="top-left">
+        <scrollablepanel id="consoleBuffer" inverted-scroll="true" always-scroll-maximum="true" class="panelConsole panelBase" style="overflow: scroll;" *width="self.dialogWidth - (self.isTradeOpen and 253 or 51)" *height="self.dialogHeight - 129" layout="type: verticalBox; align-bottom: true" placement="top-left">
+        </scrollablepanel>
+
+        <img class="img" src="assets/images/blue-golden-flag-banner" placement="top-left" />
+        <label class="title" placement="top-left">{{self.creatureName}}</label>
+        <img class="podium" src="assets/images/backdrop-npcdialog-podestal" placement="top-left" />
+        <uicreature id="creatureOutfit" class="creature-display" placement="top-left"></uicreature>
+
+
+        <div id="panelBotons" class="panelBotons" *width="self.dialogWidth - (self.isTradeOpen and 235 or 33)" *margin-top="self.dialogHeight - 72" placement="top-left">
+            <uibutton *for="local buttonData in self.buttons" class="npc-button nativeButton" *tooltip="buttonData.text"
+                *icon-clip="self:getIconClip(buttonData.id)" onclick="self:onConsoleTextClicked(buttonData.text)">
+
+            </uibutton>
+        </div>
+        <input id="chatInput" class="inputConsole" *width="self.dialogWidth - (self.isTradeOpen and 305 or 103)" *margin-top="self.dialogHeight - 32" placement="top-left" />
+        <uibutton id="chatModeButton" class="bottonChat nativeButton" *margin-left="self.dialogWidth - (self.isTradeOpen and 282 or 80)" *margin-top="self.dialogHeight - 32" onclick="self:toggleChatMode()" placement="top-left">{{self.chatMode}}</uibutton>
+    </div>
+
+    <div class="verticalSep VerticalSeparator" *margin-left="self.dialogWidth - 208" *height="self.dialogHeight - 62" *visible="self.isTradeOpen" placement="top-left"></div>
+
+    <!-- Right Panel (Trade) -->
+    <div class="rightPanel" *margin-left="self.dialogWidth - 196" *height="self.dialogHeight - 62" *visible="self.isTradeOpen" placement="top-left">
+        <!-- Header -->
+        <div class="tradeHeader" placement="top-left">
+            <div class="currencySection" placement="top-left">
+                <label class="fontText colorGrey" text="Currency:"></label>
+                <label class="tradeCurrencyName fontText colorWhite" text="Gold Coin" placement="top-left"></label>
+            </div>
+            <UIItem class="tradeCurrencyIcon iconBox sunkenBorder" item-id="3031" item-count="100" always-show-count="false" placement="top-left" />
+            <div class="tradeTabs" placement="top-left">
+                <uibutton id="tabBuy" class="tradeTab fontTitle nativeButton" text="Buy" onclick="self:setTradeMode(self.BUY)" placement="top-left"></uibutton>
+                <uibutton id="tabSell" class="tradeTab fontTitle nativeButton" style="margin-top: 18px;" text="Sell" onclick="self:setTradeMode(self.SELL)" placement="top-left"></uibutton>
+            </div>
+        </div>
+
+        <!-- List Container -->
+        <div id="tradeListScroll" class="tradeListScroll borderGrey sunkenBorder" *height="self.dialogHeight - 189" layout="type: verticalBox" placement="top-left">
+            <div *for="local item in self.tradeItems" *for-finished="self:onTradeListRendered()" class="tradeListItem flex"
+                *trade-item="item"
+                *class-tradeListItemSelected="self.selectedItem == item">
+                <UIItem class="iconBox item tradeOfferIcon" *item="item.ptr" />
+                <div class="itemInfoBlock">
+                    <label id="nameLabel" class="tradeItemName" *text="item.name"></label>
+                    <label id="infoLabel" class="tradeItemInfo" *text="'Price ' .. item.price .. ', ' .. item.weight .. ' oz'"></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search -->
+
+        <div class="tradeSearchRow borderGrey bgDark" *margin-top="self.dialogHeight - 143" placement="top-left">
+            <input class="tradeSearchInput fontText colorLightGrey" onchange="self:filterTradeList(event.value)" placement="top-left" />
+            <uibutton class="tradeSearchClear" onclick="self:clearSearch()" placement="top-left"></uibutton>
+        </div>
+        <!-- Footer -->
+        <div class="tradeFooter" *margin-top="self.dialogHeight - 121" placement="top-left">
+
+            <!-- Scrollbar (top left) -->
+            <div class="tradeTopRow" placement="top-left">
+                <HorizontalScrollBar id="amountScrollBar" minimum="1" maximum="100" step="1"
+                    onchange="self:onAmountScrollBarChange(event.value)" disabled />
+            </div>
+
+            <!-- Preview (right) -->
+            <UIItem class="tradePreviewBox item" *item="self.selectedItem and self.selectedItem.ptr or nil" placement="top-left" />
+
+            <!-- Buy button (bottom right) -->
+            <uibutton id="toggleButton" class="tradeBuyButton fontTitle nativeButton" text="Buy" onclick="self:executeTrade()" placement="top-left"></uibutton>
+
+            <!-- Rows (left) -->
+            <div class="tradeRows" placement="top-left">
+                <div class="tradeRow" placement="top-left" style="margin-top: 0px;">
+                    <div class="tradeFooterLabel fontText colorGrey inlineBlock" placement="top-left">Amount:</div>
+                    <input id="amountInput" class="tradeFooterAmountInput fontText colorWhite bgDark borderGrey inlineBlock" *text="self.amount" onchange="self:onAmountInputChange(event)" placement="top-left" />
+                </div>
+
+                <div class="tradeRow" placement="top-left" style="margin-top: 17px;">
+                    <div class="tradeFooterLabel fontText colorGrey inlineBlock" placement="top-left">Price:</div>
+                    <label class="tradeFooterValue fontText colorWhite inlineBlock" placement="top-left">{{self.totalPrice}}</label>
+                </div>
+
+                <div class="tradeRow" placement="top-left" style="margin-top: 32px;">
+                    <div class="tradeFooterLabel fontText colorGrey inlineBlock" placement="top-left">Gold:</div>
+                    <label id="playerMoneyDisplay" class="tradeFooterValue fontText colorWhite inlineBlock" text="0" placement="top-left"></label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="dragHandle" class="dragHandle" *width="self.dialogWidth - 1" focusable="false" placement="top-left"></div>
+
+    <UIButton class="bottonOptions windowBtn" placement="top-right" *visible="self.isTradeOpen" onclick="self:onOptionsClick()"></UIButton>
+    <UIButton class="closeButton windowBtn" placement="top-right" onclick="self:onCloseNpcTrade()"></UIButton>
+
+</uiwindow>
+
+</html>

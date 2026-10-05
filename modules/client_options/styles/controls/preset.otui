@@ -1,0 +1,41 @@
+MainWindow
+  width: 360
+  text: Add hotkey preset
+  layout:
+    type: verticalBox
+    fit-children: true
+
+  Label
+    id: info
+    font: verdana-11px-monochrome
+    color: #c0c0c0
+    text: Enter a name for the new preset:
+  
+  TextEdit
+    id: field
+    margin-top: 3
+    height: 16
+    padding: 1 4
+    font: verdana-11px-monochrome
+    color: #c0c0c0
+
+  HorizontalSeparator
+    margin-top: 10
+
+  Panel
+    id: buttons
+    margin-top: 10
+    height: 20
+    layout:
+      type: horizontalBox
+      align-right: true
+      spacing: -5
+    
+    ClassicButton
+      id: ok
+      !text: tr("Ok")
+    
+    ClassicButton
+      id: cancel
+      !text: tr("Cancel")
+  

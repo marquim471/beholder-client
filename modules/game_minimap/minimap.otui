@@ -1,0 +1,354 @@
+// Satellite view switch in the same 20x20 style as the other minimap buttons: sunk while the
+// satellite view is on, dimmed where there is no satellite map (underground).
+MinimapSatelliteButton < UICheckBox
+  size: 20 20
+  image-source: /images/game/minimap/automap-button-satellite-up
+  focusable: false
+  $pressed:
+    image-source: /images/game/minimap/automap-button-satellite-down
+  $checked:
+    image-source: /images/game/minimap/automap-button-satellite-down
+  $disabled:
+    opacity: 0.4
+
+MiniWindow
+  id: mainmappanel
+  &save: true
+  focusable: false
+  draggable: true
+  width: 176
+  &moveOnlyToMain: true
+  &allowMixedDrop: true
+  &panelHeight: 180
+  height: 180
+  // Same minimum in every panel: the corner buttons and the rose keep clear of each other.
+  minimum-height: 180
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: miniwindowHeader.right
+    margin-top: 2
+    margin-left: 4
+    margin-right: 4
+    font: verdana-11px-monochrome
+    height: 13
+    text-align: center
+    !text: tr('Map View')
+    color: #9d9d9dff
+
+  // The window's name over the map, in the strip above it (the RTC's Map View label).
+  UIWidget
+    id: mapViewLabel
+    anchors.bottom: minimapBorder.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-bottom: 3
+    size: 58 10
+    image-source: /images/game/minimap/mapview-label
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 5
+    minimum: 180
+    margin-left: 3
+    margin-right: 3
+
+  UIWidget
+    id: minimapBorder
+    anchors.top: miniwindowHeaderBorder.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 2
+    margin-left: 6
+    margin-right: 6
+    margin-bottom: 6
+    image-source: /images/game/minimap/minimapBorder
+
+    Minimap
+      id: minimap
+      anchors.fill: parent
+      margin: 1
+
+  // UIButton, not Button: the Button style's 43x20 clips (hover/pressed) read past these 20x20
+  // images, so a held button vanished.
+  UIWidget
+    id: layersPanel
+    size: 20 42
+    anchors.left: minimapBorder.left
+    anchors.bottom: minimapBorder.bottom
+    margin-left: 2
+    margin-bottom: 3
+
+    UIWidget
+      image-source: /images/ui/horizontal_line_dark
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      width: 10
+      height: 1
+
+    UIButton
+      id: floorUp
+      image-source: /images/game/minimap/floor_up
+      image-clip: 0 0 20 20
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.top: parent.top
+      size: 20 20
+      @onClick: upLayer()
+      $pressed:
+        image-clip: 0 20 20 20
+
+    UIButton
+      id: floorDown
+      image-source: /images/game/minimap/floor_down
+      image-clip: 0 0 20 20
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      size: 20 20
+      @onClick: downLayer()
+      $pressed:
+        image-clip: 0 20 20 20
+
+  UIButton
+    id: fullMap
+    image-source: /images/game/minimap/automap-button-cyclopediamap-up
+    anchors.left: minimapBorder.left
+    anchors.bottom: layersPanel.top
+    margin-left: 2
+    margin-bottom: 2
+    size: 20 20
+    @onClick: openCyclopediaMap()
+
+    $pressed:
+      image-source: /images/game/minimap/automap-button-cyclopediamap-down
+
+  MinimapSatelliteButton
+    id: satelliteToggle
+    anchors.left: minimapBorder.left
+    anchors.bottom: fullMap.top
+    margin-left: 2
+    margin-bottom: 2
+    !tooltip: tr('Satellite View')
+    @onCheckChange: setSatelliteModeEnabled(self:isChecked())
+
+  UIWidget
+    id: zoomPanel
+    size: 20 46
+    anchors.right: minimapBorder.right
+    anchors.bottom: minimapBorder.bottom
+    margin-right: 2
+    margin-bottom: 2
+
+    UIWidget
+      image-source: /images/ui/horizontal_line_dark
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      width: 12
+      height: 1
+
+    UIButton
+      id: zoomIn
+      image-source: /images/game/minimap/automap-button-zoomin-up
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.top: parent.top
+      size: 20 20
+      @onClick: zoomIn()
+
+      $pressed !disabled:
+        image-source: /images/game/minimap/automap-button-zoomin-down
+
+    UIButton
+      id: zoomOut
+      image-source: /images/game/minimap/automap-button-zoomout-up
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      size: 20 20
+      @onClick: zoomOut()
+
+      $pressed !disabled:
+        image-source: /images/game/minimap/automap-button-zoomout-down
+
+  UIWidget
+    id: rosePanel
+    anchors.top: minimapBorder.top
+    anchors.right: minimapBorder.right
+    margin-top: 0
+    margin-right: 0
+    size: 43 43
+
+    UIWidget
+      id: ambients
+      anchors.centerIn: parent
+      size: 31 31
+
+      UIWidget
+        id: main
+        image-source: /images/game/minimap/timedisplay-scroll
+        anchors.left: parent.left
+        anchors.top: parent.top
+        image-clip: 100 0 24 31
+        size: 24 31
+
+      UIWidget
+        id: secondary
+        image-source: /images/game/minimap/timedisplay-scroll
+        anchors.left: main.right
+        anchors.top: parent.top
+        image-clip: 0 0 7 31
+        size: 7 31
+
+      // UIButton, not Button: Button's 43x20 image-clip on this 2x2 image reads past it in the
+      // texture atlas, and on hover the clock drew pieces of other images (even item sprites).
+      UIButton
+        image-source: /images/automap/automap_phantom
+        anchors.fill: parent
+        @onClick: resetMap()
+
+    UIWidget
+      id: rose
+      anchors.fill: parent
+      image-source: /images/game/minimap/timedisplay-glass
+      phantom: true
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 14 0 15 8
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 14
+      size: 15 8
+      @onClick: |
+        onClickRoseButton('north')
+
+      $hover !disabled:
+        image-clip: 14 0 15 8
+
+      $pressed !disabled:
+        image-clip: 57 0 15 8
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 28 0 15 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 28
+      size: 15 15
+      @onClick: |
+        onClickRoseButton('north-east')
+
+      $hover !disabled:
+        image-clip: 28 0 15 15
+
+      $pressed !disabled:
+        image-clip: 114 0 15 15
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 35 14 8 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 35
+      margin-top: 14
+      size: 8 15
+      @onClick: |
+        onClickRoseButton('east')
+
+      $hover !disabled:
+        image-clip: 35 14 8 15
+
+      $pressed !disabled:
+        image-clip: 164 14 8 15  
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 28 28 15 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 28
+      margin-top: 28
+      size: 15 15
+      @onClick: |
+        onClickRoseButton('south-east')
+
+      $hover !disabled:
+        image-clip: 28 28 15 15
+
+      $pressed !disabled:
+        image-clip: 200 28 15 15
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 14 35 15 8
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 14
+      margin-top: 35
+      size: 15 8
+      @onClick: |
+        onClickRoseButton('south')
+
+      $hover !disabled:
+        image-clip: 14 35 15 8
+
+      $pressed !disabled:
+        image-clip: 229 35 15 8
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 0 28 15 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-top: 28
+      size: 15 15
+      @onClick: |
+        onClickRoseButton('south-west')
+
+      $hover !disabled:
+        image-clip: 0 28 15 15
+
+      $pressed !disabled:
+        image-clip: 258 28 15 15
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 0 14 8 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-top: 14
+      size: 8 15
+      @onClick: |
+        onClickRoseButton('west')
+
+      $hover !disabled:
+        image-clip: 0 14 8 15
+
+      $pressed !disabled:
+        image-clip: 301 14 8 15
+
+    Button
+      visible: false
+      image-source: /images/automap/automap_rose
+      image-clip: 0 0 15 15
+      anchors.left: parent.left
+      anchors.top: parent.top
+      size: 15 15
+      @onClick: |
+        onClickRoseButton('north-west')
+
+      $hover !disabled:
+        image-clip: 0 0 15 15
+
+      $pressed !disabled:
+        image-clip: 344 0 15 15

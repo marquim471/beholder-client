@@ -1,0 +1,819 @@
+StoneListItem < UIItem
+  size: 34 34
+  virtual: true
+  image-source: /images/ui/containerslot
+  image-border: 3
+  border-width: 0
+  border-color: #e8c26aff
+  font: verdana-11px-rounded
+
+  Label
+    id: level
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 1
+    margin-left: 3
+    font: verdana-9px-bold
+    color: #e8c26a
+    text-auto-resize: true
+    phantom: true
+
+StoneSocket < UIWidget
+  size: 22 22
+  image-source: /game_stonesystem/images/socket
+
+  UIItem
+    id: item
+    size: 18 18
+    anchors.centerIn: parent
+    virtual: true
+    phantom: true
+
+  UIWidget
+    id: lock
+    size: 9 14
+    anchors.centerIn: parent
+    image-source: /game_stonesystem/images/lock
+    phantom: true
+    visible: false
+
+  Label
+    id: level
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-right: 1
+    font: verdana-9px-bold
+    color: #e8c26a
+    text-auto-resize: true
+    phantom: true
+
+EquipPiece < UIWidget
+  size: 52 52
+  image-source: /game_stonesystem/images/piece_frame
+
+  UIWidget
+    id: icon
+    size: 34 34
+    anchors.centerIn: parent
+    phantom: true
+
+  UIWidget
+    id: lock
+    size: 9 14
+    anchors.centerIn: parent
+    image-source: /game_stonesystem/images/lock
+    phantom: true
+    visible: false
+
+StonePanelTitle < Label
+  text-align: center
+  color: #c0c0c0
+  font: verdana-11px-rounded
+  height: 16
+
+SummaryHeader < Label
+  height: 18
+  text-align: center
+  color: #e8e8e8
+  background-color: #2e2e2e
+  font: verdana-11px-rounded
+
+SummaryRow < UIWidget
+  height: 16
+  padding-left: 6
+  padding-right: 6
+
+  Label
+    id: name
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    color: #c0c0c0
+    text-auto-resize: true
+
+  Label
+    id: value
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    color: #c0c0c0
+    text-auto-resize: true
+
+UpgradeBonusRow < UIWidget
+  height: 52
+  image-source: /images/ui/2pixel_up_frame_borderimage
+  image-border: 2
+
+  UIItem
+    id: item
+    size: 32 32
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 6
+    virtual: true
+
+  Label
+    id: title
+    anchors.left: item.right
+    anchors.top: parent.top
+    margin-left: 8
+    margin-top: 4
+    color: #e8e8e8
+    text-auto-resize: true
+
+  Label
+    id: where
+    anchors.left: title.left
+    anchors.top: title.bottom
+    color: #a0a0a0
+    text-auto-resize: true
+
+  Label
+    id: value
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 8
+    margin-bottom: 4
+    color: #c0dea0
+    text-auto-resize: true
+
+// Same look as the task window's rank tabs: hollow bevel, raised; sunken when selected.
+StoneTabButton < UIButton
+  size: 150 34
+  image-source: /game_ranktasks/images/tab_button
+  image-clip: 1 0 20 23
+  image-border: 3
+  text-align: left
+  text-offset: 43 0
+  color: #C0C0C0
+  font: verdana-11px-rounded
+
+  UIItem
+    id: icon
+    size: 32 32
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 4
+    virtual: true
+    phantom: true
+
+  $checked:
+    image-clip: 0 46 22 23
+    text-offset: 44 2
+    color: #ffffff
+
+  $pressed:
+    text-offset: 44 2
+
+// Panel with a title strip, the task window's frame.
+StoneFrame < UIWidget
+  image-source: /images/ui/2pixel_up_frame_borderimage
+  image-border-left: 2
+  image-border-right: 2
+  image-border-top: 27
+  image-border-bottom: 4
+
+// Stone texture behind lists, like the task grid.
+StoneListArea < ScrollablePanel
+  image-source: /game_ranktasks/images/list_background
+  image-border: 4
+  padding: 4
+
+MainWindow
+  id: stoneSystemWindow
+  !text: tr('Stones System')
+  size: 1008 700
+  @onEscape: modules.game_stonesystem.hide()
+
+  UIWidget
+    id: tabsBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 40
+    image-source: /game_ranktasks/images/tab_button
+    image-border: 3
+    image-clip: 1 44 20 24
+    phantom: true
+
+  StoneTabButton
+    id: inventoryTab
+    anchors.top: tabsBar.top
+    anchors.left: tabsBar.left
+    margin-top: 3
+    margin-left: 3
+    !text: tr('Inventario')
+    @onClick: modules.game_stonesystem.selectPage('inventory')
+
+  StoneTabButton
+    id: upgradeTab
+    anchors.top: inventoryTab.top
+    anchors.left: inventoryTab.right
+    margin-left: 2
+    !text: tr('Melhorias')
+    @onClick: modules.game_stonesystem.selectPage('upgrade')
+
+  HorizontalSeparator
+    id: tabsSeparator
+    anchors.top: tabsBar.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+
+  Panel
+    id: inventoryPage
+    anchors.top: tabsSeparator.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: bottomSeparator.top
+    margin-top: 6
+    margin-bottom: 6
+
+    StoneFrame
+      id: listPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 270 364
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 4
+        !text: tr('Lista de pedras')
+
+      TextEdit
+        id: search
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 10 6 0 6
+        placeholder: Buscar pedra por nome
+        @onTextChange: modules.game_stonesystem.refreshInventoryList()
+
+      ComboBox
+        id: colorFilter
+        anchors.top: search.bottom
+        anchors.left: parent.left
+        width: 126
+        margin-top: 4
+        margin-left: 6
+
+      ComboBox
+        id: levelFilter
+        anchors.top: search.bottom
+        anchors.right: parent.right
+        width: 126
+        margin-top: 4
+        margin-right: 6
+
+      CheckBox
+        id: showEquipped
+        anchors.top: colorFilter.bottom
+        anchors.left: parent.left
+        margin-top: 6
+        margin-left: 6
+        width: 200
+        !text: tr('Mostrar equipadas')
+        checked: true
+        @onCheckChange: modules.game_stonesystem.refreshInventoryList()
+
+      StoneListArea
+        id: list
+        anchors.top: showEquipped.bottom
+        anchors.left: parent.left
+        anchors.right: listScroll.left
+        anchors.bottom: parent.bottom
+        margin: 6 2 6 6
+        vertical-scrollbar: listScroll
+        layout:
+          type: grid
+          cell-size: 34 34
+          cell-spacing: 2
+          flow: true
+
+      VerticalScrollBar
+        id: listScroll
+        anchors.top: showEquipped.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin: 6 4 6 0
+        step: 36
+        pixels-scroll: true
+
+    StoneFrame
+      id: equipmentPanel
+      anchors.top: parent.top
+      anchors.left: listPanel.right
+      margin-left: 8
+      size: 392 364
+
+      UIWidget
+        id: backdrop
+        size: 390 362
+        anchors.centerIn: parent
+        image-source: /game_stonesystem/images/equipment_backdrop
+        phantom: true
+
+    StoneFrame
+      id: descriptionPanel
+      anchors.top: listPanel.bottom
+      anchors.left: listPanel.left
+      anchors.right: equipmentPanel.right
+      anchors.bottom: parent.bottom
+      margin-top: 8
+      padding: 30 8 8 8
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: -26
+        !text: tr('Como funciona')
+
+      Label
+        id: text
+        anchors.fill: parent
+        text-wrap: true
+        text-align: topLeft
+        color: #c0c0c0
+        !text: tr('As pedras dao bonus a cada peca do equipamento conforme a cor e o nivel. Clique numa pedra da lista e depois num encaixe livre para colocar; clique com o botao direito num encaixe para tirar a pedra.\n\nArma: dano extra do elemento da cor (pode repetir a cor). Armadura: protecao contra o elemento (uma de cada cor). Capacete: efeitos especiais (uma de cada cor). Escudo: com 4 cores diferentes, resistencia contra magias de monstros desses elementos, pelo menor nivel entre as 4.\n\nCada peca tem 1 encaixe; VIP libera mais 1 e a compra Permanent Stones Slots libera outro. Com PZ lock nada pode ser alterado.')
+
+    StoneFrame
+      id: summaryPanel
+      anchors.top: parent.top
+      anchors.left: equipmentPanel.right
+      anchors.right: parent.right
+      margin-left: 8
+      height: 420
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 4
+        !text: tr('Resumo')
+
+      StoneListArea
+        id: list
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.right: summaryScroll.left
+        anchors.bottom: parent.bottom
+        margin: 10 2 6 6
+        vertical-scrollbar: summaryScroll
+        layout:
+          type: verticalBox
+
+      VerticalScrollBar
+        id: summaryScroll
+        anchors.top: title.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin: 10 4 6 0
+        step: 16
+        pixels-scroll: true
+
+    StoneFrame
+      id: presetsPanel
+      anchors.top: summaryPanel.bottom
+      anchors.left: summaryPanel.left
+      anchors.right: summaryPanel.right
+      anchors.bottom: parent.bottom
+      margin-top: 8
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 4
+        !text: tr('Pre-definidos')
+
+      TextList
+        id: list
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        width: 180
+        margin: 4 0 6 6
+
+      Button
+        id: create
+        anchors.top: list.top
+        anchors.left: list.right
+        anchors.right: parent.right
+        margin-left: 6
+        margin-right: 6
+        !text: tr('Criar novo')
+        @onClick: modules.game_stonesystem.createPreset()
+
+      Button
+        id: remove
+        anchors.top: create.bottom
+        anchors.left: create.left
+        anchors.right: create.right
+        margin-top: 4
+        !text: tr('Remover')
+        @onClick: modules.game_stonesystem.removePreset()
+
+      Button
+        id: select
+        anchors.top: remove.bottom
+        anchors.left: create.left
+        anchors.right: create.right
+        margin-top: 4
+        !text: tr('Selecionar')
+        @onClick: modules.game_stonesystem.selectPreset()
+
+  Panel
+    id: upgradePage
+    anchors.top: tabsSeparator.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: bottomSeparator.top
+    margin-top: 6
+    margin-bottom: 6
+    visible: false
+
+    StoneFrame
+      id: listPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      width: 350
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 4
+        !text: tr('Lista de melhorias')
+
+      TextEdit
+        id: search
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 10 6 0 6
+        placeholder: Buscar pedra por nome
+        @onTextChange: modules.game_stonesystem.refreshUpgradeList()
+
+      ComboBox
+        id: colorFilter
+        anchors.top: search.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 4 6 0 6
+
+      ComboBox
+        id: levelFilter
+        anchors.top: colorFilter.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 4 6 0 6
+
+      StoneListArea
+        id: list
+        anchors.top: levelFilter.bottom
+        anchors.left: parent.left
+        anchors.right: listScroll.left
+        anchors.bottom: parent.bottom
+        margin: 6 2 6 6
+        vertical-scrollbar: listScroll
+        layout:
+          type: grid
+          cell-size: 34 34
+          cell-spacing: 2
+          flow: true
+
+      VerticalScrollBar
+        id: listScroll
+        anchors.top: levelFilter.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin: 6 4 6 0
+        step: 36
+        pixels-scroll: true
+
+    StoneFrame
+      id: altarPanel
+      anchors.top: parent.top
+      anchors.left: listPanel.right
+      anchors.bottom: parent.bottom
+      margin-left: 8
+      width: 380
+
+      UIWidget
+        id: banner
+        height: 44
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 30 4 0 4
+        image-source: /game_ranktasks/images/special_banner
+        image-border-left: 65
+        image-border-right: 65
+        text-align: center
+        text-offset: 0 -1
+        color: #3a2a10
+        font: Verdana Bold-13px
+
+      UIWidget
+        id: backdrop
+        size: 370 370
+        anchors.top: banner.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 4
+        image-source: /game_stonesystem/images/upgrade_backdrop
+        phantom: true
+
+      UIWidget
+        id: socket1
+        size: 64 64
+        anchors.top: backdrop.top
+        anchors.horizontalCenter: backdrop.horizontalCenter
+        margin-top: 48
+        image-source: /game_stonesystem/images/altar_socket
+
+        UIItem
+          id: item
+          size: 48 48
+          anchors.centerIn: parent
+          virtual: true
+          phantom: true
+
+      UIWidget
+        id: socket2
+        size: 64 64
+        anchors.verticalCenter: backdrop.verticalCenter
+        anchors.left: backdrop.left
+        margin-left: 48
+        image-source: /game_stonesystem/images/altar_socket
+
+        UIItem
+          id: item
+          size: 48 48
+          anchors.centerIn: parent
+          virtual: true
+          phantom: true
+
+      UIWidget
+        id: socket3
+        size: 64 64
+        anchors.verticalCenter: backdrop.verticalCenter
+        anchors.right: backdrop.right
+        margin-right: 48
+        image-source: /game_stonesystem/images/altar_socket
+
+        UIItem
+          id: item
+          size: 48 48
+          anchors.centerIn: parent
+          virtual: true
+          phantom: true
+
+      UIWidget
+        id: result
+        size: 64 64
+        anchors.bottom: backdrop.bottom
+        anchors.horizontalCenter: backdrop.horizontalCenter
+        margin-bottom: 48
+        image-source: /game_stonesystem/images/altar_socket
+        border-width: 1
+        border-color: #e8c26a80
+
+        UIItem
+          id: item
+          size: 48 48
+          anchors.centerIn: parent
+          virtual: true
+          phantom: true
+
+      UIWidget
+        id: arrow
+        size: 24 40
+        anchors.centerIn: backdrop
+        image-source: /game_stonesystem/images/arrow
+        phantom: true
+
+    StoneFrame
+      id: infoPanel
+      anchors.top: parent.top
+      anchors.left: altarPanel.right
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-left: 8
+
+      StonePanelTitle
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 4
+        !text: tr('Proximo estagio')
+
+      UIItem
+        id: item
+        size: 48 48
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        margin: 8 0 0 8
+        virtual: true
+        image-source: /images/ui/containerslot
+        image-border: 3
+
+      Label
+        id: name
+        anchors.top: item.top
+        anchors.left: item.right
+        margin-left: 8
+        color: #e8e8e8
+        text-auto-resize: true
+
+      Label
+        id: stage
+        anchors.top: name.bottom
+        anchors.left: name.left
+        margin-top: 4
+        color: #c0c0c0
+        text-auto-resize: true
+
+      Label
+        id: color
+        anchors.top: stage.bottom
+        anchors.left: name.left
+        margin-top: 2
+        color: #c0c0c0
+        text-auto-resize: true
+
+      Label
+        id: bonusTitle
+        anchors.top: item.bottom
+        anchors.left: item.left
+        margin-top: 10
+        color: #c0c0c0
+        !text: tr('Bonus da pedra nos slots:')
+        text-auto-resize: true
+
+      Panel
+        id: bonuses
+        anchors.top: bonusTitle.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin: 6 8 0 8
+        height: 190
+        layout:
+          type: verticalBox
+          spacing: 4
+
+      UIWidget
+        id: chanceBox
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: cost.top
+        margin: 0 8 6 8
+        height: 120
+
+        Label
+          id: chance
+          anchors.top: parent.top
+          anchors.horizontalCenter: parent.horizontalCenter
+          color: #C0C0C0
+          text-auto-resize: true
+
+        UIWidget
+          id: progressFill
+          background-color: #1a090b
+          anchors.fill: progressBorder
+          margin-left: 8
+          margin-right: 8
+          margin-top: 4
+          margin-bottom: 9
+
+        UIWidget
+          id: progressBar
+          anchors.left: progressBorder.left
+          anchors.top: progressBorder.top
+          margin-left: 9
+          margin-top: 4
+          height: 12
+          width: 0
+          background-color: #2effe7
+
+        UIWidget
+          id: progressBorder
+          image-source: /game_ranktasks/images/special_progress_frame
+          size: 204 24
+          anchors.top: chance.bottom
+          anchors.horizontalCenter: parent.horizontalCenter
+          margin-top: 4
+
+        Label
+          id: requirement
+          anchors.top: progressBorder.bottom
+          anchors.horizontalCenter: parent.horizontalCenter
+          margin-top: 2
+          text-auto-resize: true
+
+        StoreButton
+          id: upgrade
+          image-source: /game_ranktasks/images/button_green
+          anchors.bottom: parent.bottom
+          anchors.left: parent.left
+          anchors.right: parent.right
+          height: 40
+          font: verdana-11px-rounded
+          color: #C0C0C0
+          !text: tr('Avancar nivel')
+          @onClick: modules.game_stonesystem.upgradeSelected()
+
+          $disabled:
+            opacity: 0.6
+
+      UIWidget
+        id: cost
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        margin: 0 8 8 8
+        height: 22
+        padding: 1
+        image-source: /images/ui/containerslot
+        image-border: 3
+
+        Label
+          id: text
+          anchors.right: icon.left
+          anchors.verticalCenter: parent.verticalCenter
+          margin-right: 4
+          color: #c0c0c0
+          text-auto-resize: true
+
+        UIWidget
+          id: icon
+          size: 12 12
+          anchors.right: parent.right
+          anchors.verticalCenter: parent.verticalCenter
+          margin-right: 5
+          image-source: /game_ranktasks/images/icon_gold
+
+  HorizontalSeparator
+    id: bottomSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: close.top
+    margin-bottom: 8
+
+  UIWidget
+    id: gold
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    size: 180 22
+    padding: 1
+    image-source: /images/ui/containerslot
+    image-border: 3
+
+    Label
+      id: text
+      anchors.right: icon.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 4
+      color: #c0c0c0
+      text-auto-resize: true
+
+    UIWidget
+      id: icon
+      size: 12 12
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 5
+      image-source: /game_ranktasks/images/icon_gold
+
+  Label
+    id: presetLabel
+    anchors.left: gold.right
+    anchors.verticalCenter: gold.verticalCenter
+    margin-left: 10
+    color: #c0c0c0
+    text-auto-resize: true
+
+  Label
+    id: pzWarning
+    anchors.left: presetLabel.right
+    anchors.verticalCenter: gold.verticalCenter
+    margin-left: 16
+    color: #de7575
+    text-auto-resize: true
+    !text: tr('PZ lock: alteracoes bloqueadas')
+    visible: false
+
+  Button
+    id: close
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 64
+    !text: tr('Close')
+    @onClick: modules.game_stonesystem.hide()

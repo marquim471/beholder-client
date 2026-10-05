@@ -1,0 +1,731 @@
+InventorySecureBox < UICheckBox
+  size: 20 20
+  image-source: /images/ui/button-grey-up
+  image-border: 1
+  icon-source: /images/inventory/icon-secure-mode
+  icon-offset: 0 0
+  focusable: false
+  $checked:
+    image-source: /images/ui/button-grey-down
+    icon-source: /images/inventory/icon-normal-mode
+    icon-offset: 1 1
+  $pressed:
+    image-source: /images/ui/button-grey-down
+    icon-source: /images/inventory/icon-normal-mode
+    icon-offset: 1 1
+
+InventoryCombatButton < UIButton
+  size: 20 20
+  focusable: false
+
+WhiteDoveBox < CombatBox
+  !tooltip: tr("Dove Mode: You are only able to defend yourself against aggressors.\nBe wary, if you use spells that affect also other characters you may get a red or black skull.")
+  image-source: /images/inventory/button-combat-dovemode-up
+  $checked:
+    image-source: /images/inventory/button-combat-dovemode-down
+    image-clip: 0 0 20 20
+  $pressed:
+    image-source: /images/inventory/button-combat-dovemode-down
+    image-clip: 0 0 20 20
+WhiteHandBox < CombatBox
+  !tooltip: tr("White Hand Mode: You are able to defend yourself and your\ngroup against aggressors. You risk getting a yellow skull.\nBe wary, in certain situations you may even get a red or black skull.")
+  image-source: /images/inventory/button-combat-whitehandmode-up
+  $checked:
+    image-source: /images/inventory/button-combat-whitehandmode-down
+    image-clip: 0 0 20 20
+  $pressed:
+    image-source: /images/inventory/button-combat-whitehandmode-down
+    image-clip: 0 0 20 20
+YellowHandBox < CombatBox
+  !tooltip: tr("Yellow Hand Mode: You are able to attack any skulled player.\nYou risk getting a yellow skull and a protection zone block.")
+  image-source: /images/inventory/button-combat-yellowhandmode-up
+  $checked:
+    image-source: /images/inventory/button-combat-yellowhandmode-down
+    image-clip: 0 0 20 20
+  $pressed:
+    image-source: /images/inventory/button-combat-yellowhandmode-down
+    image-clip: 0 0 20 20
+RedFistBox < CombatBox
+  !tooltip: tr("Red Fist Mode: You are able to attack and block anyone. You risk\nwhite, red and black skulls as well as a protection zone block.")
+  image-source: /images/inventory/button-combat-redfistmode-up
+  $checked:
+    image-source: /images/inventory/button-combat-redfistmode-down
+    image-clip: 0 0 20 20
+  $pressed:
+    image-source: /images/inventory/button-combat-redfistmode-down
+    image-clip: 0 0 20 20
+SafeFightBox < CombatBox
+  image-source: /images/game/combatmodes/safefight
+
+StandModeBox < UICheckBox
+  size: 20 20
+  image-source: /images/inventory/buttons_general
+  image-clip: 0 0 20 20
+  $checked:
+    image-clip: 20 0 20 20
+
+ChaseModeBox < UICheckBox
+  size: 20 20
+  image-source: /images/inventory/buttons_general
+  image-clip: 0 20 20 20
+  $checked:
+    image-clip: 20 20 20 20
+
+InventoryConditionWidget < UIWidget
+  size: 9 9
+  $!first:
+    margin-left: 1
+
+ConditionWidget < UIWidget
+  size: 10 10
+
+  $!first:
+    margin-left: 2
+
+PhantomMiniWindow
+  id: maininventorypanel
+  draggable: true
+  phantom: false
+  height: 162
+  &panelHeight: 162
+  on: true
+
+  $!on:
+    &panelHeight: 62
+    height: 62
+
+  UIWidget
+    id: onPanel
+    anchors.fill: parent
+    phantom: true
+
+    Button
+      id: changeSize
+      !tooltip: tr("Minimise inventory")
+      image-source: /images/inventory/min_button_small
+      image-clip: 0 0 12 12
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 8
+      margin-top: 5
+      size: 12 12
+      @onClick: changeInventorySize()
+
+      $pressed !disabled:
+        image-clip: 12 0 12 12
+
+    Button
+      id: blessings
+      image-source: /images/inventory/button_blessings_grey
+      image-clip: 0 0 12 12
+      anchors.top: changeSize.top
+      anchors.left: changeSize.right
+      margin-left: 3
+      size: 12 12
+      @onClick: modules.game_blessing.toggle()
+      $pressed !disabled:
+        image-clip: 12 0 12 12
+
+    UIButton
+      id: purseButton
+      image-source: /images/inventory/purse
+      !tooltip: tr("Open the Store inbox")
+      anchors.left: backpack.left
+      anchors.bottom: backpack.top   
+      size: 34 12
+      image-clip: 0 0 34 12
+      margin-bottom: 3
+      @onClick: |
+        local player = g_game.getLocalPlayer()
+        if not player then
+            return
+        end
+        local purse = player:getInventoryItem(InventorySlotPurse)
+        if purse then
+            g_game.use(purse)
+        end
+
+      $on:
+        image-clip: 0 12 34 12
+      $pressed:
+        image-clip: 0 12 34 12
+
+    InventoryCombatButton
+      id: standPosture
+      !tooltip: tr("Stand while fighting")
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 0 20 20
+      anchors.right: parent.right
+      anchors.top: changeSize.top
+      margin-right: 7
+      size: 20 20
+      @onClick: |
+        selectPosture('stand')
+
+      $pressed !disabled:
+        image-clip: 20 0 20 20
+
+      $on:
+        image-clip: 20 0 20 20
+
+    InventoryCombatButton
+      id: followPosture
+      !tooltip: tr("Chase opponent")
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 20 20 20
+      anchors.right: standPosture.right
+      anchors.top: standPosture.bottom
+      margin-top: 4
+      size: 20 20
+      @onClick: |
+        selectPosture('follow')
+
+      $pressed !disabled:
+        image-clip: 20 20 20 20
+
+      $on:
+        image-clip: 20 20 20 20
+    UICheckBox
+      id: expert
+      !tooltip: tr("Toggle expert pvp settings")
+      image-source: /data/images/inventory/button-expert-up
+      anchors.right: standPosture.right
+      anchors.top: followPosture.bottom
+      phantom: false
+      margin-top: 4
+      size: 20 20
+
+      $pressed:
+        image-source: /data/images/inventory/button-expert-down
+
+      $checked:
+        image-source: /data/images/inventory/button-expert-down
+
+      $disabled:
+        image-source: /data/images/inventory/button-expert-disabled
+
+
+    InventorySecureBox
+      id: pvp
+      size: 42 20
+      text: PvP
+      font: verdana-bold-8px-native
+      color: #c0c0c0
+      text-align: center
+      text-offset: -4 0
+      icon-offset: 10 0
+      anchors.right: parent.right
+      anchors.top: expert.bottom
+      margin-right: 8
+      margin-top: 7
+      $checked:
+        text-offset: -3 1
+        icon-offset: 11 1
+      $pressed:
+        text-offset: -3 1
+        icon-offset: 11 1
+
+    WhiteHandBox
+      id: whiteHandBox
+      anchors.right: parent.right
+      anchors.top: pvp.bottom
+      margin: 0
+      margin-right: 8
+      margin-top: 8
+
+    RedFistBox
+      id: redFistBox
+      anchors.right: whiteHandBox.right
+      anchors.top: whiteHandBox.bottom
+      margin: 0
+      margin-top: 4
+
+    WhiteDoveBox
+      id: whiteDoveBox
+      anchors.right: whiteHandBox.left
+      anchors.top: whiteHandBox.top
+      margin: 0
+      margin-right: 3
+
+    YellowHandBox
+      id: yellowHandBox
+      anchors.right: whiteDoveBox.right
+      anchors.top: whiteDoveBox.bottom
+      margin: 0
+      margin-top: 4
+
+    InventoryCombatButton
+      id: attack
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 40 20 20
+      anchors.right: standPosture.left
+      anchors.top: standPosture.top
+      margin-right: 4
+      size: 20 20
+      @onClick: |
+        selectCombat('attack')
+
+      $pressed !disabled:
+        image-clip: 20 40 20 20
+
+      $on:
+        image-clip: 20 40 20 20
+
+    InventoryCombatButton
+      id: balanced
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 80 20 20
+      anchors.right: attack.right
+      anchors.top: attack.bottom
+      margin-top: 4
+      size: 20 20
+      @onClick: |
+        selectCombat('balanced')
+
+      $pressed !disabled:
+        image-clip: 20 80 20 20
+
+      $on:
+        image-clip: 20 80 20 20
+
+    InventoryCombatButton
+      id: defense
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 60 20 20
+      anchors.right: attack.right
+      anchors.top: balanced.bottom
+      margin-top: 4
+      size: 20 20
+      @onClick: |
+        selectCombat('defense')
+
+      $pressed !disabled:
+        image-clip: 20 60 20 20
+
+      $on:
+        image-clip: 20 60 20 20
+
+    ClassicButton
+      id: stop
+      !tooltip: tr("Stop current action (Esc)")
+      !text: tr('Stop')
+      anchors.right: parent.right
+      margin-right: 8
+      anchors.bottom: parent.bottom
+      font: verdana-bold-8px-native
+      color: #c0c0c0ff
+      size: 42 13
+      @onClick: |
+        g_game.stop()
+        g_game.getLocalPlayer():stopAutoWalk()
+
+    Panel
+      id: icons
+      size: 108 18
+      padding: 2
+
+      image-source: /images/inventory/inventory-states-bar
+      image-border: 1
+      anchors.left: changeSize.left
+      anchors.right: backpack.right
+      anchors.bottom: parent.bottom
+      anchors.top: stop.top
+      layout:
+        type: horizontalBox
+
+    MainInventoryItem
+      id: amulet
+      anchors.top: changeSize.bottom
+      anchors.left: changeSize.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 2, z = 0}
+
+    MainInventoryItem
+      id: helmet
+      anchors.top: changeSize.top
+      anchors.left: amulet.right
+      margin-left: 4
+      &slotPosition: {x = 65535, y = 1, z = 0}
+
+    MainInventoryItem
+      id: backpack
+      anchors.top: amulet.top
+      anchors.left: helmet.right
+      margin-left: 4
+      &slotPosition: {x = 65535, y = 3, z = 0}
+
+    MainInventoryItem
+      id: sword
+      anchors.top: amulet.bottom
+      anchors.left: amulet.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 6, z = 0}
+
+    MainInventoryItem
+      id: ring
+      anchors.top: sword.bottom
+      anchors.left: amulet.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 9, z = 0}
+
+    MainInventoryItem
+      id: armor
+      anchors.top: helmet.bottom
+      anchors.left: helmet.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 4, z = 0}
+
+    MainInventoryItem
+      id: legs
+      anchors.top: armor.bottom
+      anchors.left: helmet.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 7, z = 0}
+
+    MainInventoryItem
+      id: boots
+      anchors.top: legs.bottom
+      anchors.left: helmet.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 8, z = 0}
+
+    MainInventoryItem
+      id: shield
+      anchors.top: backpack.bottom
+      anchors.left: backpack.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 5, z = 0}
+
+    MainInventoryItem
+      id: tools
+      anchors.top: shield.bottom
+      anchors.left: backpack.left
+      margin-top: 3
+      &slotPosition: {x = 65535, y = 10, z = 0}
+
+    UIWidget
+      id: soulPanel
+      !tooltip: tr("Soul Points: Needed to cast spells that create items such as runes, food or ammunition. They can be regained by killing monsters, sleeping in a bed, or in resting areas provided you have reached the needed reward streak.")
+      image-source: /images/inventory/containerslot
+      image-border: 1
+      phantom: false
+      anchors.left: amulet.left
+      anchors.right: amulet.right
+      anchors.bottom: boots.bottom
+      anchors.top: ring.bottom
+      margin-top: 3
+
+      Label
+        !text: tr('Soul:')
+        font: segoe-ui-extrabold-8px-native
+        text-auto-resize: false
+        size: 34 13
+        text-align: top
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin-top: -1
+        color: #bfbfbf
+
+      Label
+        id: soul
+        !text: '100000'
+        font: verdana-inventory-11px
+        text-auto-resize: true
+        text-align: center
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        color: #bfbfbf
+
+    UIWidget
+      id: capacityPanel
+      !tooltip: tr("Capacity: The amount of weight you are able to carry.")
+      image-source: /images/inventory/containerslot
+      image-border: 1
+      phantom: false
+      anchors.left: backpack.left
+      anchors.right: backpack.right
+      anchors.bottom: boots.bottom
+      anchors.top: tools.bottom
+      margin-top: 3
+
+      Label
+        !text: tr('Cap:')
+        font: segoe-ui-extrabold-8px-native
+        text-auto-resize: false
+        size: 34 13
+        text-align: top
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin-top: -1
+        color: #bfbfbf
+
+      Label
+        id: capacity
+        !text: '10000'
+        font: verdana-inventory-11px
+        text-auto-resize: true
+        text-align: center
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        color: #bfbfbf
+
+  UIWidget
+    id: offPanel
+    anchors.fill: parent
+    phantom: true
+    visible: false
+
+    Button
+      id: changeSize
+      !tooltip: tr("Maximise inventory")
+      image-source: /images/inventory/max_button_small
+      image-clip: 0 0 12 12
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 8
+      margin-top: 5
+      size: 12 12
+      @onClick: changeInventorySize()
+
+      $pressed !disabled:
+        image-clip: 12 0 12 12
+
+    UIItem
+      id: soulAndCapacity
+      &position: {x = 65535, y = 0, z = 0}
+      border-color: white
+      image-source: /images/inventory/containerslot
+      image-border: 1
+      phantom: false
+      anchors.left: changeSize.right
+      anchors.top: changeSize.top
+      margin-left: 3
+      size: 32 42
+
+      Label
+        !text: tr('Cap:')
+        font: segoe-ui-extrabold-8px-native
+        text-auto-resize: false
+        size: 34 13
+        text-align: top
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin-top: -1
+        color: #bfbfbf
+
+      Label
+        id: capacity
+        !text: '10000'
+        font: verdana-inventory-11px
+        text-auto-resize: true
+        text-align: center
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-left: 1
+        anchors.top: parent.top
+        margin-top: 7
+        color: #bfbfbf
+
+      Label
+        !text: tr('Soul:')
+        font: segoe-ui-extrabold-8px-native
+        text-auto-resize: false
+        size: 34 13
+        text-align: top
+        anchors.left: parent.left
+        anchors.top: parent.top
+        margin-top: 21
+        color: #bfbfbf
+
+      Label
+        id: soul
+        !text: '100000'
+        font: verdana-inventory-11px
+        text-auto-resize: true
+        text-align: center
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-left: 1
+        anchors.bottom: parent.bottom
+        margin-bottom: 0
+        color: #bfbfbf
+
+    InventoryCombatButton
+      id: attack
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 40 20 20
+      anchors.left: soulAndCapacity.right
+      anchors.top: changeSize.top
+      margin-left: 3
+      size: 20 20
+      @onClick: |
+        selectCombat('attack')
+
+      $pressed !disabled:
+        image-clip: 20 40 20 20
+
+      $on:
+        image-clip: 20 40 20 20
+
+    InventoryCombatButton
+      id: defense
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 60 20 20
+      anchors.left: attack.right
+      anchors.top: changeSize.top
+      margin-left: 1
+      size: 20 20
+      @onClick: |
+        selectCombat('defense')
+
+      $pressed !disabled:
+        image-clip: 20 60 20 20
+
+      $on:
+        image-clip: 20 60 20 20
+
+    InventoryCombatButton
+      id: balanced
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 80 20 20
+      anchors.left: defense.right
+      anchors.top: changeSize.top
+      margin-left: 1
+      size: 20 20
+      @onClick: |
+        selectCombat('balanced')
+
+      $pressed !disabled:
+        image-clip: 20 80 20 20
+
+      $on:
+        image-clip: 20 80 20 20
+
+    InventoryCombatButton
+      id: standPosture
+      !tooltip: tr("Stand while fighting")
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 0 20 20
+      anchors.left: attack.left
+      anchors.top: attack.bottom
+      margin-top: 4
+      size: 20 20
+      @onClick: |
+        selectPosture('stand')
+
+      $pressed !disabled:
+        image-clip: 20 0 20 20
+
+      $on:
+        image-clip: 20 0 20 20
+
+    InventoryCombatButton
+      id: followPosture
+      !tooltip: tr("Chase opponent")
+      image-source: /images/inventory/buttons_general
+      image-clip: 0 20 20 20
+      anchors.left: standPosture.right
+      anchors.top: standPosture.top
+      margin-left: 1
+      size: 20 20
+      @onClick: |
+        selectPosture('follow')
+
+      $pressed !disabled:
+        image-clip: 20 20 20 20
+
+      $on:
+        image-clip: 20 20 20 20
+    InventorySecureBox
+      id: pvp
+      anchors.left: followPosture.right
+      anchors.top: standPosture.top
+      margin-left: 1
+      margin-top: 0
+      phantom: false
+
+    UICheckBox
+      id: expert
+      !tooltip: tr("Toggle expert pvp settings")
+      image-source: /images/inventory/button-expert-small-up
+      anchors.left: changeSize.left
+      anchors.bottom: soulAndCapacity.bottom
+      size: 12 12
+
+      $checked:
+        image-source: /images/inventory/button-expert-small-down
+
+      $pressed:
+        image-source: /images/inventory/button-expert-small-down
+
+      $disabled:
+        image-source: /images/inventory/button-expert-small-disabled
+
+    WhiteHandBox
+      id: whiteHandBox
+      anchors.right: parent.right
+      anchors.top: changeSize.top
+      margin: 0
+      margin-right: 8
+      visible: false
+
+    WhiteDoveBox
+      id: whiteDoveBox
+      anchors.right: whiteHandBox.left
+      anchors.top: whiteHandBox.top
+      margin: 0
+      margin-right: 3
+      visible: false
+
+    RedFistBox
+      id: redFistBox
+      anchors.right: whiteHandBox.right
+      anchors.top: whiteHandBox.bottom
+      margin: 0
+      margin-top: 4
+      visible: false
+
+    YellowHandBox
+      id: yellowHandBox
+      anchors.right: whiteDoveBox.right
+      anchors.top: whiteDoveBox.bottom
+      margin: 0
+      margin-top: 4
+      visible: false
+
+    Button
+      id: blessings
+      image-source: /images/inventory/button_blessings_grey
+      image-clip: 0 0 12 12
+      anchors.top: expert.bottom
+      anchors.left: changeSize.left
+      margin-top: 3
+      size: 12 12
+      @onClick: modules.game_blessing.toggle()
+      $pressed !disabled:
+        image-clip: 12 0 12 12
+
+    Panel
+      id: icons
+      anchors.left: soulAndCapacity.left
+      anchors.right: pvp.right
+      anchors.bottom: parent.bottom
+      anchors.top: blessings.top
+      padding: 2
+      phantom: false
+      image-source: /images/inventory/inventory-states-bar
+      image-border: 1
+      layout:
+        type: horizontalBox
+
+    ClassicButton
+      id: stop
+      !tooltip: tr("Stop current action (Esc)")
+      !text: tr('Stop')
+      anchors.right: parent.right
+      margin-right: 8
+      anchors.bottom: icons.bottom
+      font: verdana-bold-8px-native
+      color: #c0c0c0ff
+      size: 42 13
+      @onClick: |
+        g_game.stop()
+        g_game.getLocalPlayer():stopAutoWalk()

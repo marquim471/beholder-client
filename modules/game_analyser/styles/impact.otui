@@ -1,0 +1,677 @@
+ImpactMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 219
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 112
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  UIButton
+    id: lockButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 2
+    margin-bottom: 2
+
+ImpactDamagePanel < UIWidget
+  id: damagePanel
+  height: 13
+  margin-top: 0
+  UIWidget
+    id: icon
+    size: 9 9
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-left: 2
+  Label
+    id: desc
+    text-align: right
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: parent.right
+    text-auto-resize: true
+    color: #c0c0c0
+    font: verdana-bold-11px-native
+    margin-right: 2
+
+ImpactNoDataLabel < Label
+  id: type
+  height: 13
+  !text: tr('No Data')
+  text-auto-resize: true
+  color: #c0c0c0
+  font: verdana-bold-11px-native
+
+ImpactMiniWindow
+  id: impactAnalyserMiniWindow
+  &type: 'impactAnalyser'
+  height: 527
+  @onExtra: modules.game_analyser.onImpactExtra(g_window.getMousePosition())
+  &save: true
+  &autoOpen: false
+
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-source: /game_analyser/images/icon-impactanalyser-widget
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 2
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+    !text: tr('Impact Analyser')
+
+  ScrollablePanel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 16 4 4
+    padding: 0 2 0 2
+    vertical-scrollbar: miniwindowScrollBar
+    Label
+      !text: tr('Damage')
+      anchors.top: parent.top
+      anchors.left: parent.left
+      text-auto-resize: true
+      height: 13
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+    Label
+      id: dmgLabel
+      !text: tr('Total:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: dmg
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxDpsLabel
+      !text: tr('Max-DPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxDps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: highLabel
+      !text: tr('All-Time High:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: allTimeHigh
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separatorAllTimeHigh
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+    Label
+      id: targetDpsLabel
+      !text: tr('Target-DPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: targetDps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      id: dpsBG
+      height: 13
+      anchors.top: targetDps.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+      UIWidget
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        width: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 0 0 5 13
+        phantom: true
+
+      UIWidget
+        anchors.fill: parent
+        margin-left: 5
+        margin-right: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 5 0 101 13
+        phantom: true
+
+      UIWidget
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 106 0 5 13
+        phantom: true
+
+      UIWidget
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: 1
+        background-color: black
+
+      UIWidget
+        id: dpsArrow
+        size: 9 8
+        image-source: /game_analyser/images/gauge-arrow
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+
+    Label
+      id: dpsLabel
+      !text: tr('DPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: dps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separatorDps
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 7
+
+    UIWidget
+      id: dpsGraphBG
+      size: 133 82
+      image-auto-resize: true
+      image-source: /images/game/analyzer/dpsGraphBG
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 15
+      margin-top: 6
+
+    UIGraph
+      id: graphDpsPanel
+      capacity: 400
+      background-color: #383636
+      color: red
+      size: 129 83
+      show-labels: false
+      anchors.top: prev.top
+      anchors.left: prev.left
+      image-source: /images/game/analyzer/dpsGraphBG
+
+    UIWidget
+      id: graphHorizontal
+      size: 140 9
+      image-auto-resize: true
+      image-source: /images/game/analyzer/graphDpsHorizontal
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 7
+      margin-top: 6
+
+    HorizontalSeparator
+      id: separatorGraphHorizontalDps
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+
+    Label
+      id: damageTypeLabel
+      !text: tr('Damage Types')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 11
+      text-auto-resize: true
+      height: 13
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+
+    ScrollablePanel
+      id: dmgTypes
+      anchors.right: parent.right
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      layout:
+        type: verticalBox
+        fit-children: true
+
+    HorizontalSeparator
+      id: separatorDmgType
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 11
+
+    Label
+      id: healingLabel
+      !text: tr('Healing')
+      anchors.top: separatorDmgType.bottom
+      anchors.left: parent.left
+      margin-top: 11
+      text-auto-resize: true
+      height: 13
+      color: #f7f7f7
+      font: verdana-bold-11px-native
+
+    Label
+      id: hpsLabel
+      !text: tr('Total:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: hpsTotal
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxHpsLabel
+      !text: tr('Max-HPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: maxHps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: highLabel
+      !text: tr('All-Time High:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: allTimeHighHealing
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separatorAllTimeHighHealing
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+    Label
+      id: targetHpsLabel
+      !text: tr('Target-HPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: targetHps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    UIWidget
+      id: hpsBG
+      height: 13
+      anchors.top: targetHps.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 6
+
+      UIWidget
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        width: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 0 0 5 13
+        phantom: true
+
+      UIWidget
+        anchors.fill: parent
+        margin-left: 5
+        margin-right: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 5 0 101 13
+        phantom: true
+
+      UIWidget
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: 5
+        image-source: /game_analyser/images/gauge
+        image-clip: 106 0 5 13
+        phantom: true
+
+      UIWidget
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: 1
+        background-color: black
+
+      UIWidget
+        id: hpsArrow
+        size: 9 8
+        image-source: /game_analyser/images/gauge-arrow
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+
+    Label
+      id: hpsLabelGauge
+      !text: tr('HPS:')
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    Label
+      id: hps
+      !text: tr('0')
+      anchors.top: prev.top
+      anchors.right: parent.right
+      text-auto-resize: true
+      height: 13
+      color: #c0c0c0
+      font: verdana-bold-11px-native
+
+    HorizontalSeparator
+      id: separatorHps
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 7
+
+    UIWidget
+      id: hpsGraphBG
+      size: 133 82
+      image-auto-resize: true
+      image-source: /images/game/analyzer/hpsGraphBG
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 15
+      margin-top: 6
+
+    UIGraph
+      id: graphHealPanel
+      capacity: 400
+      background-color: #383636
+      color: red
+      size: 129 83
+      show-labels: false
+      anchors.top: prev.top
+      anchors.left: prev.left
+      image-source: /images/game/analyzer/hpsGraphBG
+
+    UIWidget
+      id: graphHPSHorizontal
+      size: 140 9
+      image-auto-resize: true
+      image-source: /images/game/analyzer/graphDpsHorizontal
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-left: 7
+      margin-top: 6

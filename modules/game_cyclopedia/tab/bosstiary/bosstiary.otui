@@ -1,0 +1,357 @@
+UIWidget
+  id: Cat7
+  anchors.fill: parent
+  visible: false
+  margin-bottom:30
+  UIWidget
+    id: StarBase
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 10
+    size: 164 68
+    image-source: /images/ui/2pixel_up_frame_borderimage
+    image-border: 2
+    image-repeated: true
+    UIWidget
+      id: Info1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 133
+      margin-top: 9
+      image-source: /images/icons/show_gui_help_grey
+    UIWidget
+      id: Info2
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 133
+      margin-top: 28
+      image-source: /images/icons/show_gui_help_grey
+    UIWidget
+      id: Info3
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 133
+      margin-top: 48
+      image-source: /images/icons/show_gui_help_grey
+    UIWidget
+      id: Star1_1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 43
+      margin-top: 10
+      image-source: /game_cyclopedia/images/boss/icon_star_bronze
+    UIWidget
+      id: Star2_1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 43
+      margin-top: 29
+      image-source: /game_cyclopedia/images/boss/icon_star_silver
+    UIWidget
+      id: Star2_2
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 32
+      margin-top: 29
+      image-source: /game_cyclopedia/images/boss/icon_star_silver
+    UIWidget
+      id: Star3_1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 43
+      margin-top: 49
+      image-source: /game_cyclopedia/images/boss/icon_star_gold
+    UIWidget
+      id: Star3_2
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 32
+      margin-top: 49
+      image-source: /game_cyclopedia/images/boss/icon_star_gold
+    UIWidget
+      id: Star3_3
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 21
+      margin-top: 49
+      image-source: /game_cyclopedia/images/boss/icon_star_gold
+    Label
+      id: Text1
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 57
+      margin-top: 8
+      height: 13
+      font: verdana-bold-11px-native
+      text-auto-resize: true
+      !text: tr('Prowess')
+      color: #c0c0c0
+    Label
+      id: Text2
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 57
+      margin-top: 28
+      height: 13
+      font: verdana-bold-11px-native
+      text-auto-resize: true
+      !text: tr('Expertise')
+      color: #c0c0c0
+    Label
+      id: Text3
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 57
+      margin-top: 47
+      height: 13
+      font: verdana-bold-11px-native
+      text-auto-resize: true
+      !text: tr('Mastery')
+      color: #c0c0c0
+  UIWidget
+    id: FilterBase
+    anchors.left: StarBase.right
+    anchors.right: parent.right
+    anchors.top: StarBase.top
+    margin-left: 6
+    height: 68
+    image-source: /images/ui/2pixel_up_frame_borderimage
+    image-border: 2
+    image-repeated: true
+    UIWidget
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 17
+      image-source: /images/ui/2pixel-up-header-smoother
+      image-border-left: 2
+      image-border-right: 2
+      image-border-top: 2
+      image-border-bottom: 1
+      image-repeated: true
+      phantom: true
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-left: 4
+      margin-right: 4
+      height: 17
+      font: verdana-bold-11px-native
+      text-align: center
+      color: #909090
+      !text: tr('Filter')
+    BestiaryTrackCheck
+      id: BaneCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 7
+      margin-top: 24
+      !text: tr('Bane')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+      text-offset: 29 0
+    UIWidget
+      id: BaneIcon
+      anchors.left: BaneCheck.left
+      anchors.top: BaneCheck.top
+      margin-left: 14
+      margin-top: 1
+      image-source: /game_cyclopedia/images/boss/icon_bane
+    BestiaryTrackCheck
+      id: ArchfoeCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 92
+      margin-top: 24
+      !text: tr('Archfoe')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+      text-offset: 29 0
+    UIWidget
+      id: ArchfoeIcon
+      anchors.left: ArchfoeCheck.left
+      anchors.top: ArchfoeCheck.top
+      margin-left: 14
+      margin-top: 1
+      image-source: /game_cyclopedia/images/boss/icon_archfoe
+    BestiaryTrackCheck
+      id: NemesisCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 196
+      margin-top: 24
+      !text: tr('Nemesis')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+      text-offset: 29 0
+    UIWidget
+      id: NemesisIcon
+      anchors.left: NemesisCheck.left
+      anchors.top: NemesisCheck.top
+      margin-left: 14
+      margin-top: 1
+      image-source: /game_cyclopedia/images/boss/icon_nemesis
+    BestiaryTrackCheck
+      id: NoKillsCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 7
+      margin-top: 46
+      !text: tr('No Kills')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+    BestiaryTrackCheck
+      id: FewKillsCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 92
+      margin-top: 46
+      !text: tr('Few Kills')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+    BestiaryTrackCheck
+      id: ProwessCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 196
+      margin-top: 46
+      !text: tr('Prowess')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+    BestiaryTrackCheck
+      id: ExpertiseCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 305
+      margin-top: 46
+      !text: tr('Expertise')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+    BestiaryTrackCheck
+      id: MasteryCheck
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 407
+      margin-top: 46
+      !text: tr('Mastery')
+      !tooltip: tr('')
+      checked: true
+      @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryFilter(self, self:isChecked())
+      $checked:
+        !tooltip: tr('')
+  ModernCharmFrame
+    id: ListBase
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: FilterBase.bottom
+    anchors.bottom: parent.bottom
+    margin-bottom: 30
+    margin-top: 10
+    UIScrollArea
+      id: BossList
+      anchors.fill: parent
+      margin-left: 5
+      margin-top: 5
+      margin-right: 1
+      margin-bottom: 5
+      layout:
+        type: grid
+        cell-size: 159 151
+        cell-spacing: 5
+        flow: true
+  UITextEdit
+    id: SearchEdit
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 5
+    size: 150 20
+    background-color: #363636
+    color: #c0c0c0
+    selection-background-color: #808080
+    cursor: none
+    blink-speed: 600
+    font: verdana-bold-11px-native
+    placeholder-font: verdana-bold-11px-native
+    padding-left: 5
+    padding-top: 2
+    padding-bottom: 3
+    padding-right: 20
+    max-length: 29
+    placeholder: Type to search
+    placeholder-color: #707070
+    @onTextChange: modules.game_cyclopedia.Cyclopedia.scheduleBosstiarySearch(self:getText())
+  ModernCharmFrame
+    anchors.fill: SearchEdit
+    phantom: true
+  ClassicButton
+    id: SearchClearButton
+    anchors.right: SearchEdit.right
+    anchors.top: SearchEdit.top
+    margin-top: 1
+    margin-right: 1
+    size: 18 18
+    image-clip: 0 0 98 40
+    image-repeated: true
+    icon-source: /images/ui/icon-erase-small
+    icon-offset: 0 0
+    !tooltip: tr('Clear all text from the search field.')
+    @onClick: modules.game_cyclopedia.Cyclopedia.BosstiarySearchText("", true)
+  Label
+    id: PageValue
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: SearchEdit.top
+    margin-top: 4
+    height: 13
+    text-auto-resize: true
+    font: verdana-bold-11px-native
+    text-align: center
+    !text: tr('1 / 1')
+    color: #c0c0c0
+  ClassicButton
+    id: NextPageButton
+    anchors.left: PageValue.right
+    anchors.top: SearchEdit.top
+    margin-left: 11
+    size: 20 20
+    image-clip: 0 0 98 40
+    image-repeated: true
+    icon-offset: 0 0
+    icon-source: /images/game/cyclopedia/page-next
+    @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryPage(false, true)
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrow-right-disabled
+  ClassicButton
+    id: PrevPageButton
+    anchors.right: PageValue.left
+    anchors.top: SearchEdit.top
+    margin-right: 11
+    size: 20 20
+    image-clip: 0 0 98 40
+    image-repeated: true
+    icon-offset: 0 0
+    icon-source: /images/game/actionbar/icon-arrow
+    @onClick: modules.game_cyclopedia.Cyclopedia.changeBosstiaryPage(true, false)
+    $disabled:
+      icon-source: /images/game/actionbar/icon-arrow-disabled

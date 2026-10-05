@@ -1,0 +1,383 @@
+ContainerMiniWindow < UIMiniWindow
+  &save: true
+  width: 192
+  height: 219
+  focusable: false
+  image-source: /images/ui/widget-borderimage
+  image-border: 4
+  image-border-top: 15
+  image-repeated: true
+  &minimizedHeight: 19
+
+  UIWidget
+    id: miniwindowHeader
+    image-source: none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 15
+    phantom: true
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 4
+    minimum: 60
+    margin-left: 3
+    margin-right: 3
+
+  UIButton
+    id: closeButton
+    size: 12 12
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 2
+    margin-right: 3
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/exit-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/exit-button-small-down
+
+  UIButton
+    id: minimizeButton
+    size: 12 12
+    anchors.top: closeButton.top
+    anchors.right: closeButton.left
+    margin-right: 1
+    image-size: 12 12
+    image-clip: 0 0 12 12
+    image-source: /images/ui/miniwindow/min-button-small-up
+    $hover:
+      image-clip: 0 0 12 12
+    $pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/min-button-small-down
+    $on:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on hover:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-up
+    $on pressed:
+      image-clip: 0 0 12 12
+      image-source: /images/ui/miniwindow/max-button-small-down
+
+  UIScrollBar
+    id: miniwindowScrollBar
+    orientation: vertical
+    width: 12
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 4
+    margin-bottom: 4
+    step: 20
+    increment: 20
+    pixels-scroll: true
+    image-source: /images/ui/modal/scrollbar-texture-vertical
+    image-clip: 0 0 12 96
+    image-border: 0
+    image-repeated: true
+
+    UIButton
+      id: decrementButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttonup-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttonup-down
+
+    UIButton
+      id: incrementButton
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      size: 12 12
+      image-source: /images/ui/modal/scrollbar-buttondown-up
+      $pressed:
+        image-source: /images/ui/modal/scrollbar-buttondown-down
+
+    UIButton
+      id: sliderButton
+      anchors.centerIn: parent
+      size: 12 14
+      image-source: /images/ui/modal/scrollbar-handle-vertical
+      image-border-top: 6
+      image-border-bottom: 6
+
+  UIButton
+    id: contextMenuButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 5
+    size: 12 12
+    image-source: /images/ui/miniwindow/button-contextmenu-12x12-idle
+    $pressed:
+      image-source: /images/ui/miniwindow/button-contextmenu-12x12-pressed
+
+  UIButton
+    id: lockButton
+    anchors.top: contextMenuButton.top
+    anchors.right: contextMenuButton.left
+    margin-right: 1
+    margin-top: 0
+    size: 12 12
+    image-size: 12 12
+    image-source: /images/ui/miniwindow/buttons
+    image-clip: 71 1 12 12
+
+    $hover:
+      image-clip: 71 15 12 12
+
+    $pressed:
+      image-clip: 71 29 12 12
+
+    $on:
+      image-clip: 85 1 12 12
+
+    $on hover:
+      image-clip: 85 15 12 12
+
+    $on pressed:
+      image-clip: 85 29 12 12
+
+  UIButton
+    id: searchButton
+    anchors.top: lockButton.top
+    anchors.right: lockButton.left
+    margin-right: 2
+    size: 12 12
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 127 1 12 12
+    visible: false
+    !tooltip: tr('Search Locker')
+    @onClick: modules.game_search_locker.onRequestSearch()
+
+    $pressed:
+      image-clip: 127 29 12 12
+
+  // RTC bottom-left resize corner.
+  RtcMiniBorder
+    margin-left: 3
+    margin-bottom: 3
+
+PageButton < UIButton
+  size: 18 18
+
+
+ContainerWindow < ContainerMiniWindow
+  height: 150
+  &save: true
+  UIWidget
+    id: miniwindowIcon
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    margin-top: 2
+    margin-left: 4
+    size: 12 12
+    image-smooth: false
+
+  Label
+    id: miniwindowTitle
+    @onGeometryChange: modules.game_containers.fitContainerTitle(self)
+    @onTextChange: modules.game_containers.fitContainerTitle(self)
+    anchors.top: miniwindowHeader.top
+    anchors.left: miniwindowHeader.left
+    anchors.right: lockButton.left
+    margin-top: 1
+    margin-left: 20
+    margin-right: 2
+    font: Verdana Bold-11px
+    height: 13
+    color: #909090
+
+  UIItem
+    id: containerItemWidget
+    virtual: true
+    size: 15 15
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 2
+    margin-left: 4
+
+  UIButton
+    id: upButton
+    anchors.top: minimizeButton.top
+    anchors.right: minimizeButton.left
+    margin-right: 1
+    size: 12 12
+    image-source: /game_containers/images/container-level-up-up
+    $pressed:
+      image-source: /game_containers/images/container-level-up-down
+
+  ScrollablePanel
+    id: contentsPanel
+    anchors.fill: parent
+    margin: 15 16 4 4
+    vertical-scrollbar: miniwindowScrollBar
+
+    Panel
+      id: itemsPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      padding: 4 0 9 7
+      layout:
+        type: grid
+        cell-size: 34 34
+        cell-spacing: 3
+        flow: true
+        fit-children: true
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: pagePanel.left
+    anchors.right: pagePanel.right
+    anchors.top: pagePanel.top
+
+  Panel
+    id: pagePanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    height: 24
+    margin: 0 4 4 4
+    visible: false
+
+    Label
+      id: pageLabel
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.horizontalCenter: parent.horizontalCenter
+      height: 13
+      font: verdana-bold-11px-native
+      text-auto-resize: true
+
+    PageButton
+      id: prevPageButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 3
+      margin-top: 3
+      image-source: /images/ui/container-browse-left-up
+
+      $pressed:
+        image-source: /images/ui/container-browse-left-down
+
+      $pressed disabled:
+        image-source: /images/ui/container-browse-left-up
+
+    PageButton
+      id: nextPageButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-right: 3
+      margin-top: 3
+      image-source: /images/ui/container-browse-right-up
+
+      $pressed:
+        image-source: /images/ui/container-browse-right-down
+
+      $pressed disabled:
+        image-source: /images/ui/container-browse-right-up
+
+
+ContainersSubMenuOption < ThickCheckBox
+  text-offset: 18 1
+  text-align: left
+  color: white
+  background-color: alpha
+  font: verdana-11px-rounded
+  padding: 3 6
+
+  $hover:
+    background-color: #ffffff1a
+
+  $disabled:
+    color: #c0c0c0ff
+
+ContainersListOption < UIButton
+  text-align: left
+  color: white
+  background-color: alpha
+  font: verdana-11px-rounded
+  padding: 3 6
+  margin-left: 5
+
+  $hover:
+    background-color: #ffffff1a
+
+  $disabled:
+    color: #c0c0c0ff
+
+ContainersSubMenu < PopupMenu
+  id: containersSubMenu
+  width: 285
+
+  ContainersListOption
+    id: sortAscByName
+    !text: tr('Sort Ascending by Name')
+  ContainersListOption
+    id: sortDescByName
+    !text: tr('Sort Descending by Name')
+  ContainersListOption
+    id: sortAscByWeight
+    !text: tr('Sort Ascending by Weight')
+  ContainersListOption
+    id: sortDescByWeight
+    !text: tr('Sort Descending by Weight')
+  ContainersListOption
+    id: sortAscByExpiry
+    !text: tr('Sort Ascending by Expiry')
+  ContainersListOption
+    id: sortDescByExpiry
+    !text: tr('Sort Descending by Expiry')
+  ContainersListOption
+    id: sortAscByStackSize
+    !text: tr('Sort Ascending by Stack Size')
+  ContainersListOption
+    id: sortDescByStackSize
+    !text: tr('Sort Descending by Stack Size')
+
+  HorizontalSeparator
+    margin-top: 2
+    margin-bottom: 3
+
+  ContainersSubMenuOption
+    id: sortContainersFirst
+    !text: tr('Sort Containers First')
+
+  ContainersSubMenuOption
+    id: sortNestedContainers
+    !text: tr('Sort Nested Containers')
+
+  ContainersSubMenuOption
+    id: useManualSortMode
+    !text: tr('Use Manual Sort Mode')
+
+  HorizontalSeparator
+    margin-top: 2
+    margin-bottom: 3
+
+  ContainersListOption
+    id: moveToObtainContainers
+    !text: tr('Move Contents to \'Obtain\' Containers')
+
+  ContainersSubMenuOption
+    id: moveNestedContainers
+    !text: tr('Move Nested Containers')
+  

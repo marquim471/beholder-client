@@ -1,0 +1,790 @@
+ArchiveCaptionPanel < UIWidget
+  image-source: /images/ui/2pixel-up-frame-borderimage
+  image-border: 2
+  image-repeated: true
+  padding-top: 22
+  padding-left: 5
+  padding-right: 5
+  padding-bottom: 5
+
+ArchiveCaptionHeader < UIWidget
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-top: -22
+  margin-left: -5
+  margin-right: -5
+  height: 17
+  image-source: /images/ui/2pixel-up-header-smoother
+  image-border-top: 2
+  image-border-left: 2
+  image-border-right: 2
+  image-border-bottom: 1
+  image-repeated: true
+  font: verdana-bold-11px-native
+  color: #909090
+  text-align: center
+  phantom: true
+
+ArchiveFilterCheckBox < UICheckBox
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-left: 7
+  margin-right: 7
+  height: 13
+  font: verdana-bold-11px-native
+  color: #c0c0c0
+  text-align: topLeft
+  text-offset: 16 0
+  image-source: /images/ui/checkbox-unchecked
+  image-rect: 0 0 12 12
+  $checked:
+    image-source: /images/ui/checkbox-checked
+
+ArchiveFilterSeparator < UIWidget
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-left: 7
+  margin-right: 7
+  height: 2
+  phantom: true
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/horizontal_line_dark
+    image-repeated: true
+    phantom: true
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/horizontal_line_bright
+    image-repeated: true
+    phantom: true
+
+ArchiveInsetFrame < UIWidget
+  phantom: true
+
+  UIWidget
+    id: topEdge
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    image-source: /images/ui/modal/1pixel-down-frame-top
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    id: leftEdge
+    anchors.left: parent.left
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    margin-top: 1
+    width: 1
+    image-source: /images/ui/modal/1pixel-down-frame-left
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    id: rightEdge
+    anchors.right: parent.right
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    margin-top: 1
+    width: 1
+    image-source: /images/ui/modal/1pixel-down-frame-right
+    image-repeated: true
+    phantom: true
+
+  UIWidget
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 1
+    margin-right: 1
+    height: 1
+    image-source: /images/ui/modal/1pixel-down-frame-bottom
+    image-repeated: true
+    phantom: true
+
+ArchiveVocationIcon < UIWidget
+  size: 9 9
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-top: 2
+  image-source: /images/icons/icons-vocations
+
+ArchiveDetailTab < ClassicButton
+  height: 36
+  font: verdana-bold-11px-native
+  image-source: /images/ui/button-9grid-idle
+  image-clip: 0 0 98 40
+  image-border: 1
+  image-repeated: true
+  text-offset: 7 1
+  icon-align: left
+  icon-offset: 6 0
+  $pressed:
+    image-source: /images/ui/button-9grid-pressed
+    text-offset: 8 2
+    icon-offset: 7 1
+  $on:
+    image-source: /images/ui/button-9grid-pressed
+    text-offset: 8 2
+    icon-offset: 7 1
+
+ArchiveSpellLabel < UIWidget
+  height: 22
+  image-size: 20 20
+  image-offset: 2 1
+  background-color: alpha
+  focusable: true
+  phantom: false
+
+  $focus:
+    background-color: #81818155
+
+  Label
+    id: caption
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 24
+    margin-right: 2
+    margin-top: 5
+    height: 13
+    font: verdana-bold-11px-native
+    text-align: topLeft
+    color: #C0C0C0
+    phantom: true
+
+  UIWidget
+    id: unavailable
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 2
+    margin-top: 1
+    size: 20 20
+    image-source: /images/ui/ditherpattern
+    image-repeated: true
+    shader: UI - Premultiplied Alpha
+    phantom: true
+    visible: false
+
+ArchiveStatRow < Panel
+  height: 15
+
+  Label
+    id: caption
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-left: 5
+    font: verdana-bold-11px-native
+    color: #C0C0C0
+
+  Label
+    id: value
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-left: 5
+    margin-right: 5
+    height: 13
+    text-auto-resize: false
+    font: verdana-bold-11px-native
+    color: #C0C0C0
+
+UIWidget
+  id: Cat5
+  anchors.fill: parent
+  margin-bottom: 31
+  visible: false
+  UIWidget
+    id: InformationBase
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 5
+    width: 170
+    ArchiveCaptionPanel
+      id: selectSpell
+      anchors.fill: parent
+
+      ArchiveCaptionHeader
+        !text: tr('Select Spell')
+
+      Panel
+        id: FilterPanel
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: 19
+        image-source: /images/ui/2pixel-up-frame-borderimage
+        image-border: 2
+        image-repeated: true
+
+        UIWidget
+          id: Header
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: parent.right
+          height: 17
+          image-source: /images/ui/2pixel-up-header-smoother
+          image-border-top: 2
+          image-border-left: 2
+          image-border-right: 2
+          image-border-bottom: 1
+          image-repeated: true
+          font: verdana-bold-11px-native
+          color: #909090
+          text-align: center
+          text: Filter
+
+          UIWidget
+            id: Expand
+            anchors.top: parent.top
+            anchors.right: parent.right
+            margin-top: 3
+            margin-right: 3
+            size: 12 12
+            image-source: /images/ui/miniwindow/button-expand-12x12-up
+            phantom: true
+            $on:
+              image-source: /images/ui/miniwindow/button-expand-12x12-down
+
+      Panel
+        id: SpellListBase
+        anchors.top: FilterPanel.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: SearchBase.top
+        margin-top: 6
+        margin-bottom: 6
+
+        TextList
+          id: questList
+          anchors.fill: parent
+          vertical-scrollbar: spellsScrollBar
+          border-width: 0
+          background-color: alpha
+          padding: 1
+          auto-focus: first
+          focusable: true
+
+        VerticalQtScrollBar
+          id: spellsScrollBar
+          anchors.top: questList.top
+          anchors.bottom: questList.bottom
+          anchors.right: questList.right
+          step: 50
+          pixels-scroll: true
+
+        ArchiveInsetFrame
+          anchors.fill: parent
+
+      Panel
+        id: SearchBase
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 20
+
+        UITextEdit
+          id: SearchEdit
+          anchors.fill: parent
+          background-color: #363636
+          color: #C0C0C0
+          font: verdana-bold-11px-native
+          placeholder-font: verdana-bold-11px-placeholder
+          placeholder: Type to search
+          placeholder-color: #707070
+          padding: 2 20 3 5
+          max-length: 29
+          selection-background-color: #808080
+          cursor: none
+          blink-speed: 600
+
+        ArchiveInsetFrame
+          anchors.fill: parent
+
+        ClassicButton
+          id: SearchClearButton
+          anchors.right: parent.right
+          anchors.top: parent.top
+          margin: 1 1 0 0
+          size: 18 18
+          image-clip: 0 0 98 40
+          image-repeated: true
+          icon-source: /images/ui/icon-erase-small
+          !tooltip: tr('Clear all text from the search field.')
+          @onClick: self:getParent().SearchEdit:clearText()
+
+  ArchiveCaptionPanel
+    id: spellAndRune
+    anchors.top: InformationBase.top
+    anchors.left: InformationBase.right
+    anchors.right: parent.right
+    anchors.bottom: InformationBase.bottom
+    margin-left: 6
+
+    ArchiveCaptionHeader
+      !text: tr('Spell/Rune Information')
+
+    Label
+      id: PlaceholderLabel
+      anchors.centerIn: parent
+      text: Select a spell to view detailed information.
+      font: verdana-bold-11px-native
+      color: #C0C0C0
+
+    Panel
+      id: DetailPanel
+      anchors.fill: parent
+      visible: false
+
+      UIWidget
+        id: HeaderFrame
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: 44
+        image-source: /images/ui/2pixel-up-frame-borderimage
+        image-border: 2
+        image-repeated: true
+        phantom: true
+
+      ArchiveInsetFrame
+        id: IconFrame
+        anchors.top: HeaderFrame.top
+        anchors.left: HeaderFrame.left
+        margin-top: 5
+        margin-left: 5
+        size: 34 34
+
+      UIWidget
+        id: SpellIcon
+        anchors.top: IconFrame.top
+        anchors.left: IconFrame.left
+        margin-top: 1
+        margin-left: 1
+        size: 32 32
+
+      Label
+        id: NameLabel
+        anchors.top: HeaderFrame.top
+        anchors.left: IconFrame.right
+        anchors.right: HeaderDetails.left
+        margin-left: 6
+        margin-right: 5
+        margin-top: 6
+        height: 13
+        font: verdana-bold-11px-native
+        text-offset: 0 0
+        color: #C0C0C0
+
+      Label
+        id: FormulaLabel
+        anchors.top: NameLabel.bottom
+        anchors.left: NameLabel.left
+        anchors.right: NameLabel.right
+        margin-top: 8
+        height: 13
+        font: verdana-bold-11px-native
+        text-offset: 0 0
+        color: #C0C0C0
+
+      Panel
+        id: HeaderDetails
+        anchors.top: HeaderFrame.top
+        anchors.right: HeaderFrame.right
+        margin-top: 5
+        margin-right: 5
+        height: 34
+
+        Panel
+          id: Indicators
+          anchors.top: parent.top
+          anchors.right: parent.right
+          margin-top: 1
+          height: 12
+
+          Panel
+            id: Vocations
+            anchors.left: parent.left
+            anchors.top: parent.top
+            height: 12
+
+          Panel
+            id: Premium
+            anchors.right: parent.right
+            anchors.top: parent.top
+            size: 19 12
+
+            UIWidget
+              anchors.left: parent.left
+              anchors.top: parent.top
+              size: 1 12
+              image-source: /images/ui/vertical_line_dark
+              image-repeated: true
+              phantom: true
+
+            UIWidget
+              anchors.left: parent.left
+              anchors.top: parent.top
+              margin-left: 1
+              size: 1 12
+              image-source: /images/ui/vertical_line_bright
+              image-repeated: true
+              phantom: true
+
+            UIWidget
+              anchors.right: parent.right
+              anchors.top: parent.top
+              size: 12 12
+              image-source: /images/game/cyclopedia/pic-premium
+              !tooltip: tr('Premium')
+
+        Label
+          id: Restriction
+          anchors.bottom: parent.bottom
+          anchors.left: parent.left
+          margin-bottom: 1
+          height: 13
+          font: verdana-bold-11px-native
+          color: #C0C0C0
+          text-align: left
+
+      UIWidget
+        id: DetailFrame
+        anchors.top: HeaderFrame.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        margin-top: 6
+        image-source: /images/ui/2pixel-up-frame-borderimage
+        image-border: 2
+        image-repeated: true
+        phantom: true
+
+      Panel
+        id: DetailTabs
+        anchors.top: DetailFrame.top
+        anchors.left: DetailFrame.left
+        anchors.right: DetailFrame.right
+        height: 38
+        margin-top: 2
+        margin-left: 2
+        margin-right: 2
+        padding: 1
+
+        ArchiveInsetFrame
+          anchors.fill: parent
+          margin: -1
+
+        UIWidget
+          anchors.fill: parent
+          image-source: /images/ui/background_dark
+          image-repeated: true
+          phantom: true
+
+        ArchiveDetailTab
+          id: CombatTab
+          anchors.left: parent.left
+          anchors.top: parent.top
+          text: Combat Stats
+          icon: /images/game/cyclopedia/icon-magicalarchive-combatstats
+
+        ArchiveDetailTab
+          id: AdditionalTab
+          anchors.left: CombatTab.right
+          anchors.top: parent.top
+          margin-left: 1
+          text: Additional
+          icon: /images/game/cyclopedia/icon-magicalarchive-additionalinfo
+
+        ArchiveDetailTab
+          id: RuneTab
+          anchors.left: AdditionalTab.right
+          anchors.top: parent.top
+          margin-left: 1
+          text: Rune Spell
+          icon: /images/game/cyclopedia/icon-magicalarchive-runeinfo
+          visible: false
+
+      Panel
+        id: RunePanel
+        anchors.top: DetailTabs.bottom
+        anchors.left: DetailFrame.left
+        anchors.right: DetailFrame.right
+        anchors.bottom: DetailFrame.bottom
+        margin-top: 11
+        margin-left: 7
+        margin-right: 7
+        margin-bottom: 7
+        visible: false
+
+        ArchiveInsetFrame
+          id: Column1
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column2
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column3
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column4
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveStatRow
+          id: RowMana
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 5
+
+        ArchiveStatRow
+          id: RowGroup
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 23
+
+        ArchiveStatRow
+          id: RowLevel
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 41
+
+        ArchiveStatRow
+          id: RowAmount
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 59
+
+        ArchiveStatRow
+          id: RowCooldown
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 5
+
+        ArchiveStatRow
+          id: RowGroupCooldown
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 23
+
+        ArchiveStatRow
+          id: RowVocation
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 41
+
+          Panel
+            id: Vocations
+            anchors.left: value.left
+            anchors.top: value.top
+            height: 9
+
+      Panel
+        id: AdditionalSource
+        anchors.top: DetailTabs.bottom
+        anchors.left: DetailFrame.left
+        anchors.right: DetailFrame.right
+        margin-top: 11
+        margin-left: 7
+        margin-right: 7
+        height: 24
+        visible: false
+
+        ArchiveInsetFrame
+          id: captionFrame
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.bottom: parent.bottom
+          width: 80
+
+        ArchiveInsetFrame
+          anchors.top: parent.top
+          anchors.left: captionFrame.right
+          anchors.right: parent.right
+          anchors.bottom: parent.bottom
+          margin-left: 1
+
+        Label
+          anchors.top: parent.top
+          anchors.left: parent.left
+          margin-top: 5
+          margin-left: 5
+          font: verdana-bold-11px-native
+          color: #C0C0C0
+          !text: tr('Source')
+
+        Label
+          id: value
+          anchors.top: parent.top
+          anchors.left: captionFrame.right
+          anchors.right: parent.right
+          margin-top: 5
+          margin-left: 6
+          margin-right: 5
+          font: verdana-bold-11px-native
+          color: #C0C0C0
+          text: -
+
+      ScrollablePanel
+        id: AdditionalPanel
+        anchors.top: DetailTabs.bottom
+        anchors.left: DetailFrame.left
+        anchors.right: DetailFrame.right
+        anchors.bottom: DetailFrame.bottom
+        margin-top: 40
+        margin-left: 7
+        margin-right: 7
+        margin-bottom: 7
+        padding: 6
+        vertical-scrollbar: DescriptionScrollBar
+        visible: false
+        image-source: none
+
+        Label
+          id: Description
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: parent.right
+          margin-right: 12
+          font: verdana-bold-11px-native
+          text-wrap: true
+          text-auto-resize: true
+          text-align: topLeft
+          color: #C0C0C0
+
+      ArchiveInsetFrame
+        id: AdditionalFrame
+        anchors.fill: AdditionalPanel
+        visible: false
+
+      VerticalQtScrollBar
+        id: DescriptionScrollBar
+        anchors.top: AdditionalPanel.top
+        anchors.right: AdditionalPanel.right
+        anchors.bottom: AdditionalPanel.bottom
+        margin-top: 1
+        margin-right: 2
+        margin-bottom: 1
+        pixels-scroll: true
+        step: 13
+        visible: false
+
+      Panel
+        id: DetailRows
+        anchors.top: DetailTabs.bottom
+        anchors.left: DetailFrame.left
+        anchors.right: DetailFrame.right
+        anchors.bottom: DetailFrame.bottom
+        margin-top: 11
+        margin-left: 7
+        margin-right: 7
+        margin-bottom: 7
+
+        ArchiveInsetFrame
+          id: Column1
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column2
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column3
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveInsetFrame
+          id: Column4
+          anchors.top: parent.top
+          anchors.left: parent.left
+          height: 78
+
+        ArchiveStatRow
+          id: RowMana
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 5
+
+        ArchiveStatRow
+          id: RowGroup
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 23
+
+        ArchiveStatRow
+          id: RowBasePower
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 41
+
+        ArchiveStatRow
+          id: RowScaling
+          anchors.top: parent.top
+          anchors.left: parent.left
+          anchors.right: Column2.right
+          margin-top: 59
+
+        ArchiveStatRow
+          id: RowCooldown
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 5
+
+        ArchiveStatRow
+          id: RowGroupCooldown
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 23
+
+        ArchiveStatRow
+          id: RowMagicType
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 41
+
+        ArchiveStatRow
+          id: RowRange
+          anchors.top: parent.top
+          anchors.left: Column3.left
+          anchors.right: parent.right
+          margin-top: 59

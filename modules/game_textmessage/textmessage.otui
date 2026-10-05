@@ -1,0 +1,23 @@
+TextMessageLayer < UIWidget
+  trim-line-end-spaces: true
+  phantom: true
+
+TextMessageLabel < UIWidget
+  anchors.left: parent.left
+  anchors.top: parent.top
+  visible: false
+  phantom: true
+
+Panel
+  anchors.fill: gameMapPanel
+  focusable: false
+  phantom: true
+
+  TextMessageLabel
+    id: highCenterLabel
+  TextMessageLabel
+    id: middleCenterLabel
+  TextMessageLabel
+    id: privateLabel
+  TextMessageLabel
+    id: statusLabel

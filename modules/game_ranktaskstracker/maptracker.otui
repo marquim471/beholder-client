@@ -1,0 +1,65 @@
+// Square over the bottom-right corner of the game map with the tracked creature and the task
+// progress (DeusOT TaskTrackerWidget): 80x72, stone background, 1 px raised edge.
+RankTaskMapTracker < UIWidget
+  size: 80 72
+  anchors.right: parent.right
+  anchors.bottom: parent.bottom
+  image-source: /images/ui/background
+  image-repeated: true
+  focusable: false
+
+  UIWidget
+    id: edgeTop
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    background-color: #96918499
+    phantom: true
+
+  UIWidget
+    id: edgeLeft
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    width: 1
+    background-color: #96918499
+    phantom: true
+
+  UIWidget
+    id: edgeBottom
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 1
+    background-color: #1a1a1a
+    phantom: true
+
+  UIWidget
+    id: edgeRight
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 1
+    background-color: #1a1a1a
+    phantom: true
+
+  UICreature
+    id: creature
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    // the client's creature centering puts most creatures at 32,30; 2 px down matches the reference
+    margin-top: 2
+    size: 64 64
+    creature-center: true
+    phantom: true
+
+  Label
+    id: counter
+    anchors.bottom: parent.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-bottom: 5
+    font: verdana-11px-rounded
+    color: #ffffff
+    text-auto-resize: true
+    phantom: true

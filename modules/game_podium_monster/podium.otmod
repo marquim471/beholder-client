@@ -1,0 +1,9 @@
+Module
+  name: game_podium_monster
+  description: Customise Podium window for the Podium of Vigour and the Podium of Tenacity
+  author: Beholder (layout from the RTC module, official ConfigureCreaturePodiumDialog)
+  website: https://github.com/DokinTibia/beholder-otc
+  sandboxed: true
+  scripts: [ podium ]
+  @onLoad: init()
+  @onUnload: terminate()
