@@ -1,0 +1,25 @@
+{
+  "noticias": [
+    {
+      "tipo": "Atualização",
+      "data": "05/10/2026",
+      "titulo": "Launcher oficial no ar",
+      "texto": "Agora o cliente se atualiza sozinho: é só abrir o launcher que ele baixa apenas o que mudou e confere cada arquivo.",
+      "link": ""
+    },
+    {
+      "tipo": "Novidade",
+      "data": "05/10/2026",
+      "titulo": "Modo DirectX disponível",
+      "texto": "Se o jogo ficar lento ou com tela preta no OpenGL, experimente o botão Jogar DirectX. Os dois usam o mesmo cliente.",
+      "link": ""
+    },
+    {
+      "tipo": "Aviso",
+      "data": "05/10/2026",
+      "titulo": "Algum problema? Checar integridade",
+      "texto": "O botão Checar integridade compara todos os arquivos com a versão oficial e baixa de novo o que estiver diferente.",
+      "link": ""
+    }
+  ]
+}
