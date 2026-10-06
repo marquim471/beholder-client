@@ -11,7 +11,7 @@
       "tipo": "Novidade",
       "data": "05/10/2026",
       "titulo": "Modo DirectX disponível",
-      "texto": "Se o jogo ficar lento ou com tela preta no OpenGL, experimente o botão Jogar DirectX. Os dois usam o mesmo cliente.",
+      "texto": "Se o jogo ficar lento ou com tela preta, escolha DirectX no seletor Gráfico, logo acima do JOGAR. O launcher lembra a sua escolha.",
       "link": ""
     },
     {
