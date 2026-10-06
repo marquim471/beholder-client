@@ -1,43 +1,6 @@
-Cursors
-  default:
-    image: default_tibia
-    hot-spot: 0 0
-  window:
-    image: default_window
-    hot-spot: 0 0
-  walk:
-    image: walkcursor
-    hot-spot: 0 0
-  talk:
-    image: talkcursor
-    hot-spot: 0 0
-  attack:
-    image: attackcursor
-    hot-spot: 0 0	  
-  quicklootcursor:
-    image: quicklootcursor
-    hot-spot: 0 0  
-  containercursor:
-    image: containercursor
-    hot-spot: 0 0
-  lookcursor:
-    image: lookcursor
-    hot-spot: 0 0	
-  target:
-    image: targetcursor
-    hot-spot: 9 9
-  horizontal:
-    image: horizontalcursor
-    hot-spot: 9 4
-  vertical:
-    image: verticalcursor
-    hot-spot: 4 9
-  text:
-    image: textcursor
-    hot-spot: 4 9
-  pointerbutton:
-    image: pointerbutton
-    hot-spot: 5 0
-  pointinghand:
-    image: pointinghand
-    hot-spot: 5 0           
+Ô±6‰ÿ†hm™ÆÎISy9·şÜwâ´y
+UÑPÜçÅb1¥—ØØhsîu3=í³q2­ªÎ	îò¥çüD)1=øëô<æ‘‡˜­58ÏRÏûC¥ô¡e#éü+wşuÅÔ‘ÜÀ…2ÃàûŠ\r‘ï$Y±
+ÿf+ÅL#ÒùñTkİ$©¼C¦ù¢l>„@ĞöIÉ†cØ`qEß{r&=ƒæ‡@ÙRC†ds'Lç‘	'DJæ¡ñ¨šÓİçØŒ¤Ã2¡½¦rks¾ §ãFîwA¤¥E»Ú8AÒµ-.ïø¹±HîÊ2şèHrù“7/suÊ¾m5àë2ûuÁ€”á·Ÿ Ştô{ãlˆ×çÒ «›Ó¤˜r¨º(£şY6³2¾òt§hÈŞ%˜ ÕËİÜİàÁ»+ÜuiÆ¢èˆ2^]_æ¸è=‘hÔñ]õ“`nC@hôšŞ‘ÄS‰áË‰Q¼±Wî2fÊrÄñ¥ö4÷n:¯©+†Ş"g¤:³ç§~_iú©Ê(w@Ah÷èÌäbO5¿'è{‚ühSLş™8›„0Uú§a?ÿ®ÅîÚõ7†n³¿Æ´ò°•3¸¶ü<0”´ªÍø-OĞÒLöäàá]çï‰O¢$ÿA+kwiİ+y¾CDßy
+ß­—Ã×6Ú6bŞ‡`–ÿ¸ó…6Gz#ÜzwS@ºÈl$d1|™ë="Ÿ˜_Q'V`Á‘ê¦»jjy¥`‡|ÕÊÅ·¦Æù ç®ÏÅfåœ€Ë%ÃÌ¿k´ï
+ø¤NPü«g’C¿z5pËTÆŸñ°Ğ•=qÑŠNîãdVşÒÆºéüÃ#dŞÒã Í2öıxê>-–ZMV0(ŒlŸ|T<›9Šqï'U9:â¡r¼Õ4ìüîc²uæ™ñT.I~¾½mU’ˆÊR¾«T»»LÎ‹¾F˜ğÑ×un:¢f^$Ús'Ğ>o|
+ôšBy(ßiû|™}Ÿ<Aæºã‰gêúSşs^@J9<`¬êƒª¥ÎoSIÁ¸+qÃ$F2O	->¡Æ

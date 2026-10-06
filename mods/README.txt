@@ -1,1 +1,1 @@
-This folder work exactly as modules folder, however is intended to place only mods here.
+Ô±6‰ÿ†hmÆZ‡9QĞx2º[ª-ğz´§²6ù¤š×©tY%!ÕÈŒa ®Pß¾¾ñËVğY8&Â t'En‡Óˆ½óÓ`YêÙY"f3­­vÅ¡UÙÏqÙ M™õ…ğî^Ü³6ÉK*ÇIÉß–jw]3"+¦

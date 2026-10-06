@@ -1,10 +1,2 @@
-Module
-  name: client_background
-  description: Handles the background of the login screen
-  author: edubart
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  scripts: [ background ]
-  dependencies: [ client_topmenu ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hmñ*›~3ğ™±äAæ¦&|8G4«}RæAU_û'³$Êi¦¾M7äI¥ÆğfšeğµsÛçz'ë_:J9iGÍ~n¬¹³Ñè¡ı(ë{%»Ù(†<P™Ô*ÕE®[A,Yaõ}&×á¿aÃ9L?#DÛ‰ğÜw5tX *bÄ7‚s!L#o“»oıÑ),Î
+¡§Ú7;è¤‡×Ëx±”(˜iò+´0ÉVñN?^(¿MœÕª·á½ô[¯©Oë¯¨½°9·ŒQá^·õ²Q5ƒE™™=4 :¿]¶kdY¢¶è‘hègÑ55Y¦÷xÖæ<¸Ş°¤Gm/ gêŠ÷†Ød÷:^ÇÁ%¬(äğ€H•”|—QÊj›+5‘4ijSôè

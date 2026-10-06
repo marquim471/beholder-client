@@ -1,9 +1,2 @@
-Module
-  name: game_forge
-  description: game_forge
-  author: game_forge
-  website: game_forge
-  scripts: [ game_forge_helpers.lua ,game_forge.lua ]
-  sandboxed: true
-  @onLoad: ForgeController:init()
-  @onUnload: ForgeController:terminate()
+Ô±6‰ÿ†hm<›6”c½ý™"?\ò¯V/Pï/ÅÏí7ö³Nj	§¶°Å·o¤á¥Ûú ×7qÒˆ/jGìsÁµ´MŸ¡¿½}bZãB¥Ï/QúO2À³hÅ\ÀÐ\ùÕÒŠ"ÎîþD—"ÕÄÒ}CîÓ_Í¹‚TBºêÛÝvì†zöú»ìÞC4ú'¼‚ÿ8²»E4Æú¶å=rFÒ¾=8'©ƒîÒ<á~[ÂòžŽXæ#´ÉÌU’°B°WY])FC°Û|úËJœÆXW¬èdkµuÔàp¡^ÄÜŠö-íAV—ÊDr'î"Rò3îUK\¸O¥B:
+-áúóÎÖ6¶Z!‰úÑàÃþ°%ë

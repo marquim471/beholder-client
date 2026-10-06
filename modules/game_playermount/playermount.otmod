@@ -1,9 +1,2 @@
-Module
-  name: game_playermount
-  description: Manage player mounts
-  author: BeniS
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  scripts: [ playermount ]
-  @onLoad: init()
-  @onUnload: terminate()
+‘±6âˇÜhm∞,Wf\â∂¨,`_ŒZ Óƒg[Ÿ"∂¬rÍú√8rôﬂ√ƒ/ÜWLÙ«Ã≥æÃã©‚ˆ“Ö¢¸E`î’HπX	`?˛àkı«.køÃ√N[™√æ"˜m¥+k˛”9¿Û6Ïß∫Ä:%|üÖ/@˚
+0≤”èxP[ßùº€[òyã+ü2sb¨ûÙ«#∑HØKo¯’ã«7gÎËŒ¡òµy◊?Ôﬁ&µKì,sq”¨ıƒÏúÎ≈(≈¶›ì≈Û7êrSº¡˙7æbÇŸ∆æq+}…ê¸qØ|˛”S+z?Ù>_7‘ÌIRãu}æ[Õ

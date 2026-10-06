@@ -1,9 +1,3 @@
-Module
-  name: game_textmessage
-  description: Manage game text messages
-  author: edubart
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  scripts: [ textmessage ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hm€TCïA'÷2ù ˆHƒã÷Öð¾&g>xâMNUò‰èŠªÒQ`æ®ÍŸA“Ç]USº ½´pí£“i­ìGuÅ!4Ehsx¹(C^ÄIð‹»¬Ê|$WZ:Ù`7' 
+¥&E˜sÖ›s4JŸi‘xÃî@D"†_t´j³CÜ”„1¸o¶,›}çi’ÃåÜ™¨rwsíi/úâðµo¶Dø‘`ÖYÓ±Ð†˜V€ƒ}Ö,¾6“ýÀæÃ
+=ÿa†Ž´%È-ýðF™7lL°ë‘ksØ;ßÀoÙŸãŸ€Çæ—‹“Îj±ÐÓØàjÞ“:©ó¯

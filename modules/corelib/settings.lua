@@ -1,3 +1,1 @@
-g_settings = makesingleton(g_configs.getSettings())
-
--- Reserved for future functionality
+Ô±6‰ÿ†hm_öflc‹ÿ„è¹œÄb…Ø·À#?êÑ]ƒ„#w’‹FìA8ÿªé7¼Ö;Õ6 ¶3ØIpúñB3 ¿Æ!ÿÖ÷_ö…†ë!Ûz[¤ azrëµMÁÑ†H:c%{©]Î~]ÖÙ8¯ˆ¼˜ß”

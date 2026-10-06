@@ -1,9 +1,2 @@
-Module
-  name: game_stash
-  description: Global supply stash system
-  author: Aluisio Penna
-  website: https://github.com/mehah/otclient
-  sandboxed: false
-  scripts: [ game_stash ]
-  @onLoad: stashController:init()
-  @onUnload: stashController:terminate()
+Ô±6‰ÿ†hmˆ&ÿ'0P¾½ÅU
+;PÃãëþûÑRÛCò&$…Íºøˆ°¿85J…›)êW¢¹-EëKËé,T–œ¨ú Ÿ}BÛJK{×ÆóÉ°âÐ«çèknHRcÛöõ7óÚ«¥_¿·ZÝ%ïz5TvW#=wðƒ÷$Ô›±ŒÆëhž™¶lE¯ô–!e¨á}9À7‡msÕb0:öôð’³ú›b›g@û’éeŽï%¥¬³ŠýjòË®×€&c«­í‰(ÌWÄÛ8kvÌj8ÏáéŒhd7ö‰…~¤f:\2îšÐËJý¤ÀPÿVØd„e-ÍnI®¦#‹WÐ¾,}È~(	–ƒ5ŸkX><F=0ì®.ªì2m€Žb´Ú¢²qˆ

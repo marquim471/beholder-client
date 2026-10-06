@@ -1,9 +1,3 @@
-Module
-  name: client_locales
-  description: Translates texts to selected language
-  author: baxnie, edubart
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  scripts: [ locales ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hmS³VŞVÇ:Òï{ÈNîaT8eÇô³¾Vê™ó*SêN+¨‡©ªKg»Ù)Óêua¨M¾*pâ[!ôÕ¤°Óf¸^}±©3ÏĞîÚY•—154–&õÍŸëufMI9´ÿ¨‡‹<˜…Şr 7DÈãœùpæ+¨]ˆ†ìê–	Òt-–}ÔÑ/}U#ZÖ‚å£Ûpq¼·^è–w.•cãÈ
+mòŸ€‹×Û}¨È=ÍÓ‘vèİàMÌwÂ33¼MîFâ]ş¯’¬Â—eX¬§;ê)ê"=O:Ù_ÏÍ–5Äy&eü'vß.¬K¸
+b:¥—,CÑÌ6]/w"Y§­i“è‡†¨è*

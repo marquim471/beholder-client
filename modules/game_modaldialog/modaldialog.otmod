@@ -1,10 +1,1 @@
-Module
-  name: game_modaldialog
-  description: Show and process modal dialogs
-  author: Summ
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  dependencies: [ game_interface ]
-  scripts: [ modaldialog ]
-  @onLoad: controllerModal:init()
-  @onUnload: controllerModal:terminate()
+Ô±6‰ÿ†hm´DxX¥ïòãN€ÌNF>˜«]Çêx„ƒ¨³Î¡*D¿~M$ÇñµòÉ%îÆR¯¸÷÷¾h4C6Ùf“-ú`nƒ˜V-ú4ïôá¹t:éç¯(ã]ýE±É»ší½o7_¤ÁJg\Ð0f}N?d/PVþêçT!Ñ_ 6ç6Œ6dÝÛÇƒ§ì¬t>¼ß*¯PaÓ"+—¨Í¢¶ØÇovrt4½DöŒ+6„iù_¸W¯ø”Énu œÄ+§O-~cŽüœXAï€¢…KŠ¢Ó]&?AôPCŽè7˜p1c‹ñÙab<Ÿ0²¤±0"5÷ov¥ï!ý°§ë±“g¯ëØÃñMQVÑÄ/ÐÆ„ú­{ˆÄá\1ö£…hÛÝh#Ä)Põïe½Ÿ7hÔG}‚B)˜S¦o‚\©€ÐjåÐ]Êaxtf

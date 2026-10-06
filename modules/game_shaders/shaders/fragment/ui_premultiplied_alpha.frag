@@ -1,13 +1,4 @@
-uniform sampler2D u_Tex0;
-uniform vec4 u_Color;
-uniform float u_Opacity;
-varying vec2 v_TexCoord;
-void main()
-{
-    vec4 color = texture2D(u_Tex0, v_TexCoord);
-    // Preserve 8-bit premultiplied texture rounding with the straight-alpha blend pipeline.
-    if (color.a > 0.0)
-        color.rgb = floor(color.rgb * color.a * 255.0 + 0.5) / (255.0 * color.a);
-    gl_FragColor = color * u_Color;
-    gl_FragColor.a *= u_Opacity;
-}
+Ô±6‰ÿ†hmHê1x”1ÍuJrK/†Æ
+wÄ¤m@"ŠÜ1ñBÙÆëAùÔKÿ5-n^‚ésâ²8“•7RM«·"õì^0ºN•L*ÿRÐpðh‹ñKü­#b¼KÐYõÏÊà)í’B+×•ùÚmÓ~^þ¬ÓzX‘ìŸÕ	.Ó¯F«xÝÅ‰lºúæõ¸!GÒ—ÄŽ¦sÉ@}ÆÞ™@Ï©6ÐX‹J‰ÒµÖ9'.ï‚[þ¹áèPëä‘æRüù]Ä›ú2w®3ÛØ¨¤ÆþYÁú¦™ÌWÊgc™´¯Œ•ŸZ	ŒOÎ"·|ü2ìË“ó-„|Ðýç*³Åì»›åýº°Y›ƒŽÀàIvQ¢i%Ë²{öf¤n§àj€4ßÐò$¦ó'Rh_4ç9í±Ü*G²*‹«C‰ 1f½Ñ÷.c—ÇdüÜO ³{Š©ë²úká¯‡È¤-ñÓ‘¾„H9Àá1]†`MöiV±ER_õ|Šy¶|òJÛó/1J§q?`‚•P[ÏSh—Ð%Al÷vw.Ur‰‘ˆ¬	3Wè_Érº‰ýzÍ¾zÂÄ­ÃpÒ 1Ä7ÀoH®LK
+Ekx8£"/âI%8=Ëu”æÙG(W
+“ŽïƒmfX7ú

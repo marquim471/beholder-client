@@ -1,8 +1,1 @@
-Module
-  name: game_search_locker
-  description: Depot search (Search Locker)
-  author: RTC, adapted for this client
-  sandboxed: true
-  scripts: [ searchlocker ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hmu{Â×«»qB"ïµ)eL)¶Pøð$…Ó’b§7xt&R#Sç§Ñ‰2švÔÒ4On­Žõô2‰1lxò¯Nõ¥MÊLçç>prÓPª‹¹q„ã	ÌÉ3­ŒCËŒ—'ée|ÌzË”z@´šœñŽ›$©w½Œ‘l–ÊâÑŽ)=4í¡°HÞŒæ -Q@Ÿ/½§Üø}s/-¸þ’#Üá\ù_ü„«¸çU—úgñÓÂ×ðÞ ™ŽÙ!òXŸI‡;Šˆ©{Ü¿@ÀqPrµSÒV‚q4Täö?¥Ií…äeúc®‰@Œˆs

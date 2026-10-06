@@ -1,9 +1,1 @@
-Module
-  name: game_creatureinformation
-  description:
-  author: Mehah
-  website:
-  scripts: [creatureinformation]
-  sandboxed: true
-  @onLoad: controller:init()
-  @onUnload: controller:terminate()
+Ô±6‰ÿ†hmóþô&’Wî1PûûÁÐã“J|å„Â9í’™Øä	·þ¯™KŒí`Œ§†ÞyñÀ…ð³Ô«ÈÀ,`Mš>ÅÔ.i(†w•|‚ š—¾ŠiÂU³v²#5¸QÍŽ¯ög’ýˆ/«~8ôî5@ñè24—VW"æH6ð“»OÉ6¸Ð˜CŠ„;]ótÓš‘;µbëÑƒB¦EÛeÂõÊÕzF±“¼ò‰¹}‚ÝmùSÞbtŠœèþ5>Tí[´ã¹ÖªGó¾\QàVlçé\¡Jþ¸õô9Ãñ° Ú]ÊÒ

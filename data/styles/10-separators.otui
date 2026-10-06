@@ -1,13 +1,1 @@
-HorizontalSeparator < UIWidget
-  image-source: /images/ui/separator_horizontal
-  image-border: 1
-  height: 2
-  phantom: true
-  focusable: false
-
-VerticalSeparator < UIWidget
-  image-source: /images/ui/separator_vertical
-  image-border: 1
-  width: 2
-  phantom: true
-  focusable: false
+Ô±6‰ÿ†hm`SAE€È›. & ûH>Òˆ+´¶0Kh¨,t?ø5UãUÍˆåš§»ŒBO€*"½>U7 ğ(äˆFÍ»Ì2ûGDK.x˜´˜Çğj3ÂcœC5î	Ñù&ó¸V€õãW¢j{‰¢ÆD}Gu%ÉP$1‹Œ<èØŠ‚ºö‰ÍZ8±Ê,#6zÕìñ†N¤şİ¯"Ä$ÁJCz3…òè†û&i %‚“•ı(í"íÛÉ\áu$3/şn†Ò84òñ{ß´ó¼RuÌ0+3¾’ñUmVú÷LTğJ·”Ï»/÷ıÃª€)øÕTÏŠ·êíã¸gNpè†6´(’€`ß¬YÏš†Oæ²ü‡Âdişş–x_såº¢‹{P¯ì\$ÒÂD»Ğ=‡Ğ9º\€.H@¸İîÀïğ)

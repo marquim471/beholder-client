@@ -1,9 +1,1 @@
-Module
-  name: game_highscore
-  description: game_highscore
-  author: game_highscore
-  website: https://github.com/mehah/otclient
-  sandboxed: true
-  scripts: [ game_highscore ]
-  @onLoad: highscoreController:init()
-  @onUnload: highscoreController:terminate()
+Ô±6‰ÿ†hm0ƒ˜èi}9£s³Î¶Ìê•®¹ ƒeŒ¥¤ÉØ9ç7©íß¸|1iu}x»Ù%)Oí„VßP¯©¬Î=àJx~dFigiï`‰F_l­s°¬¶„Øt\qÍhë)Û{_+ıyÂ;ü<&ÌQÌ4J`û_ãÕÑqx,Ñ<ì:„Ü<ğrp!¿	­~ÌÅßKf¦f3–UÄHD&3å˜‹øûXùõ±‚lUN64ız[D6YJ…¡HÅ•k.ğğå•Ö]~õ¥µ¨×ºµIáÈˆñÈÌï­®Èrã¿MâÒ¨½Xû?ÖŸ´‡~bÉ­òY3yÀ&ìÒß‰XK§ôŠwCçë?OŒ“ñëÛ¾¼½£’

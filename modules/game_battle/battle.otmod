@@ -1,9 +1,3 @@
-Module
-  name: game_battle
-  description: Manage battle window
-  author: andrefaramir, BeniS
-  website: https://github.com/edubart/otclient
-  sandboxed: true
-  scripts: [ battle ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hmÆˆÓá®ú2À'®Óí2íİ„<¾w¡0¤Í©×%ëîU-«³`8‚E¼8Tîçß‡6î¡7!–ê_±:Ópªnùúês]RtJ)lp%mìjølõrgD÷­¯JKGÿpúÑ°§Tò„ÚÉüèÅ?·UT¹¾Xå\~Ú¤e^qÔbò¼6ïúÆPa,€À963¤é
+şÇîM‹s+ƒ(]L*U2­ß@ =GƒÄíĞÙèKÚE’x×4g÷Ï+ÊGå¶½ú‚¥ÓÊ˜u$E»C,zM~¡FÎ™
+¨˜²·-	>XŞ~î¤l¨]Ş

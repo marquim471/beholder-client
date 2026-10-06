@@ -1,19 +1,5 @@
-uniform float u_Time;
-uniform sampler2D u_Tex0;
-uniform sampler2D u_Tex1;
-varying vec2 v_TexCoord;
-uniform vec2 u_WalkOffset;
-
-vec2 direction = vec2(1.0, 0.3);
-float speed = 0.05;
-float pressure = 0.6;
-float zoom = 0.5;
-
-void main(void)
-{
-  vec2 test = v_TexCoord + vec2(u_WalkOffset.x, u_WalkOffset.y) + (direction * u_Time * speed);
-  vec3 bgcol = texture2D(u_Tex0, v_TexCoord).xyz;
-  vec3 fogcol = texture2D(u_Tex1, test).xyz;
-  vec3 col = bgcol + fogcol * pressure;
-  gl_FragColor = vec4(col, 1.0);
-}
+Ô±6‰ÿ†hm¸ñ;b—¶È­”˜3Ð.:€w*{¹!ª
+çBNìnÇ=¹Ns{¡9ÊÙ¨U”ë¢µÉã.·Æ¢±_öÍ“¡«ÄÍ~ós‹w¤êúÝ¢ƒ h·¹±0³aZ7Œ2.\mÜ›AöÝë(Û‚x5ïÝó˜×Mz“@+}Xv—sÒxðÃÄl¹6)/k|Ãè+D9^çQäÁ¤mÖ×
+Ô48tž™v:·D¨>©Y¿a¨ƒ“¤5ÄÔ ·‡ì­ó×÷þUr6B<_í	¨m-,–ÍèñÐKfùÍuqæ8*ãØFíÚœÖ"—íãŽõîÁ¡Â·‰>+Ì]Ö_‡¨oð$DN|ÃÛK{ãÑI•ÍI˜Úmªé|_SïÕ>;úðü]Æ¾¯l®âSS¨ÉÄqyjì„ø7·G‹ÊŽ_¿ÍÖ²ãÔ‘Gû~¼÷ùóF¾oÇ¼¬øùfº÷y""0r§»ÇÊ®£?G™Áöf9‘T:.3yƒª¡À¥©™ë·™2mÍ¢ÂÛ³EÍ¹ïvšF¾CvuGÄ1UÀ¬Lÿû«N*ìE¡ž²®ÛfÉtCÆÂW›mÿH.YkˆðBDO°@–Ÿ“†W@¤Me—9Ú´Oàq«
+Ánäžøz`rŽ-7ò±mv e˜y`—–šC[ÎäfU­h3
+¹˜¦>Y[okZ¹£™¶å­\*þ„[Àþ)~HÇ¢½ÐH¿¤#

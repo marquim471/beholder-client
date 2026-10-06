@@ -1,9 +1,3 @@
-Module
-  name: game_wheel
-  description: Wheel of Destiny
-  author: R!ck, ZLukSrT#8740, Christianlb, andreoam, Libergod
-  sandboxed: true
-  autoload-priority: 1002
-  scripts: [ wheel, classes/geometry, classes/buttons, classes/wheelclass, classes/bonus, classes/icons, classes/gematelier, classes/workshop, classes/wheelnode ]
-  @onLoad: init()
-  @onUnload: terminate()
+Ô±6‰ÿ†hmÞ°~høqmÐÎü
+ŠQÄÁÒ6³þL5&¡ß5uQ+éÀ#:>G™HXx®<çŸOe$Waÿ@Ê¢(U VØ{SA$ù¢Ûp¡ë¨¡_€4îë®(³µj8²Nõb¥HïËâÇÁí…Œuùµ¿óB9†Ñ¼º“5r¸Ñw*z<Öå*…‡éšÃ¿ÊpÄ€ˆ°*T­ØÅMàl=ÖD:±ÕË”$ÄM¤ÑÚÌL»Í@Sþþûª&c&#ÄBW).j5Ÿ¸7}ââÍ…ø…R%ÔQ•B¨ph'Oè›ZŒÝóÚ÷ÇÕWµýÁŠW	aQÛ®–®Dá"GÜqÀo»˜ý(º7æ;yÓ¥ÈšbW‹ÉÂØ¡Ç&ÛÃîø1G±j·0(á©]ÖtX–øgž]P„;ÂÞ*üB†÷¡K–y‡¥ù°´ø:@–X§Á1=þÅBÞ\\oH9¨N¢—}#æŽÇç‹¯¢ "tÏ”Óé>ºÕ¹0Mo
+IÒ#‚ì¯F’B™Ÿ¥i„ª¸ô£;Å®

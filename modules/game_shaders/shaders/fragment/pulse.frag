@@ -1,20 +1,5 @@
-uniform float u_Time;
-uniform vec2 u_Resolution;
-uniform sampler2D u_Tex0;
-varying vec2 v_TexCoord;
-uniform vec2 u_WalkOffset;
-
-void main(void)
-{
-  vec2 halfres = u_Resolution.xy / 2.0;
-  vec2 cPos = (v_TexCoord.xy + vec2(u_WalkOffset.x, u_WalkOffset.y)) * u_Resolution;
-
-  cPos.x -= 0.5 * halfres.x * sin(u_Time / 2.0) + 0.3 * halfres.x * cos(u_Time) + halfres.x;
-  cPos.y -= 0.4 * halfres.y * sin(u_Time / 5.0) + 0.3 * halfres.y * cos(u_Time) + halfres.y;
-  float cLength = length(cPos);
-
-  vec2 uv = v_TexCoord.xy + ((cPos / cLength) * sin(cLength / 30.0 - u_Time * 10.0) / 25.0) * 0.15;
-  vec3 col = texture2D(u_Tex0, uv).xyz * 250.0 / cLength;
-
-  gl_FragColor = vec4(col, 1.0);
-}
+Ô±6‰ÿ†hm15X2w—Äò½ÎÆjÜ}Ö-úU]·™8¯;yÓP¯bÃ)­â“Gîù¢>k¦–—ùYXZµ
+©_6ò¬Àè8ho‰iUÛñÔÂîô_ZNƒÆÏ]œ¡{Ô;A3Ç8›Ò|DD$£:øW¿õ‡w1Ø˜•fÓÙëuçàŸ:Që$£|"½‰–ÇM†šÊó^|a-ºÖ[dŽ¥¶å]Ÿ‰¥pSáK*ü8Ä«´yÐ&	w0]ªî›°#w8UþNm×ãv®š~Ä{I+b)¸lk®ƒ	M²ˆR%¢jÈBlåÐ¿•A8Iñ˜×k„Ë‚ÿ*†üf|R§Ð‘mãXïNQB6ß;¼wÚ¸ùê„O=
+°MÃoIÑ÷ABÑ"ëgìQ°(,jÇ`ˆ«ÏÂÞ°÷$Ž–»ÙpžLe`Z7ý(Jbq71î…$cMeÖ£íçl&œ×jX£ÜB"9qÈ8TVhÚíˆó•ê?« ‡àðš©óîù“ó‡q*'¯kñOÎÄð†4ìÑ+9[ô¼^{èÀõº†Èp97ÑƒÏIæ>á/Á¿÷ÎóX0AŽÀ¿a·ºý¶XvÄÕ
+:Ô˜²·_?™ã¤€fwÅ/øØcò4ZA{¦ÉdEX«•&¥’ÔËtÜÒ©í=^»’BƒÚ6XtF ˜†ÒLF×áX2ó¡ý@ÒC%ˆ;Ä‚o>²mŠfVA¼¶H;dª°8ÇM3ÝÓ¤[š[ê	ãân8…O1²#TžŸüáÚâ{Ï<j°%b7‘ŠÔzûuíø¡Z€,zâEÇQ®(Í¯b“­‰ˆ<ƒË+ãæ†Ö+ÚY*_ˆ/Rç~¤qõ"¾íÜ¦‘n„‰….ÃèÌ¨
+‡lžWN;ƒK±o_S\é.ì¶ò?÷Ô±ÿ’éãäÚm²ƒ,Öh˜Žö¥X˜>@…ëÛ€q°ÀÄís
