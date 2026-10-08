@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.08-0817",
+  "version": "2026.10.08-0822",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -10877,7 +10877,7 @@
     {"path":"modules/game_ranktaskstracker/images/bar_fill.png","size":153,"sha256":"2b2134173293026ae2972813bb21d706858878ff92e48e6df404798424bf6a64"},
     {"path":"modules/game_ranktaskstracker/images/card.png","size":583,"sha256":"6e67929a19454162aa054cb004e585362243a7b3d5a651fd8a3691a5644dbc08"},
     {"path":"modules/game_ranktaskstracker/images/glow.png","size":2547,"sha256":"3531c9038f59ea791b311698ea221314d71039af4af41a0edb6a901a68ec3cc2"},
-    {"path":"modules/game_ranktaskstracker/maptracker.otui","size":1703,"sha256":"b488a6f7babaf66aa1053efd85e8a326dec1dbe53aafda7b875705b7a487778d"},
+    {"path":"modules/game_ranktaskstracker/maptracker.otui","size":2269,"sha256":"b26dad3cb8935f960968ad5d3e389660567b971363c96433797dbfa4e8ee4314"},
     {"path":"modules/game_ranktaskstracker/ranktaskstracker.lua","size":16909,"sha256":"8ea2795f42cef9064ec662cf718d44a7b9353b6da094b523ff7c9ba65e42bb04"},
     {"path":"modules/game_ranktaskstracker/ranktaskstracker.otmod","size":317,"sha256":"d008dd2c8ae2c458acf8983b2089fe720f110b1d714b4ba02a0df3b191710dcd"},
     {"path":"modules/game_ranktaskstracker/ranktaskstracker.otui","size":3227,"sha256":"2107c5100e92a06680386090c24e20d9e3e8b740b7ad1969e5483813dab946de"},
