@@ -1,10 +1,12 @@
 {
   "format": 1,
-  "version": "2026.10.10-0631",
+  "version": "2026.10.10-0739",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
   "files": [
+    {"path":"otclient.exe","size":34073088,"sha256":"9258a4f4ff2045919dedbdaa336d9ff895242377e470223b19aa785be13259d3"},
+    {"path":"otclient_dx.exe","size":42907136,"sha256":"7034fbc55ff7211fb3559b5273250912c3c7a184fd30f6281305b048de5d5ddb"},
     {"path":"cacert.pem","size":206159,"sha256":"592da8008fe748dd3ca58566c6846cb9340062bfb10bc4cd0846c8b191c948da"},
     {"path":"config.ini","size":850,"sha256":"ae04fec2759cf4f3e60ebfce93b9e557996b4ddd9224a1847c33302ffb2c18f6"},
     {"path":"data/cursors/attackcursor.png","size":1165,"sha256":"de76e4643714e82d8941a4ae8486cd4fb35a1c0ad3ee28a5e1d85437b29b660b"},
@@ -9847,7 +9849,7 @@
     {"path":"data/things/1525/subarea-0526-7b72dba8f5a1a2e45d402ff5b48e27052475a2f7a4d9e7b839b0b74cbc92ed4a.bmp.lzma","size":426,"sha256":"069fc8ae8f3c8627a5d5479c658150ddf2023b3995a48516088f124989ab183d"},
     {"path":"data/things/1525/subarea-0528-fc5c8c1081f5172ee79a3a8e3989f99f2d496f5406d005811a4279c458e535de.bmp.lzma","size":401,"sha256":"c34aca4e097063aaaef73ff5113a21ad3eff3736a01a40ddf3d67e65ebd28223"},
     {"path":"data/things/README.md","size":358,"sha256":"553b8d410e7d9ffc2d077ca87f717f748590e916dfc1394cfd49dccce7117f04"},
-    {"path":"init.lua","size":6993,"sha256":"eeeaf0115dd97125b94cbacace3d231bd17cc8e31581ef89bad458607f5b1e38"},
+    {"path":"init.lua","size":7294,"sha256":"11938fb51b5e91a85d29ec0eb871eed03186982e991749352e17a8e007c1fa00"},
     {"path":"mods/client_mods/mods.otmod","size":278,"sha256":"2cdc5375c0d533d2d5e55cab6b62233c11a28f414928ea972fadd81ea41c07e0"},
     {"path":"mods/client_profiles/profiles.lua","size":4133,"sha256":"bd82baa1ffb591bb85135c78206a9bd6b831276e752d2722b1660e5f556daf56"},
     {"path":"mods/client_profiles/profiles.otmod","size":271,"sha256":"638fb0e417d8e9d57f3c72c2bb3e17fb29db4dfd97d9decf61bccc078737d964"},
@@ -12047,8 +12049,6 @@
     {"path":"modules/startup/startup.otmod","size":237,"sha256":"1c5bba79031077dc3a094d3240af18c0a5470c128212de050f006e73f95ee5ba"},
     {"path":"modules/updater/updater.lua","size":6883,"sha256":"e2ce5d259a4b1f606de1ef183cc92a05d56414c373d7cab2e12deab748875f7e"},
     {"path":"modules/updater/updater.otmod","size":313,"sha256":"2cd444c6856ab494810ae1ff0235f56b37d91acc495fc5c69bdc5e5d5a005a27"},
-    {"path":"modules/updater/updater.otui","size":977,"sha256":"870d685353240a3b34a7a765d96c84ed298c8894c6221dfa11aa6fa2e67bd55f"},
-    {"path":"otclient.exe","size":34073088,"sha256":"9258a4f4ff2045919dedbdaa336d9ff895242377e470223b19aa785be13259d3"},
-    {"path":"otclient_dx.exe","size":42907136,"sha256":"7034fbc55ff7211fb3559b5273250912c3c7a184fd30f6281305b048de5d5ddb"}
+    {"path":"modules/updater/updater.otui","size":977,"sha256":"870d685353240a3b34a7a765d96c84ed298c8894c6221dfa11aa6fa2e67bd55f"}
   ]
 }
