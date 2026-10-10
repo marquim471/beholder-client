@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.10-0552",
+  "version": "2026.10.10-0559",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -9849,7 +9849,7 @@
     {"path":"data/things/1525/subarea-0526-7b72dba8f5a1a2e45d402ff5b48e27052475a2f7a4d9e7b839b0b74cbc92ed4a.bmp.lzma","size":426,"sha256":"069fc8ae8f3c8627a5d5479c658150ddf2023b3995a48516088f124989ab183d"},
     {"path":"data/things/1525/subarea-0528-fc5c8c1081f5172ee79a3a8e3989f99f2d496f5406d005811a4279c458e535de.bmp.lzma","size":401,"sha256":"c34aca4e097063aaaef73ff5113a21ad3eff3736a01a40ddf3d67e65ebd28223"},
     {"path":"data/things/README.md","size":358,"sha256":"553b8d410e7d9ffc2d077ca87f717f748590e916dfc1394cfd49dccce7117f04"},
-    {"path":"init.lua","size":7481,"sha256":"72ee2608f04db9fe86b06e0f5064bc5a44de284845160674277ba0901441bf82"},
+    {"path":"init.lua","size":6993,"sha256":"eeeaf0115dd97125b94cbacace3d231bd17cc8e31581ef89bad458607f5b1e38"},
     {"path":"mods/client_mods/mods.otmod","size":278,"sha256":"2cdc5375c0d533d2d5e55cab6b62233c11a28f414928ea972fadd81ea41c07e0"},
     {"path":"mods/client_profiles/profiles.lua","size":4133,"sha256":"bd82baa1ffb591bb85135c78206a9bd6b831276e752d2722b1660e5f556daf56"},
     {"path":"mods/client_profiles/profiles.otmod","size":271,"sha256":"638fb0e417d8e9d57f3c72c2bb3e17fb29db4dfd97d9decf61bccc078737d964"},
