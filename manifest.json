@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.12-0943",
+  "version": "2026.10.12-1002",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -12050,7 +12050,7 @@
     {"path":"modules/game_tutorial/assets/images/map.png","size":2181095,"sha256":"c3c673ca8763a0555db25ac3c5e6300a3b7abc47e611efc79d9f957475b5d614"},
     {"path":"modules/game_tutorial/assets/images/overlay_pin.png","size":1147,"sha256":"7bdc44061a097f5edbb7af4683ccb976376f7776cac754cb888bbe5f1b16f42e"},
     {"path":"modules/game_tutorial/const/vocations.lua","size":1815,"sha256":"1ac05730819539a054feb95326003bf942953e82e6b83655262e1910a4e4fac8"},
-    {"path":"modules/game_tutorial/controller/tutorial_controller.lua","size":9556,"sha256":"a532bea34aa86b8f9999d36f2108906c4feb3a4cdca7730adc1c079a938f3540"},
+    {"path":"modules/game_tutorial/controller/tutorial_controller.lua","size":9487,"sha256":"b4dedb8a54a4723d3942499ae329972196ce3b3f4e15d4c5bc6d12bbd666f296"},
     {"path":"modules/game_tutorial/game_tutorial.otmod","size":332,"sha256":"a7cee0e1f1c004dce65c168b212e9c0e08002e141f585adfd3151fc03a30f28c"},
     {"path":"modules/game_tutorial/template/html/tutorial.html","size":6685,"sha256":"721874550ddb1ba3fc473bacc9f3f916929955252a86b10d2b5e70e55d459969"},
     {"path":"modules/game_unjustifiedpoints/unjustifiedpoints.lua","size":10115,"sha256":"0dc9b9604c3123acffe9ef6fdb3f275f332e9fe8ac154ba76be6f8fe7ac31d37"},
