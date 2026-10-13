@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.13-1409",
+  "version": "2026.10.13-1424",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -10607,7 +10607,7 @@
     {"path":"modules/game_mainpanel/images/vipWidget.png","size":1415,"sha256":"d400c2f57ccc16dbe71962e77f17d324d89c96b85b69d81208d01d6f977885dd"},
     {"path":"modules/game_mainpanel/images/weaponProficiency.png","size":2888,"sha256":"0040deca9341f454f6e907487a79f29a9b904f24738f34ea16acd56eca5a3644"},
     {"path":"modules/game_mainpanel/mainoptionspanel.otui","size":1989,"sha256":"e1292598c4d090e404cd216acdb048f78629db2fdf539224ee171fba49c85de9"},
-    {"path":"modules/game_mainpanel/mainpanel.lua","size":22133,"sha256":"677ff3d8493c7ab3348c2157b1c1fa178636fb672590946d950b8b5f4206b57d"},
+    {"path":"modules/game_mainpanel/mainpanel.lua","size":23914,"sha256":"3ecb3c61e2e582f8fe03255e1aa5b5afab51207913504f1e85064d30a5b752d2"},
     {"path":"modules/game_mainpanel/mainpanel.otmod","size":283,"sha256":"2702ff6d24c43b62f38e17e3bdf101fad5fc0f0c584776359549590a580d8aec"},
     {"path":"modules/game_mainpanel/option_control_buttons.otui","size":4754,"sha256":"617d0879a7e8bf540567eae06cf2201c2a22a96040b74ff2c1c4b10bf755c03c"},
     {"path":"modules/game_market/classes/t_history.lua","size":10868,"sha256":"ff6fe77e02ef89d1054c9ca904d126bf72cd90af30c4f82057f1d74d103a73ac"},
