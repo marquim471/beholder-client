@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.14-1729",
+  "version": "2026.10.14-1758",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -10704,7 +10704,7 @@
     {"path":"modules/game_npctrade/assets/images/icon-npcdialog-multiplenpcs.png","size":1334,"sha256":"6464a717a994ffb7344c7b85e41e6b57839c9de2b1e3961bf30aa0f21ec77cff"},
     {"path":"modules/game_npctrade/assets/images/icons-npcdialog.png","size":6101,"sha256":"cdccf60ff55caafddc79f208af8dd8cac4fa3a91d92d8a98ccb7a2315618a5ed"},
     {"path":"modules/game_npctrade/constants/trader_const.lua","size":4173,"sha256":"77a19b16558e21492d6bae930db03526d5aee70fbdbee6f3dfd0f376334292a4"},
-    {"path":"modules/game_npctrade/controllers/npc_dialog.lua","size":12567,"sha256":"6e58962717d197afb0e8a8314536c8b04b65ef578e4eb2a37efca647403956a5"},
+    {"path":"modules/game_npctrade/controllers/npc_dialog.lua","size":14113,"sha256":"6b03ab645a4be67cdf99a9fcb9dae19289347b229231d4353dba63ce57653117"},
     {"path":"modules/game_npctrade/controllers/npc_legacy_ui.lua","size":15838,"sha256":"7ea8cae8a72e01fa51f9a5e2db5bae6e217af68fde20fc45defb224f7abf7361"},
     {"path":"modules/game_npctrade/controllers/npc_options.lua","size":2039,"sha256":"3488364074be7805f4ac0f8aae50917ee7d556d85115d659a0c08db6069112fe"},
     {"path":"modules/game_npctrade/controllers/npc_trader.lua","size":22031,"sha256":"668a03575905f61539af8d3ed69edbd1df611c597fd8f60fb754240d79ab681a"},
