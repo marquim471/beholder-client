@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.15-1953",
+  "version": "2026.10.15-2053",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -11191,7 +11191,7 @@
     {"path":"modules/game_skills/images/progressbar.png","size":149,"sha256":"2ce79254207ade94f59d510a46aa7544f42f6e122e8586dc43486e054256ea1a"},
     {"path":"modules/game_skills/offlinetraining1524.html","size":6525,"sha256":"6e4fcbe2b9dfec418d0c85320e81a1e75b10db2b7741f98884b5bfd1f06192f8"},
     {"path":"modules/game_skills/offlinetraining1524.lua","size":6548,"sha256":"ec745716c46cf7bcdc923a425b5d50860d686d6cdb310c1f55f953c23bc7455d"},
-    {"path":"modules/game_skills/skills.lua","size":40212,"sha256":"b5fcb0c92306810f16f824733407f01697c7a98104f89b47dc0fa7d22d6d620c"},
+    {"path":"modules/game_skills/skills.lua","size":40445,"sha256":"47bf299d769264b45b3bd192a7f934150a13c87b2d12c47b23c7bee25a96735e"},
     {"path":"modules/game_skills/skills.otmod","size":346,"sha256":"e235fcf74d6ba7b2f443960ea44e125bf94aaf7b1dd22f2784b5ce3d51265779"},
     {"path":"modules/game_skills/skills.otui","size":20871,"sha256":"6a9fd184c8971fcd92be4e6483d0b095b054cf0f81230d00b0b77a3d111fdfbc"},
     {"path":"modules/game_spelllist/spelllist.lua","size":17026,"sha256":"d3f5b1e64379360afeda5261ca6cf21973e2c4f83ab6c41cfa82ad24719b2719"},
