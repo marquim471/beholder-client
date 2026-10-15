@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.15-1231",
+  "version": "2026.10.15-1242",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":5,"path":"launcher/BeholderLauncher.exe","size":1448960,"sha256":"822a505002338b77aa462ebf320a29671efd6d932aacafd4ad0c32972290a453"},
@@ -11035,7 +11035,7 @@
     {"path":"modules/game_ranktasks/images/tab_button.png","size":234,"sha256":"d22c9881b6127c6fcc26fc347c2aedf6bcf82da324f307f572042a11c58294c9"},
     {"path":"modules/game_ranktasks/images/tab_special.png","size":2605,"sha256":"3b2eca0e9e31a3b44cfdce0fdd21d16693e615bfb3e51c6a1f76ee17bd01782e"},
     {"path":"modules/game_ranktasks/images/tracker_frame.png","size":471,"sha256":"01a96d00135894f7973085217785637b73ddd6d3c7c4f7f1867c77081e85e1d3"},
-    {"path":"modules/game_ranktasks/ranktasks.lua","size":38718,"sha256":"0a90b902ee487fda564f4a239189b45f7ebd0b9a37c30113545ed7d79dfe5ba0"},
+    {"path":"modules/game_ranktasks/ranktasks.lua","size":38936,"sha256":"acdaec85a84aefa20d94f1a06ac4cae458819bee58b97beb1c7f9b1910e6e02f"},
     {"path":"modules/game_ranktasks/ranktasks.otmod","size":257,"sha256":"e6daf08cc91d216b4d80b79163a8b5bf25fa750a0cbbf045beff8e5b9a455c6a"},
     {"path":"modules/game_ranktasks/ranktasks.otui","size":70050,"sha256":"d8b6c45b6f710cfcaee5dc002e72afcde15323620026fabafa60568e4d6120ff"},
     {"path":"modules/game_ranktaskstracker/maptracker.otui","size":1697,"sha256":"524c3aba6da4bdb672b56b74dc7cf2094e903de57e93b766a3ce52283cf2945c"},
