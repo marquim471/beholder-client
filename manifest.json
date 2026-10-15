@@ -3,7 +3,7 @@
   "version": "2026.10.15-1242",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
-  "launcher": {"version":6,"path":"launcher/BeholderLauncher.exe","size":1453056,"sha256":"a07159fae6c7e5a58dc272bb3b5fff73b54ed2e737b1ca7a689339d319a0b324"},
+  "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
   "files": [
     {"path":"otclient.exe","size":34070528,"sha256":"b71bbe03b770c9fa960a1258b801280a173f572cb1187161db6fb6a374fa8e0f"},
     {"path":"otclient_dx.exe","size":42905600,"sha256":"0c9a0eb565acdfa4219edadb2a8b37f31ad6cedc49e87f5270518835b1ce9f86"},
