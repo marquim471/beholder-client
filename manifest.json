@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.15-2239",
+  "version": "2026.10.15-2250",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -10683,7 +10683,7 @@
     {"path":"modules/game_market/classes/t_ownOffers.lua","size":14495,"sha256":"cf6b3182adee11f2a1a18c979a2fa9954bf542d69ccd2cb2a517431f28de263b"},
     {"path":"modules/game_market/market_constants.lua","size":1012,"sha256":"729e921c7faf225f466062562a23890a9c9edbfab3d98c4804ee24f8382643ee"},
     {"path":"modules/game_market/market_helpers.lua","size":4177,"sha256":"4cc64fce9c6ccb1dc10ceac01c3e616583d1758928855328519a7cf8b8cccadd"},
-    {"path":"modules/game_market/t_market.lua","size":92848,"sha256":"6e10a8babb3f9d6d4253f0986cf4f2451139c0a09911e3fe1f48aedc1cfe22b1"},
+    {"path":"modules/game_market/t_market.lua","size":93202,"sha256":"c5fea1aee70b0eab372b0a06c8050e56ad69fef0f99d59c1c88cfdedd1bfbe93"},
     {"path":"modules/game_market/t_market.otmod","size":380,"sha256":"2885f744b6b7baed3343b8463c8d264d4e8a6229fa309e5c108901c3d8924c2d"},
     {"path":"modules/game_market/t_market.otui","size":61938,"sha256":"a08175919cfa6ed3b73a64a58a84eca880e1f41890930b9f599484ba78210704"},
     {"path":"modules/game_minimap/markers.lua","size":7969,"sha256":"216fb4490f315fbb116224bb8464d4e7ff2da5d9b988b90a1f4eb4d0763cca0e"},
