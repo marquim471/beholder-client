@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.16-1150",
+  "version": "2026.10.16-1216",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -10850,7 +10850,7 @@
     {"path":"modules/game_proficiency/images/progress-bg.png","size":2076,"sha256":"ee26634d58cfc21c5be7a5d01ca40467f702825b352aedb0117ff3d98e630a9a"},
     {"path":"modules/game_proficiency/images/star-progress.png","size":1870,"sha256":"6fc4b4fea12316d00b80fc7c38456e9f42a8ee3ce4a03d9ce7463a3e6fc44ee3"},
     {"path":"modules/game_proficiency/images/star-progress-bg.png","size":2153,"sha256":"99716c3e7b34c62a56b1d7169baee51f14c20b2074aa37b9d4388a711d4f2f06"},
-    {"path":"modules/game_proficiency/proficiency.lua","size":157735,"sha256":"8c85163c9a7199922dea07cda10ceab320198edea541f10bf7ac1f84ab585ed1"},
+    {"path":"modules/game_proficiency/proficiency.lua","size":157587,"sha256":"0cf8024dbc88e35cc085146d9c2595162315337fe1f3f11f9f70e68d9b022133"},
     {"path":"modules/game_proficiency/proficiency.otmod","size":372,"sha256":"bf73189a2744b963e9ed80fcae4a45fa526698b51c45461e7d6069eef15a67af"},
     {"path":"modules/game_proficiency/proficiency.otui","size":18245,"sha256":"f1b065b0fa73a1007dcd3d86bc4b55bdceff1a64c528445e7f9fff06c589b19e"},
     {"path":"modules/game_proficiency/proficiency_data.lua","size":32740,"sha256":"bad3c8d96d64148b883f445846e03e6f8bf2465bc2de2f9482d2b8d5fa4232a1"},
