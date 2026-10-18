@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.18-1000",
+  "version": "2026.10.18-1027",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -12212,7 +12212,7 @@
     {"path":"modules/game_unjustifiedpoints/unjustifiedpoints.otmod","size":223,"sha256":"59f150b5ac702cdf3cebfe1e3794fad30e9d76861815a55c7866aebcb007341e"},
     {"path":"modules/game_unjustifiedpoints/unjustifiedpoints.otui","size":5511,"sha256":"43eee87e0e92b9d481f6a9e2d8d684df8ba5bb73da668d862ef7676ff4247189"},
     {"path":"modules/game_videoplayer/game_videoplayer.otmod","size":233,"sha256":"957e66d02d2635e5392085d46947f9b6390a775a576828848b1a9ffa0a688fa3"},
-    {"path":"modules/game_videoplayer/videoplayer.lua","size":9326,"sha256":"8e719994b36719a002d780556aca7bff6624d152a4c4ced34d8fc6b20f1c1a7c"},
+    {"path":"modules/game_videoplayer/videoplayer.lua","size":9752,"sha256":"9dc1ce609971418e472d11aba393ab4a23f49ea2916b2089c7e2f2b267c74e9d"},
     {"path":"modules/game_videoplayer/videoplayer.otui","size":2578,"sha256":"477ba503e24a981d56627a0411ea04b4a31bf7c627cc61dd6f21ac9c8042e534"},
     {"path":"modules/game_viplist/addgroup.otui","size":1972,"sha256":"6ee9d792fb6e85cd0c340e2e50fc4f293462d5d19cb47e640fb206dc8a673c05"},
     {"path":"modules/game_viplist/addvip.otui","size":1951,"sha256":"0d28b66e6a3323cbd3b02d45ace17e6f265af6c9720fce59400369fbefbebd72"},
