@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.19-0740",
+  "version": "2026.10.19-0748",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -10030,7 +10030,7 @@
     {"path":"modules/client_options/styles/controls/preset.otui","size":699,"sha256":"6b835d0bd1a57d47121b75b7317a6fb558e20759f7b4ded48fb9cb864f8db1f6"},
     {"path":"modules/client_options/styles/graphics/effects.otui","size":5319,"sha256":"4d68df5cdd781bedf4ac36369f3070cf4ff34c437d4fe6812bc7551c0e5bbd6b"},
     {"path":"modules/client_options/styles/graphics/extras.otui","size":2831,"sha256":"9b93424739823cdbf51ab5c9bab0507b848269ec39fd51a0b8bd7577ddc10144"},
-    {"path":"modules/client_options/styles/graphics/graphics.otui","size":7011,"sha256":"376518ee15136147929cfe59f77d21147b337864cc6d3b6bca74da22cd073866"},
+    {"path":"modules/client_options/styles/graphics/graphics.otui","size":7038,"sha256":"2c72d74d9a965173a2c57e6f0ce9ec4b3566b65abd5962cc811439fb038ae34b"},
     {"path":"modules/client_options/styles/interface/actionbars.otui","size":12258,"sha256":"4168ce5ac2abb9cc4ecaf662322de35dd802d77f5130b3bb9fefe12148dd2856"},
     {"path":"modules/client_options/styles/interface/console.otui","size":4065,"sha256":"ea248e07e1eb2b23dd8c646708aa0208917d9df2a8b27d95b4336ed58ff76770"},
     {"path":"modules/client_options/styles/interface/extras.otui","size":2726,"sha256":"2b923c7b4de5636859ebaa5f5cf310e410b2aa112a4bd054a8beebc15cce0774"},
