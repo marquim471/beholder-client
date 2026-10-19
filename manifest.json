@@ -1,12 +1,12 @@
 {
   "format": 1,
-  "version": "2026.10.19-0748",
+  "version": "2026.10.19-0855",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
   "files": [
-    {"path":"otclient.exe","size":34072064,"sha256":"f9093991df524cfaaa59438d1be8ae17f4e1889084b155b37535f791c872f0cc"},
-    {"path":"otclient_dx.exe","size":42907136,"sha256":"b30aa79244575038f5731b1c09a594cfd2a865d598e889858ac431838c66e364"},
+    {"path":"otclient.exe","size":34072064,"sha256":"8644b73baea46891b363e593dfd8d738c5f13f9eb96a6036d39424b675ae4d75"},
+    {"path":"otclient_dx.exe","size":42907136,"sha256":"19a91a754de3ff3698848e00e808708b3199576765f8c0c87a69329558121af7"},
     {"path":"cacert.pem","size":206159,"sha256":"592da8008fe748dd3ca58566c6846cb9340062bfb10bc4cd0846c8b191c948da"},
     {"path":"config.ini","size":850,"sha256":"ae04fec2759cf4f3e60ebfce93b9e557996b4ddd9224a1847c33302ffb2c18f6"},
     {"path":"data/cursors/attackcursor.png","size":1165,"sha256":"de76e4643714e82d8941a4ae8486cd4fb35a1c0ad3ee28a5e1d85437b29b660b"},
