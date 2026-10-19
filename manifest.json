@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.19-0638",
+  "version": "2026.10.19-0709",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -11269,7 +11269,7 @@
     {"path":"modules/game_stonesystem/images/upgrade_runes.png","size":17469,"sha256":"3c6b0af0c83f6eac7366ad5eda28ce061764f49c1949257c01b2eb239ffd6c90"},
     {"path":"modules/game_stonesystem/images/upgrade_spark.png","size":1224,"sha256":"e1c9fdcd38d1293db28db9b311fa804ce879b55e5637c3e5de2018ad3639db39"},
     {"path":"modules/game_stonesystem/images/upgrade_wave.png","size":11972,"sha256":"a8d4d306b84f53edf069e847b7746bd959552e01d0c5ad2544a01e47c03ea4c9"},
-    {"path":"modules/game_stonesystem/stonesystem.lua","size":40034,"sha256":"87075c7b62ef8ecd9210bac921ee3481adb14ca4e52afba807a809e70d2d7063"},
+    {"path":"modules/game_stonesystem/stonesystem.lua","size":40709,"sha256":"260893d341d5586f4662d0957da36469e71c142be4fd4106f69b1c947bdbfb24"},
     {"path":"modules/game_stonesystem/stonesystem.otmod","size":215,"sha256":"2fdb806f061d42504f0e22723fe6e34cf7fbfd6524d108102676ba6ad8edf788"},
     {"path":"modules/game_stonesystem/stonesystem.otui","size":24718,"sha256":"a1ba1908493cb9d01673bdf45e3ece640fd3238846a2f9a8f2a85639594ebfb7"},
     {"path":"modules/game_store/game_store.lua","size":77581,"sha256":"bef3da0e4ab25f5b9f042d4a29b2f1c45873e1872d235ae8a3463998ea457da6"},
