@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.20-0657",
+  "version": "2026.10.20-0714",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -10514,7 +10514,7 @@
     {"path":"modules/game_cyclopedia/tab/charms/charms1410.otui","size":11999,"sha256":"382ca8bb614ccdc4ccfbc1e9a6a3882f0a936fdfaf9c9c3e095adf9124b40fce"},
     {"path":"modules/game_cyclopedia/tab/house/house.lua","size":87742,"sha256":"4e4a3d0abf06695df340e52e69cad8432fbb8e2032aa8c71b2acf85c6cdffee4"},
     {"path":"modules/game_cyclopedia/tab/house/house.otui","size":64206,"sha256":"c699706c9c28afabb5349935bdeba83758c781dd40c4d689ffcfdec168f371c5"},
-    {"path":"modules/game_cyclopedia/tab/items/items.lua","size":47735,"sha256":"4a31f2f5e9cfa5b1dd160eca56983200f39a8359f5d570c3d6727e0b9d6570d4"},
+    {"path":"modules/game_cyclopedia/tab/items/items.lua","size":48305,"sha256":"204683cb07586056757faf7bdc016c217209c72d915b7921388e916465fbb328"},
     {"path":"modules/game_cyclopedia/tab/items/items.otui","size":17897,"sha256":"515f9a2567793f661dbb8ed851b0450f62cead65449774f83acffe67ae06be4b"},
     {"path":"modules/game_cyclopedia/tab/magicalArchives/magicalArchives.lua","size":28028,"sha256":"087dad35fac671c12dc11110650a23fa4e773e583cae803ab02f7b88318d95ab"},
     {"path":"modules/game_cyclopedia/tab/magicalArchives/magicalArchives.otui","size":19996,"sha256":"5272b255d1f3beb13dbb50e9c11c41e5cca3da6af9af91f7d051a85dd8868e73"},
