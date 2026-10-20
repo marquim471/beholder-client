@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.20-0635",
+  "version": "2026.10.20-0646",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -12252,7 +12252,7 @@
     {"path":"modules/gamelib/protocol.lua","size":20984,"sha256":"3359a10086982c81f0be153339f1810a2e0970aa7f629e432b4d155599aa56fb"},
     {"path":"modules/gamelib/protocolgame.lua","size":3926,"sha256":"45b2a27fb7d746cad74236ee78a48155a472279c41e3f2936462400faba9ae16"},
     {"path":"modules/gamelib/protocollogin.lua","size":8344,"sha256":"4adc7a414374042015d4d8d0b5b98af0f868f70f699f1ec4646d1c0a6b308f34"},
-    {"path":"modules/gamelib/spells.lua","size":99218,"sha256":"69fe3d5696663a9524af08ee99a83ccac7ef4eccc069c6c4d081c2ef9a7dbc66"},
+    {"path":"modules/gamelib/spells.lua","size":98867,"sha256":"31a22b67dfbcca7f8265b5b0d9775c3d656b30202d37261bca96420c02a96bb9"},
     {"path":"modules/gamelib/textmessages.lua","size":916,"sha256":"504159ec00276b7b7c3856681feb7820903b0c3f7dba9512ccbc762c34221a65"},
     {"path":"modules/gamelib/thing.lua","size":1275,"sha256":"7d2f16478c227bb47ca2e3a1b60d6d03d5b8430922327102f789e972460b071b"},
     {"path":"modules/gamelib/tile.lua","size":510,"sha256":"e2849600e287165c9c7db295eafcdb588db5786b9d9bc71270b84b05d7e1b006"},
