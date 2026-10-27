@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.26-1732",
+  "version": "2026.10.27-0739",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -12244,7 +12244,7 @@
     {"path":"modules/game_viplist/viplist.otui","size":5958,"sha256":"425bd24c948d6f0662e95505a6e2623e5aa392c0a4d5065ba9fd2f6832d7ebaf"},
     {"path":"modules/game_walk/walk.lua","size":10592,"sha256":"19a6ad605204302dd07d66d675db5d80c11bd116914999b689a8dfff03e890c4"},
     {"path":"modules/game_walk/walk.otmod","size":312,"sha256":"49b4728b1291bf2864341c1c961ee61eec0b74c366f357b1ad16625ff847c102"},
-    {"path":"modules/game_wheel/classes/bonus.lua","size":95176,"sha256":"4de8dd5252ee463e174efc3c1569111aa8b322d9b77864c7e60e6b158c702ccf"},
+    {"path":"modules/game_wheel/classes/bonus.lua","size":95179,"sha256":"4e178fe1fd7f5d9317ff7991d0d6ca2a01e025d1e341b44eadb791ba2bdc0082"},
     {"path":"modules/game_wheel/classes/buttons.lua","size":11320,"sha256":"57c9d94e01aef2e08a6d1b6d57f91ed71539c8b87cd492ad7057abdf6d17eb05"},
     {"path":"modules/game_wheel/classes/gematelier.lua","size":41825,"sha256":"112f956e48d4919f8758f9fcc9ce78081849d763fa0173edd98ded388c45b286"},
     {"path":"modules/game_wheel/classes/geometry.lua","size":1373,"sha256":"6e1659d49f119e4d39dc551f37895c20705f08bab930e07c0420426f9ccd36ce"},
