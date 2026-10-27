@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.27-0927",
+  "version": "2026.10.27-0936",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -12233,8 +12233,8 @@
     {"path":"modules/game_unjustifiedpoints/unjustifiedpoints.otui","size":5511,"sha256":"43eee87e0e92b9d481f6a9e2d8d684df8ba5bb73da668d862ef7676ff4247189"},
     {"path":"modules/game_videoplayer/bin/Microsoft.Web.WebView2.Core.dll","size":603712,"sha256":"88a3b62f45225a811cdb85df6dfd95c2bff9a0e43e3b04f813b125eaca56cc9f"},
     {"path":"modules/game_videoplayer/bin/Microsoft.Web.WebView2.WinForms.dll","size":38488,"sha256":"29fc954c3fde1749817d158f3dd5ebe9efd3b3ce9708d86092fb1e9f023a1cb0"},
-    {"path":"modules/game_videoplayer/bin/VideoPlayerHost.exe","size":17957,"sha256":"2b3d6661ea4a5ee2a065d3c39c5aec8ce0811b95ebcfb9dcec24cadba252c8e7"},
-    {"path":"modules/game_videoplayer/bin/VideoPlayerHost.exe.config","size":211,"sha256":"dc5fc5c3b0c93decebe7258a2d41c2f67baadc7055afa987310c4eb00842fab7"},
+    {"path":"modules/game_videoplayer/bin/VideoPlayerHost.exe","size":17920,"sha256":"37e04cb2a2a50c4c2c34466eb2760c6ebf5184be39c8ff9b55f601cf463508db"},
+    {"path":"modules/game_videoplayer/bin/VideoPlayerHost.exe.config","size":174,"sha256":"051099983b896673909e01a1f631b6652abb88da95c9f06f3efef4be033091fa"},
     {"path":"modules/game_videoplayer/bin/WebView2Loader.dll","size":165968,"sha256":"462b36fd1be6ca9f7563466a89e57c41ef4a4def3e0a84fa885d203aea4a3aaf"},
     {"path":"modules/game_videoplayer/game_videoplayer.otmod","size":233,"sha256":"957e66d02d2635e5392085d46947f9b6390a775a576828848b1a9ffa0a688fa3"},
     {"path":"modules/game_videoplayer/videoplayer.lua","size":10218,"sha256":"f2156eb788bb9f9bcc6c65c5d794a61a1f87ddcc2acf21aa7e2f7467d84cb0b8"},
