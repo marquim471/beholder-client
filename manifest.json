@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "2026.10.28-1643",
+  "version": "2026.10.30-1220",
   "exe": "otclient.exe",
   "exeDx": "otclient_dx.exe",
   "launcher": {"version":7,"path":"launcher/BeholderLauncher.exe","size":1453568,"sha256":"a45f57fd0c4536c6921766df3864231d2b9fc2ff4aa0d10d0180a3bce1fd9f0a"},
@@ -10012,7 +10012,7 @@
     {"path":"modules/client_entergame/characterlist.otui","size":18971,"sha256":"1de42d7a8402d947b37aa9433ad110742b1c97f1bdef76caa05deafc742c5254"},
     {"path":"modules/client_entergame/createAccount.lua","size":35462,"sha256":"7a63dfdaf2c2f8cdb9e856de0eb41ff528c80de7b73d8bdb3859df509a97483e"},
     {"path":"modules/client_entergame/createAccount.otui","size":19712,"sha256":"40939342feea00e01bacd000e16d31478208654381c59a97b6b973d763457c44"},
-    {"path":"modules/client_entergame/entergame.lua","size":36606,"sha256":"e6f287b79ee34c05969c08ab3dc30ad826947314acf6e78c7d72f7704f538621"},
+    {"path":"modules/client_entergame/entergame.lua","size":37252,"sha256":"8aaceaca52ca68e8207f84ee67f6ea2de56a561ccf5ff3a72045be3258e39633"},
     {"path":"modules/client_entergame/entergame.otmod","size":479,"sha256":"2d1a6aed658045f93357ab84a7aea8b10e1dd9bc3445a60e4a3a01c217caf8b4"},
     {"path":"modules/client_entergame/entergame.otui","size":6040,"sha256":"7d56d7ea88558a8c683570717805c4c89f902042fc2009e40c067727c08161dc"},
     {"path":"modules/client_entergame/waitinglist.otui","size":1019,"sha256":"559a3797c116b940ba951de6984f9793c44071173ce804c16fea64f12cf64930"},
